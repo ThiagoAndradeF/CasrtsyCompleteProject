@@ -1,0 +1,27 @@
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+    border-bottom: 20px;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+ 
+
+  .verification-input-container {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .verification-input-container input {
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    font-size: 24px;
+    border: 1px solid #ccc;
+    margin-left: 4px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }

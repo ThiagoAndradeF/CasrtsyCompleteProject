@@ -1,0 +1,47 @@
+<div *ngIf="!numeroEnviado">
+    <div style="background-color: #FFFCF9; " >
+        <h1 mat-dialog-title style="text-align: center; color: black;" >Login</h1>
+        <div mat-dialog-content >
+        
+                <h2 style="color: black; ">Telefone:</h2>
+            
+                <form class="example-form">
+                <mat-form-field class="example-full-width">
+                    <input type="tel" matInput placeholder="(99)9 9999-9999">
+                </mat-form-field>
+                </form>
+                <button mat-button style="background-color: black; width: 100%;padding: 0px 30px; color: white;" 
+                (click)="enviarNumero()">
+                    Enviar código de verificação
+                </button>
+        </div>
+    </div>
+</div>
+
+<div>
+    <div style="background-color: #FFFCF9; " *ngIf="numeroEnviado && !codigoEnviado">
+        <h1 mat-dialog-title style="text-align: center; color: black; color: white;"  >Login</h1>
+        <div mat-dialog-content>
+            <h2 style="color: black; ">Código Verificador:</h2>
+
+            <form class="example-form">
+                <div class="verification-input-container">
+                    <input *ngFor="let digit of digits; let i = index" 
+                            type="text" 
+                            [maxlength]="1" 
+                            [(ngModel)]="digits[i]" 
+                            (keydown.backspace)="onBackspace(i)">
+                    </div>
+            </form>
+
+            <div class="button-container">
+                <button mat-button style="background-color: black; width: 100%;padding: 0px 30px;  color: white;" 
+                (click)="enviarCodigo()">
+                    Entrar
+                </button>
+            </div>
+            
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,56 @@
+<div class="card">
+    <div class="card-product" fxLayout="row" fxLayoutAlign="start center">
+      <span class="card-product-name"></span>
+      <span style="flex-grow: 1"></span>
+    </div>
+  
+    <div class="card-details">
+  
+      <div class="card-titulo">
+        <span>
+          <ng-container *ngIf="card?.NomePedido">
+            {{card.NomePedido}}
+          </ng-container>
+        </span>
+      </div>
+      
+      <div class="card-item" fxLayout="row" fxLayoutAlign="space-between center">
+        <ng-container *ngIf="card?.idPedido">
+          <span>Pedido</span>
+          <span>{{card.idPedido}}</span>
+        </ng-container>
+      </div>
+  
+      <!-- <div class="card-item" fxLayout="row" fxLayoutAlign="space-between center">
+        <ng-container *ngIf="Informacao">
+          <span style="width: 115px;">TITULO</span>
+          <span>INFORMACAO</span>
+        </ng-container>
+      </div>
+
+      <div class="card-item" fxLayout="row" fxLayoutAlign="space-between center">
+        <ng-container *ngIf="Informacao">
+          <span style="width: 115px;">TITULO </span>
+          <span>INFORMACAO</span>
+        </ng-container>
+      </div>
+      
+      <div class="card-item" fxLayout="row" fxLayoutAlign="space-between center">
+        <ng-container *ngIf="Informacao">
+          <span style="width: 115px;">TITULO </span>
+          <span>INFORMACAO</span>
+        </ng-container>
+      </div>
+
+      <div class="card-item" fxLayout="row" fxLayoutAlign="space-between center">
+        <ng-container *ngIf="Informacao">
+          <span style="width: 115px;">TITULO </span>
+          <span>INFORMACAO</span>
+        </ng-container>
+      </div>
+  
+      -->
+  
+    </div>
+  </div>
+  

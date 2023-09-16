@@ -1,0 +1,54 @@
+
+
+<div fxLayout="row" fxFlex class="dialog-content">
+  <div>
+    <div mat-dialog-content class="divisoria">
+      <div class="titulo-field">
+        <div>
+          <form class="nome">
+            Nome
+          </form>
+          <input  placeholder="Ex. Pizza" value="" class="input-choose" id="itenName">
+        </div>
+        
+
+        <div class="preco">
+          <form>
+            Preço
+          </form>
+          <input  placeholder="10.00" value="" class="input-choose" id="itenPrice">
+        </div>
+
+      </div>
+    </div>
+    
+    <div class="imagem-body">
+      <form>
+        Imagem
+      </form>
+      <input type="file" #fileInput accept="image/*" (change)="onFileSelected($event)">
+
+      <!-- <div id="imageContainer">
+        <img *ngIf="selectedImage" [src]="selectedImage" alt="Imagem selecionada">
+      </div> -->
+
+    </div>
+    
+
+    <div mat-dialog-content >
+      
+    <button (click)="salvarCard()" class="save-button">
+      Criar
+    </button>
+  </div>
+
+
+  <!-- <div fxFlex>
+    <div class="body-representacao">
+      <div class="representacao">
+  
+      </div>
+    </div>
+  </div> -->
+
+</div>

@@ -1,0 +1,73 @@
+:host() {
+
+    position: relative;
+    display: block;
+    width: 100%;
+    margin: 16px 0 !important;
+    border-radius: 4px;
+    border: 1px solid;
+    cursor: pointer;
+  
+  
+    .card {
+      padding: 16px;
+  
+      .card-product {
+        margin-bottom: 6px;
+  
+        .card-product-name {
+          font-size: 14px;
+        }
+  
+      }
+    }
+  
+    .card-details {
+      font-family: 'Muli';
+    }
+  
+    .card-item {
+      &:not(:empty){
+        margin-bottom: 3px;
+      }
+  
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+  
+      >span {
+  
+        &:last-of-type {
+          white-space: nowrap;
+          max-width: 100%;
+          overflow: hidden;
+          padding-left: 16px;
+          text-overflow: ellipsis;
+        }
+      }
+    }
+  
+    .card-titulo {
+      display: flex;
+      font-weight: 600;
+      flex-direction: column;
+      margin: 0 0 16px;
+  
+      >span {
+        &:last-of-type {
+          color: rgba(0, 0, 0, .54);
+        }
+  
+        &:first-of-type {
+          font-size: 1.2em;
+          white-space: nowrap;
+          display: block;
+          max-width: 100%;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+    }
+  
+  }
+  

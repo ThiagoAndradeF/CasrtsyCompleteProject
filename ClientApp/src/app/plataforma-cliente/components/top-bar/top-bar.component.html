@@ -1,0 +1,48 @@
+<mat-toolbar class="toolbar-container">
+  <div *ngIf="!isMobile" >
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>menu</mat-icon>
+  </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>
+        <mat-icon>shopping_cart</mat-icon>
+        <span>Pedidos</span>
+      </button>
+      <button mat-menu-item>
+        <mat-icon>notifications_active</mat-icon>
+        <span>Serviços Adicionais</span>
+      </button>
+      <button mat-menu-item>
+        <mat-icon>attach_money</mat-icon>
+        <span>Pagamentos</span>
+      </button>
+    </mat-menu>
+  </div>
+   
+    <span class="example-spacer"></span>
+
+    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon" (click)="recarregarPagina()">
+      <mat-icon class="icon-button">restore</mat-icon>
+    </button>
+
+    <button mat-icon-button [matMenuTriggerFor]="account">
+        <mat-icon class="icon-button">account_circle</mat-icon>
+    </button>
+      <mat-menu #account="matMenu">
+        <button mat-menu-item class="buttons">
+          <mat-icon class="icon-button">assignment_ind</mat-icon>
+          <span class="text-button">Minha Conta</span>
+        </button>
+        <button mat-menu-item class="buttons">
+          <mat-icon class="icon-button">polymer</mat-icon>
+          <span class="text-button">Meu Plano</span>
+        </button>
+        <button mat-menu-item class="buttons">
+          <mat-icon class="icon-button">build</mat-icon>
+          <span class="text-button">Configurações</span>
+        </button>
+      </mat-menu>
+    
+</mat-toolbar>
+
+
