@@ -42,7 +42,7 @@ import { MatTab, MatTabsModule } from '@angular/material/tabs';
     AdicionarServicoComponent
   ],
   imports: [
-    FlexLayoutModule,
+    
     MatMenuModule,
     MatToolbarModule,
     MatButtonModule, 
@@ -50,15 +50,16 @@ import { MatTab, MatTabsModule } from '@angular/material/tabs';
     MatInputModule,
     MatDialogModule,
     MatTabsModule,
-    CommonModule, 
-    FormsModule, 
-    ReactiveFormsModule,
     MatFormFieldModule,
     MatSelectModule,
     MatProgressSpinnerModule,
     MatExpansionModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    CommonModule, 
+    FormsModule,  
+    FlexLayoutModule,
+    ReactiveFormsModule,
     AgGridModule,
     RouterModule.forChild([{ path: 'plataforma', component: PlataformaClienteComponent }])
   ],

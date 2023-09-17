@@ -19,7 +19,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     DialogLoginComponent
   ],
   imports: [
-    FlexLayoutModule ,
+    FlexLayoutModule,
     MatSidenavModule,
     CommonModule,
     MatButtonToggleModule

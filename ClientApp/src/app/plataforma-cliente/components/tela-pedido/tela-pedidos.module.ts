@@ -34,6 +34,8 @@ import { PedidoCardDialogComponent } from './components/pedido-card/pedido-card-
   ],
   imports: [
     CommonModule,
+    FlexLayoutModule,
+    ScrollingModule,
     MatSnackBarModule,
     MatCardModule,
     MatButtonModule,
@@ -52,10 +54,8 @@ import { PedidoCardDialogComponent } from './components/pedido-card/pedido-card-
     MatToolbarModule,
     MatToolbarModule,
     MatToolbarModule,
-    ScrollingModule,
     MatTabsModule,
     MatTableModule,
-    FlexLayoutModule
   ]
 })
 export class TelaPedidosModule {

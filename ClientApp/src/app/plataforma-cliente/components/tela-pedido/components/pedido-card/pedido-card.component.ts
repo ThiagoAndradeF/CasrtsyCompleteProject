@@ -1,4 +1,4 @@
-import { Component, HostListener, Input } from '@angular/core';
+import { Component, HostListener, Inject, Input } from '@angular/core';
 import { TpStatusPedido } from '../../tela-pedidos/shared/enums/tp-status.enum';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 // import { ProdutoModalComponent } from '@skychart/produto-modal';
@@ -33,6 +33,7 @@ export class PedidoCardComponent {
   }
 
   constructor(
+    @Inject(MatDialog)
     private matDialog: MatDialog
     , private pedidosService: PedidosService
     , public dialog: MatDialog,

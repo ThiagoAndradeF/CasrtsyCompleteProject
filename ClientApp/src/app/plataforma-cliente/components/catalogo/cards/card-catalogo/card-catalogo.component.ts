@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { EditCardDialogComponent } from '../edit-card-dialog/edit-card-dialog.component';
 
@@ -8,7 +8,9 @@ import { EditCardDialogComponent } from '../edit-card-dialog/edit-card-dialog.co
   styleUrls: ['./card-catalogo.component.scss']
 })
 export class CardCatalogoComponent {
-  constructor(public dialog: MatDialog) {}
+  constructor(
+    @Inject(MatDialog)
+    public  dialog: MatDialog) {}
   nortom(){
     console.log('neitinho píneiro')
   }
