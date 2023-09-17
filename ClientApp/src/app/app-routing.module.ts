@@ -6,6 +6,7 @@ const routes: Routes = [
   { path: '', component: LandinPageModule },
   { path: 'plataforma', component: PlataformaClienteModule}
 ];
+
 @NgModule({
   imports: [
     RouterModule.forRoot(routes),
