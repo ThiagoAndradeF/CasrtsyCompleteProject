@@ -314,11 +314,11 @@ modelBuilder.Entity<Address>().HasData(
     new Address { Id = 13, CEP = "78901234", Number = 523, City = "Phoenix", State = "Arizona", Street = "Desert Ave", UF = "AZ" },
     new Address { Id = 14, CEP = "89012345", Number = 634, City = "Miami", State = "Florida", Street = "Ocean Dr", UF = "FL" },
     new Address { Id = 15, CEP = "90123456", Number = 745, City = "Nashville", State = "Tennessee", Street = "Music Rd", UF = "TN" },
-new Address { Id = 16, CEP = "12345678", Number = 123, City = "San Francisco", State = "California", Street = "Market St", UF = "CA" },
-new Address { Id = 17, CEP = "87654321", Number = 456, City = "Boston", State = "Massachusetts", Street = "Commonwealth Ave", UF = "MA" },
-new Address { Id = 18, CEP = "23456789", Number = 789, City = "Seattle", State = "Washington", Street = "Pine St", UF = "WA" },
-new Address { Id = 19, CEP = "34567890", Number = 101, City = "Austin", State = "Texas", Street = "6th Street", UF = "TX" },
-new Address { Id = 20, CEP = "45678901", Number = 210, City = "Denver", State = "Colorado", Street = "Broadway St", UF = "CO" }
+    new Address { Id = 16, CEP = "12345678", Number = 123, City = "San Francisco", State = "California", Street = "Market St", UF = "CA" },
+    new Address { Id = 17, CEP = "87654321", Number = 456, City = "Boston", State = "Massachusetts", Street = "Commonwealth Ave", UF = "MA" },
+    new Address { Id = 18, CEP = "23456789", Number = 789, City = "Seattle", State = "Washington", Street = "Pine St", UF = "WA" },
+    new Address { Id = 19, CEP = "34567890", Number = 101, City = "Austin", State = "Texas", Street = "6th Street", UF = "TX" },
+    new Address { Id = 20, CEP = "45678901", Number = 210, City = "Denver", State = "Colorado", Street = "Broadway St", UF = "CO" }
 
 );
 
