@@ -17,6 +17,7 @@ export class QuestNineComponent {
         this._mailLoja = v;
         if(v){
             this.validarEmail(v);
+
         }
 
     }
@@ -27,9 +28,14 @@ export class QuestNineComponent {
         const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
         if ( regex.test(email)) {
             this.validadeEmail=true
+            this.emitValue(email);
         } else {
             this.validadeEmail=false
+
         }
+    }
+    public emitValue(v:string) {
+      this.emailLoja.emit(v);
     }
 
 

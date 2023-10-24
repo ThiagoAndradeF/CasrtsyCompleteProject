@@ -14,8 +14,9 @@ export class QuestOneComponent {
       return this._nomeLoja;
     }
     public set nomeLoja(v : string) {
-      this.emitValue(v)
+      console.warn(v)
       this._nomeLoja = v;
+      this.emitValue(v)
     }
 
     emitValue(v:string) {

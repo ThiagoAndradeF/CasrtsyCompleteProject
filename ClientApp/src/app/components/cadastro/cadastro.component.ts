@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CadastroService } from './cadastro.service';
 
 @Component({
   selector: 'app-cadastro',
@@ -12,15 +13,81 @@ export class CadastroComponent {
   public habilitaBotaoContinuar:boolean = true;
   public retirada!:boolean;
   public entrega!:boolean;
-  public emailLoja?: string;
-  public habFormulario: boolean =  false;
+  public habEnvio: boolean =  false;
 
 
 
 
-  public nmPrimeiroProduto!:string;
-  public tpProduto!:string ;
-  public nomeLoja:string = 'a';
+
+  private _mailLoja !: string;
+  public get mailLoja() : string {
+    return this._mailLoja;
+  }
+  public set mailLoja(v : string) {
+    this._mailLoja = v;
+    this.habEnvio= true;
+    console.warn('O email da loja é  ' + v)
+  }
+
+
+
+  private _localRetirada !: string;
+  public get localRetirada() : string {
+    return this._localRetirada;
+  }
+  public set localRetirada(v : string) {
+    this._localRetirada = v;
+    console.warn('O endereço da loja é  ' + v)
+  }
+
+
+
+  private _valorEntrega : number = 0;
+  public get valorEntrega() : number {
+    return this._valorEntrega;
+  }
+  public set valorEntrega(v : number) {
+    this._valorEntrega = v;
+    console.warn('O valor de entrega é 0 ' + v)
+  }
+
+  private _precoProduto : number = 0;
+  public get precoProduto() : number {
+    return this._precoProduto;
+  }
+  public set precoProduto(v : number) {
+    this._precoProduto = v;
+    console.warn('O preco do primeiro produto é ' + v)
+  }
+
+  private _nmPrimeiroProduto !: string;
+  public get nmPrimeiroProduto() : string {
+    return this._nmPrimeiroProduto;
+  }
+  public set nmPrimeiroProduto(v : string) {
+    this._nmPrimeiroProduto = v;
+    console.warn('O nome do primeiro produto é ' + v)
+  }
+
+  private _tpProduto !: string ;
+  public get tpProduto() : string {
+    return this._tpProduto;
+  }
+  public set tpProduto(v : string) {
+    this._tpProduto = v;
+    console.warn('O produto selecionado foi ' + v)
+  }
+
+
+  private _nomeLoja !: string;
+  public get nomeLoja() : string {
+    return this._nomeLoja;
+  }
+  public set nomeLoja(v : string) {
+    this._nomeLoja = v;
+    console.warn('O nome da loja é ' + v)
+  }
+
   private _metodoEntregaRecebido!: number;
   public get metodoEntregaRecebido() : number {
 
@@ -63,7 +130,13 @@ export class CadastroComponent {
 
   }
 
-  constructor() { }
+  constructor( private cadastroService: CadastroService ) {
+
+      this.cadastroService.getSomeData().subscribe(data => {
+        console.log('Dados recebidos:', data);
+      });
+
+   }
 
   public avancar(){
     this.indexProgresso <= 8 ? this.indexProgresso++ : this.indexProgresso = 9;
@@ -90,31 +163,43 @@ export class CadastroComponent {
     }
 
   public receberOutput(value: any , tipoOutput:number) {
+      switch(tipoOutput){
+        case 1:
+          this.nomeLoja = value;
+          break;
+        case 2:
+          console.warn("deu boa porra")
+          this.tpProduto = value;
 
-    switch(tipoOutput){
-      case 1:
-        this.nomeLoja = value;
-        break;
-      case 2:
-        this.tpProduto = value;
-        break;
-      case 3:
-        this.nmPrimeiroProduto = value
-        break;
-      case 4:
-        break;
-      case 5:
-        break;
-      case 6:
-        break;
-      case 7:
-        this.metodoEntregaRecebido = value;
-        break;
-      case 8:
-        break;
-    }
-      this.nomeLoja = value;
+          break;
+        case 3:
+          this.nmPrimeiroProduto = value
+          break;
+        case 4:
+
+          break;
+        case 5:
+          this.precoProduto = value
+          break;
+        case 6:
+          break;
+        case 7:
+          this.metodoEntregaRecebido = value;
+          break;
+        case 8:
+          if(typeof value === 'number')
+            this.valorEntrega = value
+          else{
+            this.localRetirada = value
+          }
+          break;
+        case 9:
+          this.mailLoja = value
+          break;
+
       }
+    }
+
 
 
 }

@@ -16,6 +16,7 @@ export class QuestFiveComponent {
       this._precoProduto = v;
       this.emitValue(v)
     }
+    
     public emitValue(v:number) {
       this.precoDoProduto.emit(v);
     }

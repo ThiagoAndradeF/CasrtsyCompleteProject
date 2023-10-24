@@ -26,6 +26,8 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { InputMaskModule } from 'primeng/inputmask';
 import { QuestNineComponent } from './components/quest-nine/quest-nine.component';
 import { AnimateModule } from 'primeng/animate';
+import { CadastroService } from './cadastro.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
     declarations: [
@@ -56,9 +58,9 @@ import { AnimateModule } from 'primeng/animate';
       FileUploadModule,
       InputNumberModule,
       InputMaskModule,
-      AnimateModule
-
+      AnimateModule,
+      HttpClientModule
     ],
-    providers:[MessageService]
+    providers:[MessageService,CadastroService]
   })
 export class CadastroModule { }

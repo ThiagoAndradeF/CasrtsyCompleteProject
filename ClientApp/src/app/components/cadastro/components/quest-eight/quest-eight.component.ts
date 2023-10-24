@@ -11,19 +11,32 @@ export class QuestEightComponent {
 
     @Input() _entrega !: boolean;
     @Input() _retirada !: boolean ;
-    valorTaxaEntrega !: number;
-    instrucoesRetirada !: string;
-    adicionarValor !:boolean;
-    infoRetirada !:string;
+    public adicionarValor !:boolean;
 
 
-    private _taxaEntrega !: number;
-    public get taxaEntrega() : number {
-      return this._taxaEntrega;
+
+
+    private _valorTaxaEntrega : number = 0;
+    public get valorTaxaEntrega() : number {
+      return this._valorTaxaEntrega;
     }
-    public set taxaEntrega(v : number) {
-      this._taxaEntrega = v;
+    public set valorTaxaEntrega(v : number) {
+      this._valorTaxaEntrega = v;
+      this.emitValue(v ,true)
     }
+
+
+
+
+    private _infoRetirada !: string;
+    public get infoRetirada() : string {
+      return this._infoRetirada;
+    }
+    public set infoRetirada(v : string) {
+      this._infoRetirada = v;
+      this.emitValue(v ,false)
+    }
+
 
 
 
@@ -49,7 +62,6 @@ export class QuestEightComponent {
       }else{
         this.localRetirada.emit(v)
       }
-
     }
 
 }

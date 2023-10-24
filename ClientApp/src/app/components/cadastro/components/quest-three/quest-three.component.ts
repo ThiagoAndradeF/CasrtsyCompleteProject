@@ -15,6 +15,7 @@ export class QuestThreeComponent {
     }
     public set nomePrimeiroProduto(v : string) {
       this._nomePrimeiroProduto = v;
+      this.emitValue(v)
     }
 
     public emitValue(v:string) {

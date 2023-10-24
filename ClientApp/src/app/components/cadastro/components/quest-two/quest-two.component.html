@@ -4,7 +4,7 @@
     </h3>
 </div>
 <div *ngFor="let produto of produtosDisponiveis" class="options">
-    <button class="card"  onclick="select" >
+    <button class="card"  (click)="selecionarProduto(produto)" >
         <div class="relative card-container pink-container" >
             <div class="static bg-pike-100 p-4 border-round">
                 <p class="font-bold text-gray-900" style="margin-left: 30%; height: 30px;">{{produto}}</p>

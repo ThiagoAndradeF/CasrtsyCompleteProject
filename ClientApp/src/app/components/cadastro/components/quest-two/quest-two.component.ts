@@ -15,6 +15,7 @@ export class QuestTwoComponent {
     public set tipoProduto(v : string) {
       this._tipoProduto = v;
       this.emitValue(v)
+      // console.warn('valor emitido' +  v)
     }
 
     public produtosDisponiveis?: string[] = [
@@ -26,6 +27,10 @@ export class QuestTwoComponent {
 
     public emitValue(v:string) {
       this.tpProdutoSelecionado.emit(v);
+    }
+
+    public selecionarProduto( v : string){
+      this.tipoProduto = v
     }
 
 

@@ -11,25 +11,26 @@
         <div>
             <app-quest-one *ngIf="indexProgresso === 1" class="elemento-fade-in" (nomeDaLoja)="receberOutput($event ,1)"></app-quest-one>
             <app-quest-two *ngIf="indexProgresso === 2" class="elemento-fade-in" (tpProdutoSelecionado)="receberOutput($event ,2)"></app-quest-two>
-            <app-quest-three *ngIf="indexProgresso === 3" class="elemento-fade-in"></app-quest-three>
+            <app-quest-three *ngIf="indexProgresso === 3" class="elemento-fade-in" (nmPrimeiroProduto)="receberOutput($event ,3)"></app-quest-three>
             <app-quest-four *ngIf="indexProgresso === 4" class="elemento-fade-in"></app-quest-four>
-            <app-quest-five *ngIf="indexProgresso === 5" class="elemento-fade-in"></app-quest-five>
+            <app-quest-five *ngIf="indexProgresso === 5" class="elemento-fade-in"(precoDoProduto)="receberOutput($event ,5)"
+            ></app-quest-five>
             <app-quest-six *ngIf="indexProgresso === 6" class="elemento-fade-in"></app-quest-six>
-            <app-quest-seven *ngIf="indexProgresso === 7" (tpProdutoSelecionado)="receberOutput($event ,7)" class="elemento-fade-in"></app-quest-seven>
-            <app-quest-eight *ngIf="indexProgresso === 8" [_entrega]= "entrega" [_retirada]= "retirada" class="elemento-fade-in"></app-quest-eight>
-            <app-quest-nine *ngIf="indexProgresso === 9" class="elemento-fade-in"></app-quest-nine>
+            <app-quest-seven *ngIf="indexProgresso === 7" class="elemento-fade-in"></app-quest-seven>
+            <app-quest-eight *ngIf="indexProgresso === 8" [_entrega]= "entrega" [_retirada]= "retirada" class="elemento-fade-in" (valorEntrega)="receberOutput($event ,8)" (localRetirada)="receberOutput($event ,8)" ></app-quest-eight>
+            <app-quest-nine *ngIf="indexProgresso === 9" class="elemento-fade-in" (emailLoja)="receberOutput($event ,9)" ></app-quest-nine>
         </div>
 
 
-        <div >
+        <div  >
             <div style="margin-top: 80px;" *ngIf="habilitaBotaoContinuar">
-                <p-button (onClick)="avancar()" class="proximo">
+                <p-button (onClick)="avancar()" class="proximo" [disabled]="">
                     Próximo
                 </p-button>
             </div>
 
             <div class="wrapper" *ngIf="desabAvancar">
-              <div class="link_wrapper" >
+              <div class="link_wrapper">
                 <a href="#">Criar Loja</a>
                 <div class="icon">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 268.832 268.832">
