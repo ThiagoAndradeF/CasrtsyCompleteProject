@@ -1,0 +1,13 @@
+<div style="margin-bottom: 30px;">
+    <h2>
+        Adicione uma imagem do seu produto
+    </h2>
+        <p-toast>
+                <i class="pi pi-cloud-upload"></i>
+        </p-toast>
+        <p-fileUpload mode="basic" chooseLabel="Escolher arquivo" name="demo[]" url="https://www.primefaces.org/cdn/api/upload.php" accept="image/*"
+           (onUpload)="onUpload($event)">
+        </p-fileUpload>
+
+
+</div>
