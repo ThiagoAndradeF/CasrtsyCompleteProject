@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-quest-five',
@@ -6,5 +6,21 @@ import { Component } from '@angular/core';
   styleUrls: ['./quest-five.component.scss']
 })
 export class QuestFiveComponent {
-    public precoProduto !:number;
+    @Output() precoDoProduto = new EventEmitter<number>()
+
+    private _precoProduto !: number;
+    public get precoProduto() : number {
+      return this._precoProduto;
+    }
+    public set precoProduto(v : number) {
+      this._precoProduto = v;
+      this.emitValue(v)
+    }
+    public emitValue(v:number) {
+      this.precoDoProduto.emit(v);
+    }
+
+
+
+
 }

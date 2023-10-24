@@ -13,4 +13,5 @@ export class QuestSevenComponent {
         this.metodoEntrega.emit(value);
       }
 
+
 }

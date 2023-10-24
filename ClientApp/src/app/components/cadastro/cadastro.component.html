@@ -9,13 +9,13 @@
     <div style="width: 80%;max-width: 600px;">
 
         <div>
-            <app-quest-one *ngIf="indexProgresso === 1" class="elemento-fade-in"></app-quest-one>
-            <app-quest-two *ngIf="indexProgresso === 2" class="elemento-fade-in"></app-quest-two>
+            <app-quest-one *ngIf="indexProgresso === 1" class="elemento-fade-in" (nomeDaLoja)="receberOutput($event ,1)"></app-quest-one>
+            <app-quest-two *ngIf="indexProgresso === 2" class="elemento-fade-in" (tpProdutoSelecionado)="receberOutput($event ,2)"></app-quest-two>
             <app-quest-three *ngIf="indexProgresso === 3" class="elemento-fade-in"></app-quest-three>
             <app-quest-four *ngIf="indexProgresso === 4" class="elemento-fade-in"></app-quest-four>
             <app-quest-five *ngIf="indexProgresso === 5" class="elemento-fade-in"></app-quest-five>
             <app-quest-six *ngIf="indexProgresso === 6" class="elemento-fade-in"></app-quest-six>
-            <app-quest-seven *ngIf="indexProgresso === 7" (metodoEntrega)= "receberMetodoEntrega($event)" class="elemento-fade-in"></app-quest-seven>
+            <app-quest-seven *ngIf="indexProgresso === 7" (tpProdutoSelecionado)="receberOutput($event ,7)" class="elemento-fade-in"></app-quest-seven>
             <app-quest-eight *ngIf="indexProgresso === 8" [_entrega]= "entrega" [_retirada]= "retirada" class="elemento-fade-in"></app-quest-eight>
             <app-quest-nine *ngIf="indexProgresso === 9" class="elemento-fade-in"></app-quest-nine>
         </div>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-quest-three',
@@ -6,5 +6,19 @@ import { Component } from '@angular/core';
   styleUrls: ['./quest-three.component.scss']
 })
 export class QuestThreeComponent {
-    nomePrimeiroProduto?:string;
+    @Output() nmPrimeiroProduto = new EventEmitter<string>();
+
+
+    private _nomePrimeiroProduto !: string;
+    public get nomePrimeiroProduto() : string {
+      return this._nomePrimeiroProduto;
+    }
+    public set nomePrimeiroProduto(v : string) {
+      this._nomePrimeiroProduto = v;
+    }
+
+    public emitValue(v:string) {
+      this.nmPrimeiroProduto.emit(v);
+    }
+
 }
