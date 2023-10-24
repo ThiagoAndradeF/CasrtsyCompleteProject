@@ -53,7 +53,11 @@ public class CustomerController : ControllerBase
         }
         return Ok(customerFromDb.Result);
     }
-
+    [HttpGet("teste")]
+    public string GetCustomerById()
+    {
+        return "sapoDeBorracha";
+    }
     [HttpGet("withAddress/{customerId}")]
     public async Task<ActionResult<CustomerWithAdressDto>> GetCustomerWithAddressById([FromRoute] int customerId)
     {

@@ -10,8 +10,8 @@ export class CadastroService {
 
   constructor(private httpClient: HttpClient) {}
 
-  getSomeData(): Observable<any> {
-    return this.httpClient.get(`${this.baseUrl}/api/endpoint`);
+  public getSomeData(): Observable<any> {
+    return this.httpClient.get(`${this.baseUrl}/api/customers/teste`);
   }
 
 }
