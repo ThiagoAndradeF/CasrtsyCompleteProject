@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { StoreFormDto } from './components/Models/store-form-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +11,9 @@ export class CadastroService {
 
   constructor(private httpClient: HttpClient) {}
 
-  public getSomeData(): Observable<any> {
-    return this.httpClient.get(`${this.baseUrl}/api/customers/teste`);
+  public getSomeData(store : StoreFormDto): Observable<any> {
+    console.log(JSON.stringify(store));
+    return this.httpClient.post(`${this.baseUrl}/complete`, JSON.stringify(store));
   }
 
 }

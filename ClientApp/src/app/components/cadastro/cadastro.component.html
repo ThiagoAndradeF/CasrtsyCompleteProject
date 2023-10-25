@@ -16,7 +16,7 @@
             <app-quest-five *ngIf="indexProgresso === 5" class="elemento-fade-in"(precoDoProduto)="receberOutput($event ,5)"
             ></app-quest-five>
             <app-quest-six *ngIf="indexProgresso === 6" class="elemento-fade-in"></app-quest-six>
-            <app-quest-seven *ngIf="indexProgresso === 7" class="elemento-fade-in"></app-quest-seven>
+            <app-quest-seven *ngIf="indexProgresso === 7" class="elemento-fade-in" (metodoEntrega)="receberOutput($event ,7)" ></app-quest-seven>
             <app-quest-eight *ngIf="indexProgresso === 8" [_entrega]= "entrega" [_retirada]= "retirada" class="elemento-fade-in" (valorEntrega)="receberOutput($event ,8)" (localRetirada)="receberOutput($event ,8)" ></app-quest-eight>
             <app-quest-nine *ngIf="indexProgresso === 9" class="elemento-fade-in" (emailLoja)="receberOutput($event ,9)" ></app-quest-nine>
         </div>
@@ -29,9 +29,9 @@
                 </p-button>
             </div>
 
-            <div class="wrapper" *ngIf="desabAvancar">
+            <!-- <div class="wrapper" *ngIf="desabAvancar">
               <div class="link_wrapper">
-                <a href="#">Criar Loja</a>
+                <button (onClick)="assinarFormulario()">Criar Loja</button>
                 <div class="icon">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 268.832 268.832">
                     <path d="M265.17 125.577l-80-80c-4.88-4.88-12.796-4.88-17.677 0-4.882 4.882-4.882 12.796 0 17.678l58.66 58.66H12.5c-6.903 0-12.5 5.598-12.5 12.5 0 6.903 5.597 12.5 12.5 12.5h213.654l-58.66 58.662c-4.88 4.882-4.88 12.796 0 17.678 2.44 2.44 5.64 3.66 8.84 3.66s6.398-1.22 8.84-3.66l79.997-80c4.883-4.882 4.883-12.796 0-17.678z"/>
@@ -39,7 +39,8 @@
                 </div>
               </div>
 
-            </div>
+            </div> -->
+            <p-button (onClick)="assinarFormulario()" *ngIf="desabAvancar" > Criar Loja</p-button>
 
 
 

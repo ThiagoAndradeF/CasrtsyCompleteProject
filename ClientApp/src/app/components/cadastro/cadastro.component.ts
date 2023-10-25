@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CadastroService } from './cadastro.service';
-
+import { StoreFormDto, ItemDto, AdditionalServiceDto, TypeDto } from './components/Models/store-form-dto';
 @Component({
   selector: 'app-cadastro',
   templateUrl: './cadastro.component.html',
@@ -14,23 +14,19 @@ export class CadastroComponent {
   public retirada!:boolean;
   public entrega!:boolean;
   public habEnvio: boolean =  false;
-
-
-
-
+  public storeFormForCreation : StoreFormDto = new StoreFormDto();
 
   private _mailLoja !: string;
   public get mailLoja() : string {
     return this._mailLoja;
   }
+
   public set mailLoja(v : string) {
     this._mailLoja = v;
     this.habEnvio= true;
+    this.storeFormForCreation.Email = v;
     console.warn('O email da loja é  ' + v)
   }
-
-
-
   private _localRetirada !: string;
   public get localRetirada() : string {
     return this._localRetirada;
@@ -48,6 +44,7 @@ export class CadastroComponent {
   }
   public set valorEntrega(v : number) {
     this._valorEntrega = v;
+    this.storeFormForCreation.Services = [new AdditionalServiceDto("Entrega Motoboy", v, "Entrega Tradicional")];
     console.warn('O valor de entrega é 0 ' + v)
   }
 
@@ -57,6 +54,7 @@ export class CadastroComponent {
   }
   public set precoProduto(v : number) {
     this._precoProduto = v;
+    this.storeFormForCreation.Items[0].price = v;
     console.warn('O preco do primeiro produto é ' + v)
   }
 
@@ -66,6 +64,7 @@ export class CadastroComponent {
   }
   public set nmPrimeiroProduto(v : string) {
     this._nmPrimeiroProduto = v;
+    this.storeFormForCreation.Items[0].name = v;
     console.warn('O nome do primeiro produto é ' + v)
   }
 
@@ -75,9 +74,9 @@ export class CadastroComponent {
   }
   public set tpProduto(v : string) {
     this._tpProduto = v;
+    this.storeFormForCreation.Items[0].type = new TypeDto(v)
     console.warn('O produto selecionado foi ' + v)
   }
-
 
   private _nomeLoja !: string;
   public get nomeLoja() : string {
@@ -85,6 +84,7 @@ export class CadastroComponent {
   }
   public set nomeLoja(v : string) {
     this._nomeLoja = v;
+    this.storeFormForCreation.Name = v;
     console.warn('O nome da loja é ' + v)
   }
 
@@ -131,13 +131,19 @@ export class CadastroComponent {
   }
 
   constructor( private cadastroService: CadastroService ) {
-
-      this.cadastroService.getSomeData().subscribe(data => {
-        console.log('Dados recebidos:', data);
-      });
-
+   }
+   ngOnInit(){
+      this.storeFormForCreation.Items = [new ItemDto()]
+   }
+   public assinarFormulario(){
+    this.cadastroService.getSomeData(this.storeFormForCreation).subscribe(data => {
+      console.log('Dados recebidos:', data);
+    });
    }
 
+  public popularForm(){
+
+  }
   public avancar(){
     this.indexProgresso <= 8 ? this.indexProgresso++ : this.indexProgresso = 9;
   }

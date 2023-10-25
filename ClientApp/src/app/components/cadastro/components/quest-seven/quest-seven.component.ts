@@ -11,6 +11,7 @@ export class QuestSevenComponent {
     constructor(){}
     emitirMetodoEntrega(value:number) {
         this.metodoEntrega.emit(value);
+        // console.warn('Metodo emitido' + value)
       }
 
 

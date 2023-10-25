@@ -7,7 +7,15 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class QuestNineComponent {
     @Output() emailLoja = new EventEmitter<string>();
-    validadeEmail : boolean = false;
+
+    private _validadeEmail : boolean = false;
+    public get validadeEmail() : boolean {
+      return this._validadeEmail;
+    }
+    public set validadeEmail(v : boolean) {
+      this._validadeEmail = v;
+      this.emitValue(this.mailLoja);
+    }
 
     private _mailLoja !: string;
     public get mailLoja() : string {
@@ -28,7 +36,7 @@ export class QuestNineComponent {
         const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
         if ( regex.test(email)) {
             this.validadeEmail=true
-            this.emitValue(email);
+
         } else {
             this.validadeEmail=false
 
