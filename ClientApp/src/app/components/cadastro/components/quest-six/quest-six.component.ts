@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
 export class QuestSixComponent {
     public ativarAgendamento: boolean =false;
 
+
     onOffAgenda(param: boolean){
         if(param==true){
             this.ativarAgendamento=true
@@ -15,5 +16,5 @@ export class QuestSixComponent {
             this.ativarAgendamento=false
         }
     }
-    
+
 }

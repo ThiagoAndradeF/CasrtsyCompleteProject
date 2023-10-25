@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./cadastro.component.scss']
 })
 export class CadastroComponent {
-  public nomeLoja:string = 'a';
+
   public desabAvancar:boolean = false;
   public desabRetroceder:boolean = true;
   public habilitaBotaoContinuar:boolean = true;
@@ -16,6 +16,11 @@ export class CadastroComponent {
   public habFormulario: boolean =  false;
 
 
+
+
+  public nmPrimeiroProduto!:string;
+  public tpProduto!:string ;
+  public nomeLoja:string = 'a';
   private _metodoEntregaRecebido!: number;
   public get metodoEntregaRecebido() : number {
 
@@ -84,10 +89,32 @@ export class CadastroComponent {
         }
     }
 
+  public receberOutput(value: any , tipoOutput:number) {
 
-    public receberMetodoEntrega(value: number) {
+    switch(tipoOutput){
+      case 1:
+        this.nomeLoja = value;
+        break;
+      case 2:
+        this.tpProduto = value;
+        break;
+      case 3:
+        this.nmPrimeiroProduto = value
+        break;
+      case 4:
+        break;
+      case 5:
+        break;
+      case 6:
+        break;
+      case 7:
         this.metodoEntregaRecebido = value;
-        }
+        break;
+      case 8:
+        break;
+    }
+      this.nomeLoja = value;
+      }
 
 
 }
