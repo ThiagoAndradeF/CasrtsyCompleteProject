@@ -26,6 +26,17 @@ public class StoreController : ControllerBase
 
         return Ok(store);
     }
+    
+    
+    [HttpPost("/complete")]
+    public async Task<ActionResult<StoreForCreationDto>> AddCompleteStoreAsync(
+        [FromBody] StoreForCompleteCreationDto store
+    )
+    {
+        await _repository.AddCompleteStoreAsync(store);
+
+        return Ok(store);
+    }
 
     [HttpGet("WithServices/{storeId}")]
     public async Task<ActionResult<StoreWithServicesDto>> GetStoreWithServicesByIdAsync(int storeId)

@@ -25,11 +25,16 @@ public class StoreRepository : IStoreRepository
         return await SaveChangesAsync();
     }
 
+    public async Task<bool> AddCompleteStoreAsync(StoreForCompleteCreationDto store)
+    {
+        await  _context.Stores.AddAsync(_mapper.Map<Store>(store));
+        return await SaveChangesAsync();
+    }
+
     public async Task<StoreWithServicesDto?> GetStoreWithServicesByIdAsync(int storeId)
     {
         return _mapper.Map<StoreWithServicesDto>(
             await _context.Stores
-                .Include(s => s.Customer)
                 .Include(s => s.Services)
                 .FirstOrDefaultAsync(s => s.Id == storeId));
     }

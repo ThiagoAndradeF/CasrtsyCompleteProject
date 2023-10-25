@@ -7,10 +7,8 @@ public abstract class Customer
     public string CellPhone { get; set; }  = string.Empty;
     public string HomePhone { get; set;}  = string.Empty;
     public string Email { get; set; } = string.Empty;
-    
     public int TypeDiscriminator { get; set; }
     public bool Status { get; set; }
-    public int AddressId { get; set; }
-    public Address Address { get; set; }
-    public Store Store { get; set; }
+    public int? AddressId { get; set; }
+    public Address? Address { get; set; }
 }

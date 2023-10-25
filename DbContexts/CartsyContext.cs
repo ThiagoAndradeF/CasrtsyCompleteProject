@@ -67,10 +67,10 @@ public class CartsyContext : DbContext
             .WithOne(a => a.Customer)
             .HasForeignKey<Customer>(c => c.AddressId);
 
-        customer
-            .HasOne(c => c.Store)
-            .WithOne(s => s.Customer)
-            .HasForeignKey<Store>(c => c.CustomerId);
+        // customer
+        //     .HasOne(c => c.Store)
+        //     .WithOne(s => s.Customer)
+        //     .HasForeignKey<Store>(c => c.CustomerId);
 
 
         var consumer = modelBuilder.Entity<Consumer>();
@@ -185,6 +185,11 @@ public class CartsyContext : DbContext
 
         store
             .Property(s => s.Name)
+            .HasMaxLength(100)
+            .IsRequired();
+        
+        store
+            .Property(s => s.Email)
             .HasMaxLength(100)
             .IsRequired();
 
@@ -489,10 +494,10 @@ modelBuilder.Entity<Consumer>().HasData(
     });
 
 modelBuilder.Entity<Store>().HasData(
-    new Store { Id = 1, Name = "Store 1", AddressId = 4, CustomerId = 1 },
-    new Store { Id = 2, Name = "Store 2", AddressId = 5, CustomerId = 2 },
-    new Store { Id = 3, Name = "Store 3", AddressId = 6, CustomerId = 3 },
-    new Store { Id = 4, Name = "Store 4", AddressId = 7, CustomerId = 4 }
+    new Store { Id = 1, Name = "Store 1", AddressId = 4},
+    new Store { Id = 2, Name = "Store 2", AddressId = 5},
+    new Store { Id = 3, Name = "Store 3", AddressId = 6},
+    new Store { Id = 4, Name = "Store 4", AddressId = 7}
     );
 
 // Item

@@ -3,6 +3,7 @@ using System;
 using Cartsy.Api.DbContexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Cartsy.Api.Migrations
 {
     [DbContext(typeof(CartsyContext))]
-    partial class PersonContextModelSnapshot : ModelSnapshot
+    [Migration("20231025012448_RemoveMandatoryRelationshipStoreCustomer")]
+    partial class RemoveMandatoryRelationshipStoreCustomer
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -956,7 +959,7 @@ namespace Cartsy.Api.Migrations
                         {
                             Id = 1,
                             ConsumerId = 1,
-                            DateCreated = new DateTime(2023, 10, 25, 1, 45, 30, 147, DateTimeKind.Utc).AddTicks(5796),
+                            DateCreated = new DateTime(2023, 10, 25, 1, 24, 48, 214, DateTimeKind.Utc).AddTicks(1901),
                             DateDelivered = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 49.990000000000002,
                             StatusId = 1,
@@ -966,7 +969,7 @@ namespace Cartsy.Api.Migrations
                         {
                             Id = 2,
                             ConsumerId = 1,
-                            DateCreated = new DateTime(2023, 10, 25, 1, 45, 30, 147, DateTimeKind.Utc).AddTicks(5798),
+                            DateCreated = new DateTime(2023, 10, 25, 1, 24, 48, 214, DateTimeKind.Utc).AddTicks(1903),
                             DateDelivered = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 29.989999999999998,
                             StatusId = 2,
@@ -976,7 +979,7 @@ namespace Cartsy.Api.Migrations
                         {
                             Id = 3,
                             ConsumerId = 1,
-                            DateCreated = new DateTime(2023, 10, 25, 1, 45, 30, 147, DateTimeKind.Utc).AddTicks(5799),
+                            DateCreated = new DateTime(2023, 10, 25, 1, 24, 48, 214, DateTimeKind.Utc).AddTicks(1904),
                             DateDelivered = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 19.989999999999998,
                             StatusId = 3,
@@ -986,7 +989,7 @@ namespace Cartsy.Api.Migrations
                         {
                             Id = 4,
                             ConsumerId = 2,
-                            DateCreated = new DateTime(2023, 10, 25, 1, 45, 30, 147, DateTimeKind.Utc).AddTicks(5800),
+                            DateCreated = new DateTime(2023, 10, 25, 1, 24, 48, 214, DateTimeKind.Utc).AddTicks(1905),
                             DateDelivered = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 39.990000000000002,
                             StatusId = 1,
@@ -996,7 +999,7 @@ namespace Cartsy.Api.Migrations
                         {
                             Id = 5,
                             ConsumerId = 2,
-                            DateCreated = new DateTime(2023, 10, 25, 1, 45, 30, 147, DateTimeKind.Utc).AddTicks(5801),
+                            DateCreated = new DateTime(2023, 10, 25, 1, 24, 48, 214, DateTimeKind.Utc).AddTicks(1906),
                             DateDelivered = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 19.989999999999998,
                             StatusId = 2,
@@ -1006,7 +1009,7 @@ namespace Cartsy.Api.Migrations
                         {
                             Id = 6,
                             ConsumerId = 2,
-                            DateCreated = new DateTime(2023, 10, 25, 1, 45, 30, 147, DateTimeKind.Utc).AddTicks(5802),
+                            DateCreated = new DateTime(2023, 10, 25, 1, 24, 48, 214, DateTimeKind.Utc).AddTicks(1908),
                             DateDelivered = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 59.990000000000002,
                             StatusId = 3,
@@ -1016,7 +1019,7 @@ namespace Cartsy.Api.Migrations
                         {
                             Id = 7,
                             ConsumerId = 3,
-                            DateCreated = new DateTime(2023, 10, 25, 1, 45, 30, 147, DateTimeKind.Utc).AddTicks(5803),
+                            DateCreated = new DateTime(2023, 10, 25, 1, 24, 48, 214, DateTimeKind.Utc).AddTicks(1909),
                             DateDelivered = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 29.989999999999998,
                             StatusId = 1,
@@ -1026,7 +1029,7 @@ namespace Cartsy.Api.Migrations
                         {
                             Id = 8,
                             ConsumerId = 3,
-                            DateCreated = new DateTime(2023, 10, 25, 1, 45, 30, 147, DateTimeKind.Utc).AddTicks(5804),
+                            DateCreated = new DateTime(2023, 10, 25, 1, 24, 48, 214, DateTimeKind.Utc).AddTicks(1910),
                             DateDelivered = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 49.990000000000002,
                             StatusId = 2,
@@ -1036,7 +1039,7 @@ namespace Cartsy.Api.Migrations
                         {
                             Id = 9,
                             ConsumerId = 3,
-                            DateCreated = new DateTime(2023, 10, 25, 1, 45, 30, 147, DateTimeKind.Utc).AddTicks(5806),
+                            DateCreated = new DateTime(2023, 10, 25, 1, 24, 48, 214, DateTimeKind.Utc).AddTicks(1911),
                             DateDelivered = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 69.989999999999995,
                             StatusId = 3,
@@ -1068,145 +1071,145 @@ namespace Cartsy.Api.Migrations
                         {
                             ItemId = 4,
                             OrderId = 2,
-                            CreatedAt = new DateTime(2023, 10, 25, 1, 45, 30, 147, DateTimeKind.Utc).AddTicks(5818)
+                            CreatedAt = new DateTime(2023, 10, 25, 1, 24, 48, 214, DateTimeKind.Utc).AddTicks(1920)
                         },
                         new
                         {
                             ItemId = 5,
                             OrderId = 2,
-                            CreatedAt = new DateTime(2023, 10, 25, 1, 45, 30, 147, DateTimeKind.Utc).AddTicks(5819)
+                            CreatedAt = new DateTime(2023, 10, 25, 1, 24, 48, 214, DateTimeKind.Utc).AddTicks(1921)
                         },
                         new
                         {
                             ItemId = 6,
                             OrderId = 2,
-                            CreatedAt = new DateTime(2023, 10, 25, 1, 45, 30, 147, DateTimeKind.Utc).AddTicks(5820)
+                            CreatedAt = new DateTime(2023, 10, 25, 1, 24, 48, 214, DateTimeKind.Utc).AddTicks(1921)
                         },
                         new
                         {
                             ItemId = 7,
                             OrderId = 3,
-                            CreatedAt = new DateTime(2023, 10, 25, 1, 45, 30, 147, DateTimeKind.Utc).AddTicks(5820)
+                            CreatedAt = new DateTime(2023, 10, 25, 1, 24, 48, 214, DateTimeKind.Utc).AddTicks(1922)
                         },
                         new
                         {
                             ItemId = 8,
                             OrderId = 3,
-                            CreatedAt = new DateTime(2023, 10, 25, 1, 45, 30, 147, DateTimeKind.Utc).AddTicks(5821)
+                            CreatedAt = new DateTime(2023, 10, 25, 1, 24, 48, 214, DateTimeKind.Utc).AddTicks(1923)
                         },
                         new
                         {
                             ItemId = 9,
                             OrderId = 3,
-                            CreatedAt = new DateTime(2023, 10, 25, 1, 45, 30, 147, DateTimeKind.Utc).AddTicks(5822)
+                            CreatedAt = new DateTime(2023, 10, 25, 1, 24, 48, 214, DateTimeKind.Utc).AddTicks(1924)
                         },
                         new
                         {
                             ItemId = 10,
                             OrderId = 4,
-                            CreatedAt = new DateTime(2023, 10, 25, 1, 45, 30, 147, DateTimeKind.Utc).AddTicks(5823)
+                            CreatedAt = new DateTime(2023, 10, 25, 1, 24, 48, 214, DateTimeKind.Utc).AddTicks(1925)
                         },
                         new
                         {
                             ItemId = 11,
                             OrderId = 4,
-                            CreatedAt = new DateTime(2023, 10, 25, 1, 45, 30, 147, DateTimeKind.Utc).AddTicks(5824)
+                            CreatedAt = new DateTime(2023, 10, 25, 1, 24, 48, 214, DateTimeKind.Utc).AddTicks(1926)
                         },
                         new
                         {
                             ItemId = 12,
                             OrderId = 4,
-                            CreatedAt = new DateTime(2023, 10, 25, 1, 45, 30, 147, DateTimeKind.Utc).AddTicks(5824)
+                            CreatedAt = new DateTime(2023, 10, 25, 1, 24, 48, 214, DateTimeKind.Utc).AddTicks(1927)
                         },
                         new
                         {
                             ItemId = 13,
                             OrderId = 5,
-                            CreatedAt = new DateTime(2023, 10, 25, 1, 45, 30, 147, DateTimeKind.Utc).AddTicks(5825)
+                            CreatedAt = new DateTime(2023, 10, 25, 1, 24, 48, 214, DateTimeKind.Utc).AddTicks(1927)
                         },
                         new
                         {
                             ItemId = 14,
                             OrderId = 5,
-                            CreatedAt = new DateTime(2023, 10, 25, 1, 45, 30, 147, DateTimeKind.Utc).AddTicks(5826)
+                            CreatedAt = new DateTime(2023, 10, 25, 1, 24, 48, 214, DateTimeKind.Utc).AddTicks(1928)
                         },
                         new
                         {
                             ItemId = 15,
                             OrderId = 5,
-                            CreatedAt = new DateTime(2023, 10, 25, 1, 45, 30, 147, DateTimeKind.Utc).AddTicks(5827)
+                            CreatedAt = new DateTime(2023, 10, 25, 1, 24, 48, 214, DateTimeKind.Utc).AddTicks(1929)
                         },
                         new
                         {
                             ItemId = 16,
                             OrderId = 6,
-                            CreatedAt = new DateTime(2023, 10, 25, 1, 45, 30, 147, DateTimeKind.Utc).AddTicks(5827)
+                            CreatedAt = new DateTime(2023, 10, 25, 1, 24, 48, 214, DateTimeKind.Utc).AddTicks(1930)
                         },
                         new
                         {
                             ItemId = 17,
                             OrderId = 6,
-                            CreatedAt = new DateTime(2023, 10, 25, 1, 45, 30, 147, DateTimeKind.Utc).AddTicks(5828)
+                            CreatedAt = new DateTime(2023, 10, 25, 1, 24, 48, 214, DateTimeKind.Utc).AddTicks(1931)
                         },
                         new
                         {
                             ItemId = 18,
                             OrderId = 6,
-                            CreatedAt = new DateTime(2023, 10, 25, 1, 45, 30, 147, DateTimeKind.Utc).AddTicks(5829)
+                            CreatedAt = new DateTime(2023, 10, 25, 1, 24, 48, 214, DateTimeKind.Utc).AddTicks(1932)
                         },
                         new
                         {
                             ItemId = 19,
                             OrderId = 7,
-                            CreatedAt = new DateTime(2023, 10, 25, 1, 45, 30, 147, DateTimeKind.Utc).AddTicks(5830)
+                            CreatedAt = new DateTime(2023, 10, 25, 1, 24, 48, 214, DateTimeKind.Utc).AddTicks(1932)
                         },
                         new
                         {
                             ItemId = 20,
                             OrderId = 7,
-                            CreatedAt = new DateTime(2023, 10, 25, 1, 45, 30, 147, DateTimeKind.Utc).AddTicks(5830)
+                            CreatedAt = new DateTime(2023, 10, 25, 1, 24, 48, 214, DateTimeKind.Utc).AddTicks(1933)
                         },
                         new
                         {
                             ItemId = 21,
                             OrderId = 7,
-                            CreatedAt = new DateTime(2023, 10, 25, 1, 45, 30, 147, DateTimeKind.Utc).AddTicks(5831)
+                            CreatedAt = new DateTime(2023, 10, 25, 1, 24, 48, 214, DateTimeKind.Utc).AddTicks(1934)
                         },
                         new
                         {
                             ItemId = 22,
                             OrderId = 8,
-                            CreatedAt = new DateTime(2023, 10, 25, 1, 45, 30, 147, DateTimeKind.Utc).AddTicks(5832)
+                            CreatedAt = new DateTime(2023, 10, 25, 1, 24, 48, 214, DateTimeKind.Utc).AddTicks(1935)
                         },
                         new
                         {
                             ItemId = 23,
                             OrderId = 8,
-                            CreatedAt = new DateTime(2023, 10, 25, 1, 45, 30, 147, DateTimeKind.Utc).AddTicks(5833)
+                            CreatedAt = new DateTime(2023, 10, 25, 1, 24, 48, 214, DateTimeKind.Utc).AddTicks(1936)
                         },
                         new
                         {
                             ItemId = 24,
                             OrderId = 8,
-                            CreatedAt = new DateTime(2023, 10, 25, 1, 45, 30, 147, DateTimeKind.Utc).AddTicks(5834)
+                            CreatedAt = new DateTime(2023, 10, 25, 1, 24, 48, 214, DateTimeKind.Utc).AddTicks(1937)
                         },
                         new
                         {
                             ItemId = 25,
                             OrderId = 9,
-                            CreatedAt = new DateTime(2023, 10, 25, 1, 45, 30, 147, DateTimeKind.Utc).AddTicks(5834)
+                            CreatedAt = new DateTime(2023, 10, 25, 1, 24, 48, 214, DateTimeKind.Utc).AddTicks(1938)
                         },
                         new
                         {
                             ItemId = 26,
                             OrderId = 9,
-                            CreatedAt = new DateTime(2023, 10, 25, 1, 45, 30, 147, DateTimeKind.Utc).AddTicks(5835)
+                            CreatedAt = new DateTime(2023, 10, 25, 1, 24, 48, 214, DateTimeKind.Utc).AddTicks(1939)
                         },
                         new
                         {
                             ItemId = 27,
                             OrderId = 9,
-                            CreatedAt = new DateTime(2023, 10, 25, 1, 45, 30, 147, DateTimeKind.Utc).AddTicks(5836)
+                            CreatedAt = new DateTime(2023, 10, 25, 1, 24, 48, 214, DateTimeKind.Utc).AddTicks(1939)
                         });
                 });
 
@@ -1291,10 +1294,8 @@ namespace Cartsy.Api.Migrations
                     b.Property<int?>("AddressId")
                         .HasColumnType("integer");
 
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("character varying(100)");
+                    b.Property<int?>("CustomerId")
+                        .HasColumnType("integer");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -1306,6 +1307,9 @@ namespace Cartsy.Api.Migrations
                     b.HasIndex("AddressId")
                         .IsUnique();
 
+                    b.HasIndex("CustomerId")
+                        .IsUnique();
+
                     b.ToTable("Stores");
 
                     b.HasData(
@@ -1313,28 +1317,28 @@ namespace Cartsy.Api.Migrations
                         {
                             Id = 1,
                             AddressId = 4,
-                            Email = "",
+                            CustomerId = 1,
                             Name = "Store 1"
                         },
                         new
                         {
                             Id = 2,
                             AddressId = 5,
-                            Email = "",
+                            CustomerId = 2,
                             Name = "Store 2"
                         },
                         new
                         {
                             Id = 3,
                             AddressId = 6,
-                            Email = "",
+                            CustomerId = 3,
                             Name = "Store 3"
                         },
                         new
                         {
                             Id = 4,
                             AddressId = 7,
-                            Email = "",
+                            CustomerId = 4,
                             Name = "Store 4"
                         });
                 });
@@ -1363,49 +1367,49 @@ namespace Cartsy.Api.Migrations
                         {
                             ServicesId = 1,
                             StoreId = 1,
-                            CreatedAt = new DateTime(2023, 10, 25, 1, 45, 30, 147, DateTimeKind.Utc).AddTicks(5775)
+                            CreatedAt = new DateTime(2023, 10, 25, 1, 24, 48, 214, DateTimeKind.Utc).AddTicks(1881)
                         },
                         new
                         {
                             ServicesId = 2,
                             StoreId = 1,
-                            CreatedAt = new DateTime(2023, 10, 25, 1, 45, 30, 147, DateTimeKind.Utc).AddTicks(5777)
+                            CreatedAt = new DateTime(2023, 10, 25, 1, 24, 48, 214, DateTimeKind.Utc).AddTicks(1883)
                         },
                         new
                         {
                             ServicesId = 1,
                             StoreId = 2,
-                            CreatedAt = new DateTime(2023, 10, 25, 1, 45, 30, 147, DateTimeKind.Utc).AddTicks(5778)
+                            CreatedAt = new DateTime(2023, 10, 25, 1, 24, 48, 214, DateTimeKind.Utc).AddTicks(1884)
                         },
                         new
                         {
                             ServicesId = 2,
                             StoreId = 2,
-                            CreatedAt = new DateTime(2023, 10, 25, 1, 45, 30, 147, DateTimeKind.Utc).AddTicks(5779)
+                            CreatedAt = new DateTime(2023, 10, 25, 1, 24, 48, 214, DateTimeKind.Utc).AddTicks(1885)
                         },
                         new
                         {
                             ServicesId = 1,
                             StoreId = 3,
-                            CreatedAt = new DateTime(2023, 10, 25, 1, 45, 30, 147, DateTimeKind.Utc).AddTicks(5780)
+                            CreatedAt = new DateTime(2023, 10, 25, 1, 24, 48, 214, DateTimeKind.Utc).AddTicks(1886)
                         },
                         new
                         {
                             ServicesId = 2,
                             StoreId = 3,
-                            CreatedAt = new DateTime(2023, 10, 25, 1, 45, 30, 147, DateTimeKind.Utc).AddTicks(5781)
+                            CreatedAt = new DateTime(2023, 10, 25, 1, 24, 48, 214, DateTimeKind.Utc).AddTicks(1887)
                         },
                         new
                         {
                             ServicesId = 1,
                             StoreId = 4,
-                            CreatedAt = new DateTime(2023, 10, 25, 1, 45, 30, 147, DateTimeKind.Utc).AddTicks(5781)
+                            CreatedAt = new DateTime(2023, 10, 25, 1, 24, 48, 214, DateTimeKind.Utc).AddTicks(1888)
                         },
                         new
                         {
                             ServicesId = 2,
                             StoreId = 4,
-                            CreatedAt = new DateTime(2023, 10, 25, 1, 45, 30, 147, DateTimeKind.Utc).AddTicks(5782)
+                            CreatedAt = new DateTime(2023, 10, 25, 1, 24, 48, 214, DateTimeKind.Utc).AddTicks(1889)
                         });
                 });
 
@@ -1622,7 +1626,13 @@ namespace Cartsy.Api.Migrations
                         .WithOne("Store")
                         .HasForeignKey("Cartsy.Api.Entities.Store", "AddressId");
 
+                    b.HasOne("Cartsy.Api.Entities.Customer", "Customer")
+                        .WithOne("Store")
+                        .HasForeignKey("Cartsy.Api.Entities.Store", "CustomerId");
+
                     b.Navigation("Address");
+
+                    b.Navigation("Customer");
                 });
 
             modelBuilder.Entity("Cartsy.Api.Entities.StoreService", b =>
@@ -1652,6 +1662,12 @@ namespace Cartsy.Api.Migrations
             modelBuilder.Entity("Cartsy.Api.Entities.Consumer", b =>
                 {
                     b.Navigation("Orders");
+                });
+
+            modelBuilder.Entity("Cartsy.Api.Entities.Customer", b =>
+                {
+                    b.Navigation("Store")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Cartsy.Api.Entities.ItemType", b =>

@@ -5,7 +5,9 @@ namespace Cartsy.Api.Repositories;
 
 public interface IStoreRepository
 {
+
     Task<bool> AddStoreAsync(StoreForCreationDto store);
+    Task<bool> AddCompleteStoreAsync(StoreForCompleteCreationDto store);
     Task<StoreWithServicesDto?> GetStoreWithServicesByIdAsync(int storeId);
     Task<StoreWithAddressDto?> GetStoreWithAddressByIdAsync(int storeId);
     Task<StoreWithOrdersDto?> GetStoreWithOrdersByIdAsync(int storeId);
