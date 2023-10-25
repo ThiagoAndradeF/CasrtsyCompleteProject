@@ -52,6 +52,7 @@ export class QuestEightComponent {
                 break;
             case 3:
                 this.adicionarValor = false;
+                this.valorTaxaEntrega = 0;
                 break;
         }
 

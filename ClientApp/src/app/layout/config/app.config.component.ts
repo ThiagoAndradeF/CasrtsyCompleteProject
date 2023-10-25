@@ -10,7 +10,7 @@ export class AppConfigComponent {
 
     @Input() minimal: boolean = false;
 
-    scales: number[] = [12, 13, 14, 15, 16];    
+    scales: number[] = [12, 13, 14, 15, 16];
     themechoose:number = 1;
 
 
@@ -78,11 +78,13 @@ export class AppConfigComponent {
           if (this.themechoose == 1) {
             this.changeTheme('lara-light-purple', 'light');
             this.themechoose=2;
-          } else {
+          }else  if (this.themechoose == 2) {
             this.changeTheme('lara-dark-purple', 'dark');
             this.themechoose=1;
+          }else{
+            this.changeTheme('lara-light-purple', 'light');
           }
-        
+
     }
 
     replaceThemeLink(href: string, onComplete: Function) {

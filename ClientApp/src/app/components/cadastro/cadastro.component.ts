@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CadastroService } from './cadastro.service';
 import { StoreFormDto, ItemDto, AdditionalServiceDto, TypeDto } from './components/Models/store-form-dto';
+import { LayoutService } from 'src/app/layout/service/app.layout.service';
 @Component({
   selector: 'app-cadastro',
   templateUrl: './cadastro.component.html',
@@ -20,6 +21,19 @@ export class CadastroComponent {
   public get mailLoja() : string {
     return this._mailLoja;
   }
+
+
+  private _agendamento !: boolean;
+  public get agendamento() : boolean {
+    return this._agendamento;
+  }
+  public set agendamento(v : boolean) {
+    this._agendamento = v;
+    this.avancar();
+    console.warn('O agendamento é  ' + v)
+  }
+
+
 
   public set mailLoja(v : string) {
     this._mailLoja = v;
@@ -45,6 +59,9 @@ export class CadastroComponent {
   public set valorEntrega(v : number) {
     this._valorEntrega = v;
     this.storeFormForCreation.Services = [new AdditionalServiceDto("Entrega Motoboy", v, "Entrega Tradicional")];
+    if(this.valorEntrega === 0){
+      this.avancar();
+    }
     console.warn('O valor de entrega é 0 ' + v)
   }
 
@@ -75,6 +92,7 @@ export class CadastroComponent {
   public set tpProduto(v : string) {
     this._tpProduto = v;
     this.storeFormForCreation.Items[0].type = new TypeDto(v)
+    this.avancar();
     console.warn('O produto selecionado foi ' + v)
   }
 
@@ -95,6 +113,7 @@ export class CadastroComponent {
   }
   public set metodoEntregaRecebido(v : number) {
     this._metodoEntregaRecebido = v;
+    this.avancar();
     console.warn('O método de entrega selecionado foi ' + v)
     this.definirMetodoEntrega(v);
   }
@@ -130,16 +149,18 @@ export class CadastroComponent {
 
   }
 
-  constructor( private cadastroService: CadastroService ) {
-   }
-   ngOnInit(){
-      this.storeFormForCreation.Items = [new ItemDto()]
-   }
-   public assinarFormulario(){
+  constructor( private cadastroService: CadastroService, private layoutService:LayoutService ) {}
+
+
+  ngOnInit(){
+    this.storeFormForCreation.Items = [new ItemDto()]
+  }
+
+  public assinarFormulario(){
     this.cadastroService.getSomeData(this.storeFormForCreation).subscribe(data => {
       console.log('Dados recebidos:', data);
     });
-   }
+  }
 
   public popularForm(){
 
@@ -179,28 +200,29 @@ export class CadastroComponent {
 
           break;
         case 3:
-          this.nmPrimeiroProduto = value
+          this.nmPrimeiroProduto = value;
           break;
         case 4:
 
           break;
         case 5:
-          this.precoProduto = value
+          this.precoProduto = value;
           break;
         case 6:
+          this.agendamento = value;
           break;
         case 7:
           this.metodoEntregaRecebido = value;
           break;
         case 8:
           if(typeof value === 'number')
-            this.valorEntrega = value
+            this.valorEntrega = value;
           else{
-            this.localRetirada = value
+            this.localRetirada = value;
           }
           break;
         case 9:
-          this.mailLoja = value
+          this.mailLoja = value;
           break;
 
       }
