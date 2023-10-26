@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { CadastroService } from './cadastro.service';
 import { StoreFormDto, ItemDto, AdditionalServiceDto, TypeDto } from './components/Models/store-form-dto';
 import { LayoutService } from 'src/app/layout/service/app.layout.service';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-cadastro',
   templateUrl: './cadastro.component.html',
@@ -149,7 +151,7 @@ export class CadastroComponent {
 
   }
 
-  constructor( private cadastroService: CadastroService, private layoutService:LayoutService ) {}
+  constructor( private cadastroService: CadastroService,  private router:Router  ) {}
 
 
   ngOnInit(){
@@ -158,9 +160,13 @@ export class CadastroComponent {
 
   public assinarFormulario(){
     this.cadastroService.getSomeData(this.storeFormForCreation).subscribe(data => {
-      console.log('Dados recebidos:', data);
+      if(data){
+        console.warn('Usuário cadastrado!')
+      }
+      this.router.navigate(['']);
     });
   }
+
 
   public popularForm(){
 

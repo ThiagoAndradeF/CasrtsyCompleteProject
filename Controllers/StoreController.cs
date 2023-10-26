@@ -34,7 +34,6 @@ public class StoreController : ControllerBase
     )
     {
         await _repository.AddCompleteStoreAsync(store);
-
         return Ok(store);
     }
 

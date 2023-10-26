@@ -6,6 +6,8 @@ import { UIkitRoutingModule } from './uikit-routing.module';
 	imports: [
 		CommonModule,
 		UIkitRoutingModule
+	],
+	declarations: [
 	]
 })
 export class UIkitModule { }

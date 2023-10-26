@@ -4,7 +4,6 @@ import { LoginComponent } from './login.component';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginFirstComponent } from './components/login-first/login-first.component';
 import { ButtonModule } from 'primeng/button';
-import { ButtonDemoModule } from '../uikit/button/buttondemo.module';
 import { LayoutService } from 'src/app/layout/service/app.layout.service';
 
 @NgModule({
@@ -18,7 +17,7 @@ import { LayoutService } from 'src/app/layout/service/app.layout.service';
     ButtonModule
     // ButtonDemoModule
 
-    
+
   ],
   providers: [
     LayoutService
