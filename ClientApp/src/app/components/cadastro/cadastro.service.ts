@@ -13,7 +13,7 @@ export class CadastroService {
 
   public getSomeData(store : StoreFormDto): Observable<any> {
     console.log(JSON.stringify(store));
-    return this.httpClient.post(`${this.baseUrl}/complete`, JSON.stringify(store));
+    return this.httpClient.post(`${this.baseUrl}/complete`, store);
   }
 
 }
