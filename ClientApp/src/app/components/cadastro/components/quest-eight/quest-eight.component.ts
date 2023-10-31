@@ -13,6 +13,14 @@ export class QuestEightComponent {
     @Input() _retirada !: boolean ;
     public adicionarValor !:boolean;
 
+    private _ativarAmbos : boolean =false;
+    public get ativarAmbos() : boolean {
+      return this._ativarAmbos;
+    }
+    public set ativarAmbos(v : boolean) {
+      this._ativarAmbos = v;
+      console.warn('Ambos ativados')
+    }
 
 
 
@@ -52,6 +60,7 @@ export class QuestEightComponent {
                 break;
             case 3:
                 this.adicionarValor = false;
+                this.ativarAmbos= true;
                 this.valorTaxaEntrega = 0;
                 break;
         }
