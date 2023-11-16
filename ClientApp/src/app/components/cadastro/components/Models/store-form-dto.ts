@@ -31,14 +31,6 @@ export class ItemDto{
   public description !: string;
   public stock !: number;
   public type !: TypeDto;
-
-  // constructor(_service:string, _price:number, _description:string, _type:TypeDto){
-  //   this.name = _service;
-  //   this.price = _price;
-  //   this.description = _description;
-  //   this.stock = 1;
-  //   this.type = _type;
-  // }
 }
 
 

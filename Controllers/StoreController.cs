@@ -37,6 +37,8 @@ public class StoreController : ControllerBase
         return Ok(store);
     }
 
+ 
+
     [HttpGet("WithServices/{storeId}")]
     public async Task<ActionResult<StoreWithServicesDto>> GetStoreWithServicesByIdAsync(int storeId)
     {
@@ -75,7 +77,20 @@ public class StoreController : ControllerBase
 
         return Ok(storeFromDb);
     }
-    
+
+    [HttpGet("WithItemsByMail/{storeMail}")]
+    public async Task<ActionResult<StoreWithItemsDto>> GetStoreWithMail(string storeMail)
+    {
+        var storeFromDb = await _repository.GetStoreWithItemsByMailAsync(storeMail);
+
+        if (storeFromDb == null)
+        {
+            return NotFound();
+        }
+
+        return Ok(storeFromDb);
+    }
+
     [HttpGet("WithOrders/{storeId}")]
     public async Task<ActionResult<StoreWithOrdersDto>> GetStoreWithOrdersByIdAsync(int storeId)
     {

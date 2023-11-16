@@ -62,7 +62,13 @@ public class StoreRepository : IStoreRepository
                 .Include(s => s.Items)
                 .FirstOrDefaultAsync(s => s.Id == storeId));
     }
-
+    public async Task<StoreWithItemsDto?> GetStoreWithItemsByMailAsync(string storeMail)
+    {
+        return _mapper.Map<StoreWithItemsDto>(
+            await _context.Stores
+                .Include(s => s.Items)
+                .FirstOrDefaultAsync(s => s.Email == storeMail));
+    }
     public async Task<bool> AddItemsToStoreById(int storeId, List<ItemDto> items)
     {
         var storeFromDb = await _context.Stores.FirstOrDefaultAsync(s => s.Id == storeId);

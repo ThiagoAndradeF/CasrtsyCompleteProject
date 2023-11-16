@@ -162,8 +162,8 @@ export class CadastroComponent {
     this.cadastroService.getSomeData(this.storeFormForCreation).subscribe(data => {
       if(data){
         console.warn('Usuário cadastrado!')
+        this.router.navigate(['']);
       }
-      this.router.navigate(['']);
     });
   }
 
