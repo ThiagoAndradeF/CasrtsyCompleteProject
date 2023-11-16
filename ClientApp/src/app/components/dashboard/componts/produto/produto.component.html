@@ -1,6 +1,7 @@
-<p-button >
-  Criar Produto
-</p-button>
+
+<!-- Botão para adicionar novo produto -->
+<button type="button" pButton label="Adicionar Produto" (click)="showAddNewDialog()"></button>
+
 <p-table
     [lazy]="true"
     dataKey="id"
@@ -32,18 +33,50 @@
     <div class="form-text">
       <div>
         <label for="name">Nome:</label>
-        <input id="name" type="text" pInputText placeholder="{{selectedItem.name}}" [(ngModel)] = "editedIten.name" />
+        <input class="textInput" type="text" pInputText placeholder="{{selectedItem.name}}" [(ngModel)] = "editedIten.name" />
       </div>
       <div>
           <label for="price">Preço:</label>
-          <input id="price" type="text" pInputText placeholder="R$ {{selectedItem.price}}"  [(ngModel)] = "editedIten.price" />
+          <input class="textInput"  type="text" pInputText placeholder="R$ {{selectedItem.price}}"  [(ngModel)] = "editedIten.price" />
       </div>
       <div>
           <label for="stock">Estoque:</label>
-          <input id="stock" type="text" pInputText placeholder="{{selectedItem.stock}}" [(ngModel)] = "editedIten.stock" />
+          <input class="textInput"  type="text" pInputText placeholder="{{selectedItem.stock}}" [(ngModel)] = "editedIten.stock" />
       </div>
     </div>
 
   </div>
   <button type="button" pButton label="Salvar" (click)="saveChanges()" class="buttonSave"></button>
+</p-dialog>
+
+<!-- Dialog para adicionar novo produto -->
+<p-dialog header="Adicionar Novo Produto" [(visible)]="displayAddDialog" [responsive]="true" [style]="{width: '50vw'}" [maximizable]="true">
+    <div class="form-text">
+        <div>
+            <label for="newName">Nome:</label>
+            <input class="textInput"  type="text" pInputText [(ngModel)]="newProduct.name"/>
+        </div>
+        <div>
+            <label for="newPrice">Preço:</label>
+            <input class="textInput"  type="text" pInputText [(ngModel)]="newProduct.price"/>
+        </div>
+        <div>
+            <label for="newStock">Estoque:</label>
+            <input class="textInput"  type="text" pInputText [(ngModel)]="newProduct.stock"/>
+        </div>
+        <div class="card flex justify-content-center">
+          <p-fileUpload name="myfile[]" url="https://www.primefaces.org/cdn/api/upload.php" [multiple]="true" accept="image/*">
+              <ng-template pTemplate="toolbar">
+                  <div class="py-3">Upload 3 Files</div>
+              </ng-template>
+              <ng-template let-file pTemplate="file">
+                  <div>Custom UI to display a file</div>
+              </ng-template>
+              <ng-template pTemplate="content" let-files>
+                  <div>Additional content.</div>
+              </ng-template>
+          </p-fileUpload>
+      </div>
+        <button type="button" pButton label="Salvar" (click)="addNewProduct()"></button>
+    </div>
 </p-dialog>

@@ -7,6 +7,7 @@ import { TableModule } from 'primeng/table';
 import { DialogModule } from 'primeng/dialog';
 import { FormsModule } from '@angular/forms';
 import { CriarProdutoComponent } from './components/criar-produto/criar-produto.component';
+import { FileUploadModule } from 'primeng/fileupload';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { CriarProdutoComponent } from './components/criar-produto/criar-produto.
     ButtonModule,
     TableModule,
     DialogModule,
-    FormsModule
+    FormsModule,
+    FileUploadModule
   ]
 })
 export class ProdutoModule { }

@@ -15,6 +15,12 @@ export class ProdutoComponent {
   selectedItem!: ItemDto;
   displayDialog: boolean = false;
   editedIten:ItemDto = new ItemDto();
+  dialogNovoProduto: boolean = false;
+  displayAddDialog: boolean = false;
+  newProduct: any = { name: '', price: '', stock: '' };
+
+
+
 
 
   constructor(private productService: ProductService, private storeService:StoreService) {
@@ -58,5 +64,21 @@ export class ProdutoComponent {
     this.displayDialog = false; // Fecha o dialog após salvar as alterações
     this.editedIten = new ItemDto();
 
+  }
+
+  public showDialogAdicionarProduto(){
+    this.dialogNovoProduto = true;
+  }
+  showAddNewDialog() {
+    this.newProduct = { name: '', price: '', stock: '' }; // Reset do produto
+    this.displayAddDialog = true; // Mostrar o dialog
+  }
+
+  addNewProduct() {
+    // Aqui você pode adicionar a lógica para enviar o novo produto para o servidor
+    // Por exemplo, enviar uma requisição HTTP POST com o novo produto
+
+    this.items.push(this.newProduct); // Adicionar o novo produto à lista
+    this.displayAddDialog = false; // Fechar o dialog após adicionar
   }
 }
