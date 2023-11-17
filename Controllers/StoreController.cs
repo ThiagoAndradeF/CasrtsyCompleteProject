@@ -116,7 +116,24 @@ public class StoreController : ControllerBase
 
         return Ok(ordersFromDb);
     }
-    
+    [HttpPost("upload")]
+    public async Task<IActionResult> Post(List<IFormFile> myfile)
+    {
+        var uploads = Path.Combine("C:\\Users\\Thiago\\Desktop\\cartsy\\CasrtsyCompleteProject\\ClientApp\\src\\assets\\products");
+        foreach (var file in myfile)
+        {
+            if (file.Length > 0)
+            {
+                var filePath = Path.Combine(uploads, file.FileName);
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await file.CopyToAsync(stream);
+                }
+            }
+        }
+        return Ok(new { myfile.Count });
+    }
+
     // [HttpPost("JoinTeamsAndStudent")]
     // public async Task<ActionResult<StudentTeam>> AssociateTeamStudent(int teamId, int studentId)
     // {
