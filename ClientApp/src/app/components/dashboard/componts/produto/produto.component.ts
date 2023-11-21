@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { Product } from 'src/app/aplication/api/product';
-import { ProductService } from 'src/app/aplication/service/product.service';
+// import { ProductService } from 'src/app/aplication/service/product.service';
 import { StoreService } from '../../shared/store.service';
 import { ItemDto } from '../../models/ItemDto';
+import { ConfirmationService, MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-produto',
@@ -18,12 +19,10 @@ export class ProdutoComponent {
   dialogNovoProduto: boolean = false;
   displayAddDialog: boolean = false;
   newProduct: any = { name: '', price: '', stock: '' };
+  storeId:number = 0;
 
 
-
-
-
-  constructor(private productService: ProductService, private storeService:StoreService) {
+  constructor( private storeService:StoreService) {
      this.listarProdutos();
   }
 
@@ -35,7 +34,8 @@ export class ProdutoComponent {
     this.storeService.getStoreWithItemsFirstLogin().subscribe(data => {
       if(data.items){
         this.items = data.items;
-      }
+      }if(data.id)
+      {this.storeId= data.id;}
     });
   }
   public showDialog(item: ItemDto) {
@@ -45,8 +45,6 @@ export class ProdutoComponent {
   saveChanges() {
 
     if(this.selectedItem){
-
-
     this.displayDialog = false;
       const index = this.items.findIndex(i => i.id === this.selectedItem.id);
       if (index > -1) {
@@ -61,6 +59,8 @@ export class ProdutoComponent {
         }
       }
     }
+
+
     this.displayDialog = false; // Fecha o dialog após salvar as alterações
     this.editedIten = new ItemDto();
 
@@ -75,10 +75,17 @@ export class ProdutoComponent {
   }
 
   addNewProduct() {
-    // Aqui você pode adicionar a lógica para enviar o novo produto para o servidor
-    // Por exemplo, enviar uma requisição HTTP POST com o novo produto
-
+    this.storeService.addItemsToStoreById(this.storeId, this.newProduct);
     this.items.push(this.newProduct); // Adicionar o novo produto à lista
     this.displayAddDialog = false; // Fechar o dialog após adicionar
   }
+  // deleteProduct(product: Product) {
+  //   this.confirmationService.confirm({
+  //       message: 'Are you sure you want to delete ' + product.name + '?',
+  //       header: 'Confirm',
+  //       icon: 'pi pi-exclamation-triangle',
+  //       accept: () => {
+  //           this.items= this.items.filter((val) => val.id !== product.id);
+  //       }
+  //   });}
 }

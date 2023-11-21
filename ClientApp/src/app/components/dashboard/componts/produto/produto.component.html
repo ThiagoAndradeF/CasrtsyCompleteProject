@@ -23,6 +23,9 @@
             <td>{{ item.name }}</td>
             <td>{{ item.price}}</td>
             <td>{{ item.stock }}</td>
+            <!-- <td>
+              <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="deleteProduct(item)"></button>
+            </td> -->
         </tr>
     </ng-template>
 
@@ -51,33 +54,37 @@
 
 <!-- Dialog para adicionar novo produto -->
 <p-dialog header="Adicionar Novo Produto" [(visible)]="displayAddDialog" [responsive]="true" [style]="{width: '50vw'}" [maximizable]="true">
-    <div class="form-text">
-        <div>
-            <label for="newName">Nome:</label>
-            <input class="textInput"  type="text" pInputText [(ngModel)]="newProduct.name"/>
-        </div>
-        <div>
-            <label for="newPrice">Preço:</label>
-            <input class="textInput"  type="text" pInputText [(ngModel)]="newProduct.price"/>
-        </div>
-        <div>
-            <label for="newStock">Estoque:</label>
-            <input class="textInput"  type="text" pInputText [(ngModel)]="newProduct.stock"/>
-        </div>
-        <div class="card flex justify-content-center">
-          <p-fileUpload name="myfile[]" url="http://localhost:5000/api/stores/upload"  [multiple]="true" accept="image/*">
-              <ng-template pTemplate="toolbar">
-                  <div class="py-3">Upload 3 Files</div>
-              </ng-template>
-              <ng-template let-file pTemplate="file">
-                  <div>Custom UI to display a file</div>
-              </ng-template>
-              <ng-template pTemplate="content" let-files>
-                  <div>Additional content.</div>
-              </ng-template>
-          </p-fileUpload>
+  <div class="form-text">
+      <div>
+          <label for="newName">Nome:</label>
+          <input class="textInput"  type="text" pInputText [(ngModel)]="newProduct.name"/>
       </div>
-        <button type="button" pButton label="Salvar" (click)="addNewProduct()"></button>
+      <div>
+          <label for="newPrice">Preço:</label>
+          <input class="textInput"  type="text" pInputText [(ngModel)]="newProduct.price"/>
+      </div>
+      <div>
+          <label for="newStock">Estoque:</label>
+          <input class="textInput"  type="text" pInputText [(ngModel)]="newProduct.stock"/>
+      </div>
+
+      <div class="card flex justify-content-center">
+        <p-fileUpload name="myfile[]" url="http://localhost:5000/api/stores/upload"  [multiple]="true" accept="image/*">
+            <ng-template pTemplate="toolbar">
+                <div class="py-3">Upload 3 Files</div>
+            </ng-template>
+            <ng-template let-file pTemplate="file">
+                <div>Custom UI to display a file</div>
+            </ng-template>
+            <ng-template pTemplate="content" let-files>
+                <div>Additional content.</div>
+            </ng-template>
+        </p-fileUpload>
     </div>
+
+
+
+      <button type="button" pButton label="Salvar" (click)="addNewProduct()"></button>
+  </div>
 </p-dialog>
 

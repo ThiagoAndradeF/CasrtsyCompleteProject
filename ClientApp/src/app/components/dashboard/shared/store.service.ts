@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { StoreFormDto } from '../../cadastro/components/Models/store-form-dto';
 import { StoreWithItemsDto } from '../models/storeWithItemsDto';
+import { ItemDto } from '../models/ItemDto';
 
 @Injectable({
   providedIn: 'root'
@@ -24,4 +25,17 @@ export class StoreService {
       return this.httpClient.get(`${this.baseUrl}/WithItemsByMail/${mailStore}`);
     }
   }
+  public addItemsToStoreById(storeId : number, item:ItemDto ): void {
+    this.httpClient.post(`${this.baseUrl}/${storeId}/product`, item);
+  }
+  public removeItemById(storeId : number, itemId:number ): void {
+    this.httpClient.delete(`${this.baseUrl}/${storeId}/product/${itemId}`);
+  }
+  public editItemById(storeId : number, itemId:number , item:ItemDto ): void {
+    this.httpClient.put(`${this.baseUrl}/${storeId}/product/${itemId}`,item);
+  }
+
+
+
+
 }
