@@ -1,6 +1,6 @@
 
 <!-- Botão para adicionar novo produto -->
-<button type="button" pButton label="Adicionar Produto" (click)="showAddNewDialog()"></button>
+<button type="button" pButton label="Adicionar Produto" (click)="showAddNewDialog()" style="margin-bottom: 10px;"></button>
 
 <p-table
     [lazy]="true"
@@ -15,17 +15,19 @@
             <th pSortableColumn="item">Produto</th>
             <th pSortableColumn="item.name">Valor R$</th>
             <th pSortableColumn="item.stock">N° Estoque</th>
+            <th></th>
         </tr>
     </ng-template>
 
     <ng-template pTemplate="body" let-item >
-        <tr (click)="showDialog(item)" class="itenList">
+        <tr class="itenList">
             <td>{{ item.name }}</td>
             <td>{{ item.price}}</td>
             <td>{{ item.stock }}</td>
-            <!-- <td>
-              <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="deleteProduct(item)"></button>
-            </td> -->
+            <td>
+                <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2" (click)="showDialog(item)"></button>
+                <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="deleteProduct(item)"></button>
+            </td>
         </tr>
     </ng-template>
 
@@ -68,7 +70,7 @@
           <input class="textInput"  type="text" pInputText [(ngModel)]="newProduct.stock"/>
       </div>
 
-      <div class="card flex justify-content-center">
+      <!-- <div class="card flex justify-content-center">
         <p-fileUpload name="myfile[]" url="http://localhost:5000/api/stores/upload"  [multiple]="true" accept="image/*">
             <ng-template pTemplate="toolbar">
                 <div class="py-3">Upload 3 Files</div>
@@ -78,9 +80,9 @@
             </ng-template>
             <ng-template pTemplate="content" let-files>
                 <div>Additional content.</div>
-            </ng-template>
+            </ng-template>  
         </p-fileUpload>
-    </div>
+      </div> -->
 
 
 

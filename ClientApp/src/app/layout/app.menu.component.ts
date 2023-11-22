@@ -19,7 +19,7 @@ export class AppMenuComponent implements OnInit {
                 items: [
                     { label: 'Pedidos', icon: 'pi pi-fw pi-truck', routerLink: ['/'] },
                     { label: 'Produtos', icon: 'pi pi-fw pi-box', routerLink: ['/uikit/produto'] },
-                    { label: 'Social Media', icon: 'pi pi-fw pi-instagram', routerLink: ['/uikit/input'] },
+                    { label: 'Serviços Adicionais', icon: 'pi pi-cart-plus', routerLink: ['/uikit/input'] },
                 ]
             },
 
