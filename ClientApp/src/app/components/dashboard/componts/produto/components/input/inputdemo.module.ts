@@ -2,6 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { InputDemoComponent } from './inputdemo.component';
+<<<<<<< HEAD
+import { DialogModule } from 'primeng/dialog';
+import { TableModule } from 'primeng/table';
+import { RouterModule } from '@angular/router';
+=======
 import { InputDemoRoutingModule } from './inputdemo-routing.module';
 import { AutoCompleteModule } from "primeng/autocomplete";
 import { CalendarModule } from "primeng/calendar";
@@ -25,34 +30,20 @@ import { RadioButtonModule } from 'primeng/radiobutton';
 import { ColorPickerModule } from 'primeng/colorpicker';
 import { ToggleButtonModule } from 'primeng/togglebutton';
 import { SliderModule } from 'primeng/slider';
+import { DialogModule } from 'primeng/dialog';
+import { TableModule } from 'primeng/table';
+>>>>>>> 1c36d7e6bf131a789429dd2cff0c712d9816e19e
 
 @NgModule({
 	imports: [
 		CommonModule,
+		DialogModule,
+		TableModule,
 		FormsModule,
-		InputDemoRoutingModule,
-		AutoCompleteModule,
-		CalendarModule,
-		ChipsModule,
-		DropdownModule,
-		InputMaskModule,
-		InputNumberModule,
-		ColorPickerModule,
-		CascadeSelectModule,
-		MultiSelectModule,
-		ToggleButtonModule,
-		SliderModule,
-		InputTextareaModule,
-		RadioButtonModule,
-		InputTextModule,
-		RatingModule,
-		ChipModule,
-		KnobModule,
-		InputSwitchModule,
-		ListboxModule,
-		SelectButtonModule,
-		CheckboxModule,
-		ButtonModule
+<<<<<<< HEAD
+		RouterModule.forChild([{ path: '', component: InputDemoComponent }]),
+=======
+>>>>>>> 1c36d7e6bf131a789429dd2cff0c712d9816e19e
 	],
 	declarations: [InputDemoComponent]
 })
