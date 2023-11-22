@@ -22,7 +22,7 @@ export class ProdutoComponent {
   storeId:number = 0;
 
 
-  constructor( private storeService:StoreService) {
+  constructor( private storeService:StoreService, private confirmationService:ConfirmationService, private messageService: MessageService) {
      this.listarProdutos();
   }
 
@@ -75,17 +75,23 @@ export class ProdutoComponent {
   }
  
   addNewProduct() {
-    this.storeService.addItemsToStoreById(this.storeId, this.newProduct);
+    this.storeService.addItemsToStoreById(this.storeId, this.newProduct).subscribe(data => {
+      if(data){
+        console.warn('Produto adicionado!')
+      }
+    });;
     this.items.push(this.newProduct); // Adicionar o novo produto à lista
     this.displayAddDialog = false; // Fechar o dialog após adicionar
   }
-  // deleteProduct(product: Product) {
-  //   this.confirmationService.confirm({
-  //       message: 'Are you sure you want to delete ' + product.name + '?',
-  //       header: 'Confirm',
-  //       icon: 'pi pi-exclamation-triangle',
-  //       accept: () => {
-  //           this.items= this.items.filter((val) => val.id !== product.id);
-  //       }
-  //   });}
+  deleteProduct(iten: ItemDto) {
+    this.confirmationService.confirm({
+        message: 'Tem certeza que quer deletar o item: ' + iten.name + '?',
+        header: 'Confirmar',
+        icon: 'pi pi-exclamation-triangle',
+        accept: () => {
+          if(iten.id){
+            this.storeService.removeItemById(this.storeId, iten.id).subscribe()
+          }
+        }
+    });}
 }

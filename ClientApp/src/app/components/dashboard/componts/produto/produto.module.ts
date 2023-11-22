@@ -6,12 +6,12 @@ import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
 import { DialogModule } from 'primeng/dialog';
 import { FormsModule } from '@angular/forms';
-import { CriarProdutoComponent } from './components/criar-produto/criar-produto.component';
 import { FileUploadModule } from 'primeng/fileupload';
+import { ConfirmationService, MessageService } from 'primeng/api';
 
 
 @NgModule({
-  declarations: [ProdutoComponent, CriarProdutoComponent],
+  declarations: [ProdutoComponent],
   imports: [
     CommonModule,
     RouterModule.forChild([{ path: '', component: ProdutoComponent }]),
@@ -20,6 +20,10 @@ import { FileUploadModule } from 'primeng/fileupload';
     DialogModule,
     FormsModule,
     FileUploadModule
+  ],
+  providers:[
+    ConfirmationService,
+    MessageService
   ]
 })
 export class ProdutoModule { }
