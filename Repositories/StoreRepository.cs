@@ -69,11 +69,11 @@ public class StoreRepository : IStoreRepository
                 .Include(s => s.Items)
                 .FirstOrDefaultAsync(s => s.Email == storeMail));
     }
-    public async Task<bool> AddItemsToStoreById(int storeId, List<ItemDto> items)
+    public async Task<bool> AddItemToStoreById(int storeId, ItemDto item)
     {
         var storeFromDb = await _context.Stores.FirstOrDefaultAsync(s => s.Id == storeId);
         if (storeFromDb == null) return false;
-        storeFromDb.Items.AddRange(_mapper.Map<List<Item>>(items));
+        storeFromDb.Items.Add(_mapper.Map<Item>(item));
         return await SaveChangesAsync();
     }
 

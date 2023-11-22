@@ -37,8 +37,14 @@ public class StoreController : ControllerBase
         return Ok(store);
     }
 
- 
-
+    [HttpPost("/{storeId}/product")]
+    public async Task<ActionResult<bool>> AddProductToStoreById(int storeId, [FromBody]ItemDto item)
+    {
+        var response = await _repository.AddItemToStoreById(storeId, item);
+        if (response) return Ok();
+        return BadRequest();
+    }
+    
     [HttpGet("WithServices/{storeId}")]
     public async Task<ActionResult<StoreWithServicesDto>> GetStoreWithServicesByIdAsync(int storeId)
     {
@@ -116,6 +122,7 @@ public class StoreController : ControllerBase
 
         return Ok(ordersFromDb);
     }
+    
     [HttpPost("upload")]
     public async Task<IActionResult> Post(List<IFormFile> myfile)
     {
