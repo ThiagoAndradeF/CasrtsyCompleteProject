@@ -77,6 +77,22 @@ public class StoreRepository : IStoreRepository
         return await SaveChangesAsync();
     }
 
+    public async Task<bool> UpdateItem(int storeId, int itemId, ItemDto item)
+    {
+        var itemFromDb = await _context.Items.FirstOrDefaultAsync(
+            i => i.StoreId == storeId &&
+                 i.Id == itemId);
+
+        if (itemFromDb == null)
+        {
+            return false;
+        }
+
+        itemFromDb = _mapper.Map<Item>(item);
+
+        return await SaveChangesAsync();
+    }
+
     public async Task<bool> AddOrderToStoreById(int storeId, OrderDto order)
     {
         var storeFromDb = await _context.Stores.FirstOrDefaultAsync(s => s.Id == storeId);

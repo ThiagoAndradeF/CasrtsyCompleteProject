@@ -14,6 +14,8 @@ public interface IStoreRepository
     Task<StoreWithItemsDto?> GetStoreWithItemsByIdAsync(int storeId);
     Task<StoreWithItemsDto?> GetStoreWithItemsByMailAsync(string storeMail); 
     Task<bool> AddItemToStoreById(int storeId, ItemDto item);
+    Task<bool> UpdateItem(int storeId,int itemId, ItemDto item);
+
     Task<bool> AddOrderToStoreById(int storeId, OrderDto order);
     Task<bool> AddServicesToStoreById(int storeId, List<AdditionalServiceDto> services);
     Task<bool> SaveChangesAsync();

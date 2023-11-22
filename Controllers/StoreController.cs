@@ -44,6 +44,16 @@ public class StoreController : ControllerBase
         if (response) return Ok();
         return BadRequest();
     }
+
+    [HttpPut("/{storeId}/products/{itemId}")]
+    public async Task<ActionResult> UpdateItem(int storeId, int itemId, ItemDto item)
+    {
+        if (itemId != item.id) return BadRequest();
+
+        if (await _repository.UpdateItem(storeId, itemId, item)) return Ok();
+        
+        return NotFound();
+    }
     
     [HttpGet("WithServices/{storeId}")]
     public async Task<ActionResult<StoreWithServicesDto>> GetStoreWithServicesByIdAsync(int storeId)
