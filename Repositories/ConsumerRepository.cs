@@ -1,10 +1,10 @@
+using Atividade.Api.DbContexts;
+using Atividade.Api.Entities;
+using Atividade.Api.Models;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
-using Cartsy.Api.DbContexts;
-using Cartsy.Api.Entities;
-using Cartsy.Api.Models;
 
-namespace Cartsy.Api.Repositories;
+namespace Atividade.Api.Repositories;
 
 public class ConsumerRepository : IConsumerRepository
 {
@@ -57,8 +57,8 @@ public class ConsumerRepository : IConsumerRepository
     public async Task<bool> DeactivateConsumerAsync(int consumerId)
     {
         var consumerFromDb = await _context.Consumers.FirstOrDefaultAsync(c => c.Id == consumerId);
-        consumerFromDb.Status = false;
-        SaveChangesAsync();
+        consumerFromDb!.Status = false;
+        await SaveChangesAsync();
         return true;
     }
 

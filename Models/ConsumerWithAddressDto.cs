@@ -1,6 +1,4 @@
-using Cartsy.Api.Entities;
-
-namespace Cartsy.Api.Models;
+namespace Atividade.Api.Models;
 
 public class ConsumerWithAdressDto
 {
@@ -10,6 +8,6 @@ public class ConsumerWithAdressDto
     public string HomePhone { get; set;}  = string.Empty;
     public string Email { get; set; } = string.Empty;
     public bool Status { get; set; }
-    public AddressDto Address { get; set; }
+    public AddressDto Address { get; set; } = default!;
     public string CPF { get; set; } = string.Empty;
 }

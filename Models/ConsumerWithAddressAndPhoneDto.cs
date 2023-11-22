@@ -1,4 +1,4 @@
-namespace Cartsy.Api.Models;
+namespace Atividade.Api.Models;
 
 public class ConsumerWithAdressAndPhoneDto
 {
@@ -6,5 +6,5 @@ public class ConsumerWithAdressAndPhoneDto
     public string CellPhone { get; set; }  = string.Empty;
     public string HomePhone { get; set;}  = string.Empty;
     public string Email { get; set; } = string.Empty;
-    public AddressDto Address { get; set; }
+    public AddressDto Address { get; set; } = default!;
 }

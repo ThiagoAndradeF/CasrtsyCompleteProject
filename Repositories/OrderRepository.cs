@@ -1,10 +1,10 @@
+using Atividade.Api.DbContexts;
+using Atividade.Api.Entities;
+using Atividade.Api.Models;
 using AutoMapper;
-using Cartsy.Api.DbContexts;
-using Cartsy.Api.Entities;
-using Cartsy.Api.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace Cartsy.Api.Repositories;
+namespace Atividade.Api.Repositories;
 
 public class OrderRepository : IOrderRepository
 {

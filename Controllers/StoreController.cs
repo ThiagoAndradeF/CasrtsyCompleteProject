@@ -1,9 +1,8 @@
+using Atividade.Api.Models;
+using Atividade.Api.Repositories;
 using Microsoft.AspNetCore.Mvc;
-using Cartsy.Api.Entities;
-using Cartsy.Api.Models;
-using Cartsy.Api.Repositories;
 
-namespace Cartsy.Api.Controllers;
+namespace Atividade.Api.Controllers;
 
 [ApiController]
 [Route("api/stores")]

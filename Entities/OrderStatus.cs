@@ -1,5 +1,5 @@
 // TPT
-namespace Cartsy.Api.Entities;
+namespace Atividade.Api.Entities;
 
 public class OrderStatus
 {

@@ -1,7 +1,7 @@
+using Atividade.Api.Entities;
 using Microsoft.EntityFrameworkCore;
-using Cartsy.Api.Entities;
 
-namespace Cartsy.Api.DbContexts;
+namespace Atividade.Api.DbContexts;
 
 public class CartsyContext : DbContext
 {

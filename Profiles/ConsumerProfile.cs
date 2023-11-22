@@ -1,8 +1,8 @@
+using Atividade.Api.Entities;
+using Atividade.Api.Models;
 using AutoMapper;
-using Cartsy.Api.Entities;
-using Cartsy.Api.Models;
 
-namespace Cartsy.Api.Profiles;
+namespace Atividade.Api.Profiles;
 
 public class ConsumerProfile : Profile
 {

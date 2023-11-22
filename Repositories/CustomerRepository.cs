@@ -1,11 +1,10 @@
+using Atividade.Api.DbContexts;
+using Atividade.Api.Entities;
+using Atividade.Api.Models;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
-using Cartsy.Api.DbContexts;
-using Cartsy.Api.Entities;
-using Cartsy.Api.Models;
-using Microsoft.AspNetCore.Http.HttpResults;
 
-namespace Cartsy.Api.Repositories;
+namespace Atividade.Api.Repositories;
 
 public class CustomerRepository : ICustomerRepository
 {
@@ -43,14 +42,14 @@ public class CustomerRepository : ICustomerRepository
 
     public async Task<CustomerDto?> GetCustomerByIdAsync(int customerId)
     {
-        var type = GetCustomerTypeAsync(customerId);
+        var type = await GetCustomerTypeAsync(customerId);
 
-        if (type.Result == 1)
+        if (type == 1)
         {
             return GetLegalCustomerByIdAsync(customerId).Result;
         }
 
-        if (type.Result == 2)
+        if (type == 2)
         {
             return GetNaturalCustomerByIdAsync(customerId).Result;
         }
@@ -64,27 +63,27 @@ public class CustomerRepository : ICustomerRepository
 
         if (type.Result == 1)
         {
-            return _context.LegalCustomers.FirstOrDefault(c => c.Id==customerId);
+            return _context.LegalCustomers.FirstOrDefault(c => c.Id==customerId)!;
         }
 
         if (type.Result == 2)
         {
-            return _context.NaturalCustomers.FirstOrDefault(c => c.Id==customerId);
+            return _context.NaturalCustomers.FirstOrDefault(c => c.Id==customerId)!;
         }
 
-        return null;
+        return null!;
     }
 
     public async Task<CustomerWithAdressDto?> GetCustomerWithAddressByIdAsync(int customerId)
     {
-        var type = GetCustomerTypeAsync(customerId);
+        var type = await GetCustomerTypeAsync(customerId);
 
-        if (type.Result == 1)
+        if (type== 1)
         {
             return GetLegalCustomerWithAdressByIdAsync(customerId).Result;
         }
 
-        if (type.Result == 2)
+        if (type == 2)
         {
             return GetNaturalCustomerWithAdressByIdAsync(customerId).Result;
         }
@@ -124,8 +123,8 @@ public class CustomerRepository : ICustomerRepository
     public async Task<bool> DeactivateCustomerAsync(int customerId)
     {
         var customerFromDb = await _context.Customers.FirstOrDefaultAsync(c => c.Id == customerId);
-        customerFromDb.Status = false;
-        SaveChangesAsync();
+        customerFromDb!.Status = false;
+        await SaveChangesAsync();
         return true;
     }
 
@@ -141,7 +140,7 @@ public class CustomerRepository : ICustomerRepository
             return 0;
         }
         var customerFromDb = await _context.Customers.FirstOrDefaultAsync(c => c.Id == customerId);
-        return customerFromDb.TypeDiscriminator;
+        return customerFromDb!.TypeDiscriminator;
     }
     
 

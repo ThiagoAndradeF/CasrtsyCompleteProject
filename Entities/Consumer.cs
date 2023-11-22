@@ -1,5 +1,5 @@
 // TPT
-namespace Cartsy.Api.Entities;
+namespace Atividade.Api.Entities;
 
 public class Consumer
 {
@@ -10,7 +10,7 @@ public class Consumer
     public string Email { get; set; } = string.Empty;
     public int AddressId { get; set; }
     public bool Status { get; set; }
-    public Address Address { get; set; }
+    public Address Address { get; set; } = default!;
     public string CPF { get; set; } = string.Empty;
     public List<Order> Orders { get; set; } = new();
 }

@@ -1,7 +1,7 @@
+using Atividade.Api.Entities;
 using AutoMapper;
-using Cartsy.Api.Entities;
 
-namespace Cartsy.Api.Profiles;
+namespace Atividade.Api.Profiles;
 
 public class AddressProfile : Profile
 {

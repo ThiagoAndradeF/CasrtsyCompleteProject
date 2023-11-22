@@ -1,6 +1,4 @@
-using Cartsy.Api.Entities;
-
-namespace Cartsy.Api.Models;
+namespace Atividade.Api.Models;
 
 public class AddressDto
 {

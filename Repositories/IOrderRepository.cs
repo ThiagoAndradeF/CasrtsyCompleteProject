@@ -1,6 +1,6 @@
-using Cartsy.Api.Models;
+using Atividade.Api.Models;
 
-namespace Cartsy.Api.Repositories;
+namespace Atividade.Api.Repositories;
 
 public interface IOrderRepository 
 {

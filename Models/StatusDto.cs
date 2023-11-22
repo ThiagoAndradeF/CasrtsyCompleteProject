@@ -1,4 +1,4 @@
-namespace Cartsy.Api.Models;
+namespace Atividade.Api.Models;
 
 public class StatusDto
 {

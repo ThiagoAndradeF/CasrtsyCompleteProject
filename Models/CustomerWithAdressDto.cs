@@ -1,6 +1,4 @@
-using Cartsy.Api.Entities;
-
-namespace Cartsy.Api.Models;
+namespace Atividade.Api.Models;
 
 public class CustomerWithAdressDto
 {
@@ -13,5 +11,5 @@ public class CustomerWithAdressDto
     public string? CNPJ { get; set; }
     public bool Status { get; set; }
     
-    public AddressDto Address { get; set; }
+    public AddressDto Address { get; set; } = default!;
 }

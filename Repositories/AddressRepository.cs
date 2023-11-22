@@ -1,9 +1,7 @@
-using Microsoft.EntityFrameworkCore;
-using Cartsy.Api.DbContexts;
-using Cartsy.Api.Entities;
+using Atividade.Api.DbContexts;
+using Atividade.Api.Entities;
 
-
-namespace Cartsy.Api.Repositories;
+namespace Atividade.Api.Repositories;
 
 public class AddressRepository : IAddressRepository
 {
@@ -15,9 +13,9 @@ public class AddressRepository : IAddressRepository
     }
 
 
-    public async Task<bool> AddAddressAsync(Address adress, string cityName, string stateName, string uf)
+    public Task<bool> AddAddressAsync(Address adress, string cityName, string stateName, string uf)
     {
-        return true;
+        return Task.FromResult(true);
     }
 
     public Task<Customer?> GetAddressByIdAsync(int customerId)

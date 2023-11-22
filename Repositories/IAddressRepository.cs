@@ -1,5 +1,6 @@
-using Cartsy.Api.Entities;
-namespace Cartsy.Api.Repositories;
+using Atividade.Api.Entities;
+
+namespace Atividade.Api.Repositories;
 
 public interface IAddressRepository
 {

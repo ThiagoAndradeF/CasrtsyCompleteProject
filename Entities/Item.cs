@@ -1,4 +1,4 @@
-namespace Cartsy.Api.Entities;
+namespace Atividade.Api.Entities;
 
 public class Item
 {
@@ -8,9 +8,9 @@ public class Item
     public string Description { get; set; } = string.Empty;
     public int Stock { get; set; }
     public int StoreId { get; set; }
-    public Store Store { get; set; }
+    public Store Store { get; set; } = default!;
     public int TypeId { get; set; }
-    public ItemType Type { get; set; }
-    public List<Order> Orders { get; set; } = new ();
+    public ItemType Type { get; set; } = default!;
+    public List<Order> Orders { get; set; } = default!;
 
 }

@@ -1,5 +1,5 @@
-using Cartsy.Api.DbContexts;
-using Cartsy.Api.Repositories;
+using Atividade.Api.DbContexts;
+using Atividade.Api.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;

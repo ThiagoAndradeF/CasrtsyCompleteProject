@@ -1,10 +1,9 @@
+using Atividade.Api.Models;
+using Atividade.Api.Repositories;
 using AutoMapper;
-using Cartsy.Api.Models;
 using Microsoft.AspNetCore.Mvc;
-using Cartsy.Api.Entities;
-using Cartsy.Api.Repositories;
 
-namespace Cartsy.Api.Controllers;
+namespace Atividade.Api.Controllers;
 
 [ApiController]
 [Route("api/customers")]
@@ -45,13 +44,13 @@ public class CustomerController : ControllerBase
     [HttpGet("{customerId}")]
     public async Task<ActionResult<CustomerDto>> GetCustomerById([FromRoute] int customerId)
     {
-        var customerFromDb = _repository.GetCustomerByIdAsync(customerId);
+        var customerFromDb = await _repository.GetCustomerByIdAsync(customerId);
 
-        if (customerFromDb.Result == null)
+        if (customerFromDb == null)
         {
             return NotFound();
         }
-        return Ok(customerFromDb.Result);
+        return Ok(customerFromDb);
     }
     [HttpGet("teste")]
     public string GetCustomerById()
@@ -62,13 +61,13 @@ public class CustomerController : ControllerBase
     public async Task<ActionResult<CustomerWithAdressDto>> GetCustomerWithAddressById([FromRoute] int customerId)
     {
 
-        var customerFromDb = _repository.GetCustomerWithAddressByIdAsync(customerId);
+        var customerFromDb = await _repository.GetCustomerWithAddressByIdAsync(customerId);
 
         if (customerFromDb == null)
         {
             return NotFound();
         }
-        return Ok(customerFromDb.Result);
+        return Ok(customerFromDb);
     }
 
     [HttpGet("all")]
@@ -86,7 +85,7 @@ public class CustomerController : ControllerBase
     [HttpPut("deactivate/{customerId}")]
     public async Task<ActionResult<bool>> DeactivateCutomerById(int customerId)
     {
-        if (customerId==null || customerId==0)
+        if (customerId==0)
         {
             return BadRequest();
         }

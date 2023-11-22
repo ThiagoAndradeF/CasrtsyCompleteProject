@@ -1,4 +1,4 @@
-namespace Cartsy.Api.Entities;
+namespace Atividade.Api.Entities;
 
 public class Store
 {
