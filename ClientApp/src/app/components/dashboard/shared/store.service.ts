@@ -12,6 +12,7 @@ import { ItemDto } from '../models/ItemDto';
 export class StoreService {
 
   private baseUrl = 'http://localhost:5000/api/stores'; // URL do servidor C#
+  private baseUrlIten = 'http://localhost:5000';
 
   constructor(private httpClient: HttpClient ) {}
 
@@ -25,14 +26,16 @@ export class StoreService {
       return this.httpClient.get(`${this.baseUrl}/WithItemsByMail/${mailStore}`);
     }
   }
-  public addItemsToStoreById(storeId : number, item:ItemDto ): void {
-    this.httpClient.post(`${this.baseUrl}/${storeId}/product`, item);
+  public addItemsToStoreById(storeId : number, product:ItemDto ): Observable<any> {
+    var eduardo =  `${this.baseUrlIten}/product/${storeId}`;
+    debugger
+    return this.httpClient.post(`${this.baseUrlIten}/product/${storeId}`, product);
   }
   public removeItemById(storeId : number, itemId:number ): void {
-    this.httpClient.delete(`${this.baseUrl}/${storeId}/product/${itemId}`);
+    this.httpClient.delete(`${this.baseUrlIten}/${storeId}/product/${itemId}`);
   }
   public editItemById(storeId : number, itemId:number , item:ItemDto ): void {
-    this.httpClient.put(`${this.baseUrl}/${storeId}/product/${itemId}`,item);
+    this.httpClient.put(`${this.baseUrlIten}/${storeId}/product/${itemId}`,item);
   }
 
 

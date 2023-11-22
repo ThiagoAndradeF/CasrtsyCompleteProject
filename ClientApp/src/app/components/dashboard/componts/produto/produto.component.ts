@@ -73,7 +73,7 @@ export class ProdutoComponent {
     this.newProduct = { name: '', price: '', stock: '' }; // Reset do produto
     this.displayAddDialog = true; // Mostrar o dialog
   }
-
+ 
   addNewProduct() {
     this.storeService.addItemsToStoreById(this.storeId, this.newProduct);
     this.items.push(this.newProduct); // Adicionar o novo produto à lista
