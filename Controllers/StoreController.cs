@@ -44,7 +44,7 @@ public class StoreController : ControllerBase
         return BadRequest();
     }
 
-    [HttpPut("/{storeId}/products/{itemId}")]
+    [HttpPut("/{storeId}/product/{itemId}")]
     public async Task<ActionResult> UpdateItem(int storeId, int itemId, ItemDto item)
     {
         if (itemId != item.id) return BadRequest();
@@ -124,7 +124,7 @@ public class StoreController : ControllerBase
     {
         var ordersFromDb = await _orderRepository.GetAllOrdersByStoreId(storeId);
 
-        if (ordersFromDb == null || !ordersFromDb.Any())
+        if (!ordersFromDb.Any())
         {
             return NotFound();
         }
@@ -148,6 +148,13 @@ public class StoreController : ControllerBase
             }
         }
         return Ok(new { myfile.Count });
+    }
+
+    [HttpDelete("{storeId}/product/{itemId}")]
+    public async Task<ActionResult> DeleteProduct(int storeId, int itemId)
+    {
+        if (await _repository.DeleteItem(storeId, itemId)) return Ok();
+        return NotFound();
     }
 
     // [HttpPost("JoinTeamsAndStudent")]

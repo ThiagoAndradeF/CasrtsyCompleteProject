@@ -93,6 +93,14 @@ public class StoreRepository : IStoreRepository
         return await SaveChangesAsync();
     }
 
+    public async Task<bool> DeleteItem(int storeId, int itemId)
+    {
+        var itemFromDb = await _context.Items.FirstOrDefaultAsync(i => i.Id == itemId && i.StoreId == storeId);
+        if (itemFromDb == null) return false;
+        _context.Items.Remove(itemFromDb);
+        return await SaveChangesAsync();
+    }
+
     public async Task<bool> AddOrderToStoreById(int storeId, OrderDto order)
     {
         var storeFromDb = await _context.Stores.FirstOrDefaultAsync(s => s.Id == storeId);
