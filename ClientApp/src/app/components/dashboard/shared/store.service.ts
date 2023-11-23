@@ -26,8 +26,8 @@ export class StoreService {
     }
   }
   public addItemsToStoreById(storeId : number, product:ItemDto ): Observable<any> {
-    
-    return this.httpClient.post(`${this.baseUrlIten}/product/${storeId}`, product);
+    debugger
+    return this.httpClient.post(`${this.baseUrlIten}/${storeId}/product`, product);
   }
   public removeItemById(storeId : number, itemId:number ): Observable<any>  {
     return this.httpClient.delete(`${this.baseUrlIten}/${storeId}/product/${itemId}`);
@@ -35,8 +35,4 @@ export class StoreService {
   public editItemById(storeId : number, itemId:number , item:ItemDto ): void {
     this.httpClient.put(`${this.baseUrlIten}/${storeId}/product/${itemId}`,item);
   }
-
-
-
-
 }
