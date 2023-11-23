@@ -37,7 +37,7 @@ public class StoreController : ControllerBase
     }
 
     [HttpPost("/{storeId}/product")]
-    public async Task<ActionResult<bool>> AddProductToStoreById(int storeId, [FromBody]ItemDto item)
+    public async Task<ActionResult<bool>> AddProductToStoreById(int storeId, [FromBody]ItemCreateDto item)
     {
         var response = await _repository.AddItemToStoreById(storeId, item);
         if (response) return Ok();

@@ -69,7 +69,7 @@ public class StoreRepository : IStoreRepository
                 .Include(s => s.Items)
                 .FirstOrDefaultAsync(s => s.Email == storeMail));
     }
-    public async Task<bool> AddItemToStoreById(int storeId, ItemDto item)
+    public async Task<bool> AddItemToStoreById(int storeId, ItemCreateDto item)
     {
         var storeFromDb = await _context.Stores.FirstOrDefaultAsync(s => s.Id == storeId);
         if (storeFromDb == null) return false;

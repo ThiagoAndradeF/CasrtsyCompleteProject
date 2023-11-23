@@ -12,7 +12,7 @@ public interface IStoreRepository
     Task<StoreWithOrdersDto?> GetStoreWithOrdersByIdAsync(int storeId);
     Task<StoreWithItemsDto?> GetStoreWithItemsByIdAsync(int storeId);
     Task<StoreWithItemsDto?> GetStoreWithItemsByMailAsync(string storeMail); 
-    Task<bool> AddItemToStoreById(int storeId, ItemDto item);
+    Task<bool> AddItemToStoreById(int storeId, ItemCreateDto item);
     Task<bool> UpdateItem(int storeId,int itemId, ItemDto item);
     Task<bool> DeleteItem(int storeId, int itemId);
     Task<bool> AddOrderToStoreById(int storeId, OrderDto order);

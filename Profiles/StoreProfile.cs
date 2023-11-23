@@ -24,6 +24,7 @@ public class StoreProfile : Profile
             .ForMember(dest => dest.Type, opt => opt.MapFrom(src => src.Type)).ReverseMap();
         CreateMap<ItemType, TypeDto>().ReverseMap();
         CreateMap<Item, ItemForOrderReturnDto>().ReverseMap();
+        CreateMap<Item, ItemCreateDto>().ReverseMap();
         CreateMap<Order, OrderDto>().ReverseMap();
         CreateMap<AdditionalServices, AdditionalServiceDto>().ReverseMap();
     }

@@ -9,5 +9,4 @@ public class AddressProfile : Profile
     {
         CreateMap<Address, Models.AddressDto>();
     }
-
 }
