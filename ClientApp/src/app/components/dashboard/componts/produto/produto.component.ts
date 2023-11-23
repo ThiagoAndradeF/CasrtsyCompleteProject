@@ -18,7 +18,7 @@ export class ProdutoComponent {
   editedIten:ItemDto = new ItemDto();
   dialogNovoProduto: boolean = false;
   displayAddDialog: boolean = false;
-  newProduct: any = { name: '', price: '', stock: '' };
+  newProduct: ItemDto = new ItemDto() ;
   storeId:number = 0;
 
 
@@ -43,9 +43,10 @@ export class ProdutoComponent {
     this.displayDialog = true;
   }
   saveChanges() {
-
+    
     if(this.selectedItem){
     this.displayDialog = false;
+    this.editedIten.id = this.selectedItem.id;
       const index = this.items.findIndex(i => i.id === this.selectedItem.id);
       if (index > -1) {
         if(this.editedIten.price){
@@ -58,8 +59,10 @@ export class ProdutoComponent {
           this.items[index].stock = this.editedIten.stock;
         }
       }
+    }if(this.selectedItem.id){
+      this.storeService.editItemById(this.storeId, this.selectedItem.id ,this.editedIten).subscribe();
     }
-
+    
 
     this.displayDialog = false; // Fecha o dialog após salvar as alterações
     this.editedIten = new ItemDto();
@@ -70,7 +73,7 @@ export class ProdutoComponent {
     this.dialogNovoProduto = true;
   }
   showAddNewDialog() {
-    this.newProduct = { name: '', price: '', stock: '' }; // Reset do produto
+    this.newProduct  = new ItemDto() ; // Reset do produto
     this.displayAddDialog = true; // Mostrar o dialog
   }
  
@@ -84,14 +87,11 @@ export class ProdutoComponent {
     this.displayAddDialog = false; // Fechar o dialog após adicionar
   }
   deleteProduct(iten: ItemDto) {
-    this.confirmationService.confirm({
-        message: 'Tem certeza que quer deletar o item: ' + iten.name + '?',
-        header: 'Confirmar',
-        icon: 'pi pi-exclamation-triangle',
-        accept: () => {
-          if(iten.id){
-            this.storeService.removeItemById(this.storeId, iten.id).subscribe()
-          }
-        }
-    });}
+    if(iten.id){
+      this.storeService.removeItemById(this.storeId, iten.id).subscribe();
+      setTimeout(() => {
+        location.reload();
+      }, 1000);
+    }  
+  }
 }

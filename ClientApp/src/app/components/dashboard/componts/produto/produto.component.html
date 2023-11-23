@@ -70,20 +70,6 @@
           <input class="textInput"  type="text" pInputText [(ngModel)]="newProduct.stock"/>
       </div>
 
-      <!-- <div class="card flex justify-content-center">
-        <p-fileUpload name="myfile[]" url="http://localhost:5000/api/stores/upload"  [multiple]="true" accept="image/*">
-            <ng-template pTemplate="toolbar">
-                <div class="py-3">Upload 3 Files</div>
-            </ng-template>
-            <ng-template let-file pTemplate="file">
-                <div>Custom UI to display a file</div>
-            </ng-template>
-            <ng-template pTemplate="content" let-files>
-                <div>Additional content.</div>
-            </ng-template>  
-        </p-fileUpload>
-      </div> -->
-
 
 
       <button type="button" pButton label="Salvar" (click)="addNewProduct()"></button>

@@ -1,5 +1,5 @@
 export class TypeDto
 {
-  public Type?:string;
-  public Tax?:number;
+  public Type?:string = "Padrao";
+  public Tax?:number = 1;
 }

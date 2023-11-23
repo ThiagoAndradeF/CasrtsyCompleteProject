@@ -8,7 +8,7 @@ namespace Atividade.Api.Repositories;
 
 public class StoreRepository : IStoreRepository
 {
-    
+
     private readonly CartsyContext _context;
     private readonly IMapper _mapper;
 
@@ -17,8 +17,8 @@ public class StoreRepository : IStoreRepository
         _context = context;
         _mapper = mapper;
     }
-    
-    
+
+
     public async Task<bool> AddStoreAsync(StoreForCreationDto store)
     {
         await _context.Stores.AddAsync(_mapper.Map<Store>(store));
@@ -27,7 +27,7 @@ public class StoreRepository : IStoreRepository
 
     public async Task<bool> AddCompleteStoreAsync(StoreForCompleteCreationDto store)
     {
-        await  _context.Stores.AddAsync(_mapper.Map<Store>(store));
+        await _context.Stores.AddAsync(_mapper.Map<Store>(store));
         return await SaveChangesAsync();
     }
 
@@ -109,16 +109,32 @@ public class StoreRepository : IStoreRepository
         return await SaveChangesAsync();
     }
 
-    public async Task<bool> AddServicesToStoreById(int storeId, List<AdditionalServiceDto> services)
+    public async Task<bool> AddServiceToStoreById(int storeId, AdditionalServiceDto service)
     {
         var storeFromDb = await _context.Stores.FirstOrDefaultAsync(s => s.Id == storeId);
         if (storeFromDb == null) return false;
-        storeFromDb.Services.AddRange(_mapper.Map<List<AdditionalServices>>(services));
+        storeFromDb.Services.Add(_mapper.Map<AdditionalServices>(service));
         return await SaveChangesAsync();
     }
 
-    
-    
+    public async Task<bool> RemoveAdditionalServiceById(int serviceId)
+    {
+        var serviceFromDb = await _context.AdditionalServices.FirstOrDefaultAsync(s => s.Id == serviceId);
+        if (serviceFromDb == null) return false;
+        _context.AdditionalServices.Remove(serviceFromDb);
+        return await SaveChangesAsync();
+    }
+
+    public async Task<bool> UpdateAdditionalServiceById(int serviceId, AdditionalServiceDto additionalService)
+    {
+        var serviceFromDb = await _context.AdditionalServices.FirstOrDefaultAsync(s => s.Id == serviceId);
+        if (serviceFromDb == null) return false;
+        serviceFromDb.Price = additionalService.Price;
+        serviceFromDb.Type = additionalService.Type;
+        serviceFromDb.Service = additionalService.Service;
+        return await SaveChangesAsync();
+    }
+
     public async Task<bool> SaveChangesAsync()
     {
         return await _context.SaveChangesAsync() > 0;

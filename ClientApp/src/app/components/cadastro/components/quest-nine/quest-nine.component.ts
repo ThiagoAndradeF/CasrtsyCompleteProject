@@ -29,8 +29,14 @@ export class QuestNineComponent {
         }
 
     }
-
-
+    private _Password !: string;
+    public get Password() : string {
+      return this._Password;
+    }
+    public set Password(v : string) {
+      this._Password = v;
+    }
+    
     validarEmail(email: string) {
     // Usa uma expressão regular para validar o formato do e-mail
         const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -45,7 +51,7 @@ export class QuestNineComponent {
     public emitValue(v:string) {
       this.emailLoja.emit(v);
     }
-
+    
 
 
 

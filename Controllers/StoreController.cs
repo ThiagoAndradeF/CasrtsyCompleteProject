@@ -16,17 +16,7 @@ public class StoreController : ControllerBase
         _repository = repository;
         _orderRepository = orderRepository;
     }
-    [HttpPost]
-    public async Task<ActionResult<StoreForCreationDto>> AddStoreAsync(
-        [FromBody] StoreForCreationDto store
-    )
-    {
-        await _repository.AddStoreAsync(store);
 
-        return Ok(store);
-    }
-    
-    
     [HttpPost("/complete")]
     public async Task<ActionResult<StoreForCreationDto>> AddCompleteStoreAsync(
         [FromBody] StoreForCompleteCreationDto store
@@ -37,11 +27,11 @@ public class StoreController : ControllerBase
     }
 
     [HttpPost("/{storeId}/product")]
-    public async Task<ActionResult<bool>> AddProductToStoreById(int storeId, [FromBody]ItemCreateDto item)
+    public async Task<ActionResult<bool>> AddProductToStoreById(int storeId, [FromBody] ItemCreateDto item)
     {
         var response = await _repository.AddItemToStoreById(storeId, item);
-        if (response) return Ok();
-        return BadRequest();
+        if (response) return Ok(item);
+        return BadRequest(item);
     }
 
     [HttpPut("/{storeId}/product/{itemId}")]
@@ -50,36 +40,11 @@ public class StoreController : ControllerBase
         if (itemId != item.id) return BadRequest();
 
         if (await _repository.UpdateItem(storeId, itemId, item)) return Ok();
-        
+
         return NotFound();
     }
-    
-    [HttpGet("WithServices/{storeId}")]
-    public async Task<ActionResult<StoreWithServicesDto>> GetStoreWithServicesByIdAsync(int storeId)
-    {
-        var storeFromDb = await _repository.GetStoreWithServicesByIdAsync(storeId);
 
-        if (storeFromDb == null)
-        {
-            return NotFound();
-        }
 
-        return Ok(storeFromDb);
-    }
-    
-    [HttpGet("WithAddress/{storeId}")]
-    public async Task<ActionResult<StoreWithAddressDto>> GetStoreWithAddressByIdAsync(int storeId)
-    {
-        var storeFromDb = await _repository.GetStoreWithAddressByIdAsync(storeId);
-
-        if (storeFromDb == null)
-        {
-            return NotFound();
-        }
-
-        return Ok(storeFromDb);
-    }
-    
     [HttpGet("WithItems/{storeId}")]
     public async Task<ActionResult<StoreWithItemsDto>> GetStoreWithItemsByIdAsync(int storeId)
     {
@@ -106,49 +71,7 @@ public class StoreController : ControllerBase
         return Ok(storeFromDb);
     }
 
-    [HttpGet("WithOrders/{storeId}")]
-    public async Task<ActionResult<StoreWithOrdersDto>> GetStoreWithOrdersByIdAsync(int storeId)
-    {
-        var storeFromDb = await _repository.GetStoreWithOrdersByIdAsync(storeId);
 
-        if (storeFromDb == null)
-        {
-            return NotFound();
-        }
-
-        return Ok(storeFromDb);
-    }
-    
-    [HttpGet("FullOrders/{storeId}")]
-    public async Task<ActionResult<IEnumerable<OrderFullDto>>> GetFullOrderByStoreIdAsync(int storeId)
-    {
-        var ordersFromDb = await _orderRepository.GetAllOrdersByStoreId(storeId);
-
-        if (!ordersFromDb.Any())
-        {
-            return NotFound();
-        }
-
-        return Ok(ordersFromDb);
-    }
-    
-    [HttpPost("upload")]
-    public async Task<IActionResult> Post(List<IFormFile> myfile)
-    {
-        var uploads = Path.Combine("C:\\Users\\Thiago\\Desktop\\cartsy\\CasrtsyCompleteProject\\ClientApp\\src\\assets\\products");
-        foreach (var file in myfile)
-        {
-            if (file.Length > 0)
-            {
-                var filePath = Path.Combine(uploads, file.FileName);
-                using (var stream = new FileStream(filePath, FileMode.Create))
-                {
-                    await file.CopyToAsync(stream);
-                }
-            }
-        }
-        return Ok(new { myfile.Count });
-    }
 
     [HttpDelete("{storeId}/product/{itemId}")]
     public async Task<ActionResult> DeleteProduct(int storeId, int itemId)
@@ -157,10 +80,42 @@ public class StoreController : ControllerBase
         return NotFound();
     }
 
-    // [HttpPost("JoinTeamsAndStudent")]
-    // public async Task<ActionResult<StudentTeam>> AssociateTeamStudent(int teamId, int studentId)
-    // {
-    //     var studentTeamEntity = await _repository.JoinTeamAndStudent(studentId, teamId);
-    //     return Ok(studentTeamEntity);
-    // }
+    [HttpGet("WithServices/{storeId}")]
+    public async Task<ActionResult<StoreWithServicesDto>> GetStoreWithServicesByIdAsync(int storeId)
+    {
+        var storeFromDb = await _repository.GetStoreWithServicesByIdAsync(storeId);
+
+        if (storeFromDb == null)
+        {
+            return NotFound(storeId);
+        }
+
+        return Ok(storeFromDb);
+    }
+
+    [HttpPost("/{storeId}/service")]
+    public async Task<ActionResult> AddServiceToStoreById(int storeId, AdditionalServiceDto additionalService)
+    {
+        var response = await _repository.AddServiceToStoreById(storeId, additionalService);
+        if (response) return Ok(additionalService);
+        return BadRequest(additionalService);
+    }
+
+    [HttpDelete("/service/{serviceId}")]
+    public async Task<ActionResult> DeleteAdditionalServiceById(int serviceId)
+    {
+        var response = await _repository.RemoveAdditionalServiceById(serviceId);
+        if (response) return Ok(serviceId);
+        return NotFound(serviceId);
+    }
+
+    [HttpPut("/service/{serviceId}")]
+    public async Task<ActionResult> UpdateAdditionalService(int serviceId, AdditionalServiceDto additionalService)
+    {
+        var response = await _repository.UpdateAdditionalServiceById(serviceId, additionalService);
+        if (response) return Ok(additionalService);
+        return BadRequest(additionalService);
+    }
+
+
 }

@@ -1,6 +1,6 @@
 <div style="margin-bottom: 30px;">
     <h3>
-        E por último, qual é o seu e-mail?
+        E por último, coloque o seu email e digite uma senha que você vai lembrar?
     </h3>
 </div>
 <div>
@@ -12,3 +12,4 @@
 <div  *ngIf="validadeEmail">
     <h5 style="color: green;">Email válido</h5>
 </div>
+<p-password [(ngModel)]="Password" [feedback]="false" class="input-area"></p-password>

@@ -28,6 +28,7 @@ import { QuestNineComponent } from './components/quest-nine/quest-nine.component
 import { AnimateModule } from 'primeng/animate';
 import { CadastroService } from './cadastro.service';
 import { HttpClientModule } from '@angular/common/http';
+import { PasswordModule } from 'primeng/password';
 
 @NgModule({
     declarations: [
@@ -59,7 +60,8 @@ import { HttpClientModule } from '@angular/common/http';
       InputNumberModule,
       InputMaskModule,
       AnimateModule,
-      HttpClientModule
+      HttpClientModule,
+      PasswordModule
     ],
     providers:[MessageService,CadastroService]
   })
