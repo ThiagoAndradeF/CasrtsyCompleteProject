@@ -22,6 +22,9 @@
                 color: black;
                 margin-bottom: 20px;
             }
+            ::ng-deep{
+              feedback{z-index: 2000;}
+            }
         }
     }
 }

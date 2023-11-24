@@ -192,6 +192,11 @@ public class CartsyContext : DbContext
             .Property(s => s.Email)
             .HasMaxLength(100)
             .IsRequired();
+        
+        store
+            .Property(s => s.Password)
+            .HasMaxLength(50)
+            .IsRequired();
 
         store
             .HasMany(s => s.Items)

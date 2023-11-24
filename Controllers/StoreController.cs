@@ -27,6 +27,16 @@ public class StoreController : ControllerBase
         return Ok(store);
     }
 
+    [HttpPost("/login/{email}/{password}")]
+    public async Task<ActionResult<bool>> LoginStore(string email, string password)
+    {
+        var result = await _repository.LoginStore(email, password);
+
+        if (result) return Ok(result);
+        return BadRequest(result);
+    }
+
+
     [HttpPost("/{storeId}/product")]
     public async Task<ActionResult<bool>> AddProductToStoreById(int storeId, [FromBody] ItemCreateDto item)
     {

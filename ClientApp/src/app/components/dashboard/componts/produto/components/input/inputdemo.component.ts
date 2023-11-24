@@ -2,10 +2,11 @@ import { Component, OnInit, SimpleChanges } from '@angular/core';
 import { AdditionalServiceDto } from '../../../../models/AdditionalServiceDto';
 import { StoreService } from 'src/app/components/dashboard/shared/store.service';
 @Component({
-    templateUrl: './inputdemo.component.html'
+    templateUrl: './inputdemo.component.html',
+    styleUrls: ['./inputdemo.component.scss'],
 })
 export class InputDemoComponent implements OnInit {
-    
+
     private _services : AdditionalServiceDto[] = [];
     public get services() : AdditionalServiceDto[] {
         return this._services;
@@ -14,7 +15,7 @@ export class InputDemoComponent implements OnInit {
         this._services = v;
         // window.location.reload();
     }
-    
+
     selectedService: AdditionalServiceDto = new AdditionalServiceDto();
     displayDialog: boolean = false;
     editedService:AdditionalServiceDto = new AdditionalServiceDto();
@@ -22,15 +23,15 @@ export class InputDemoComponent implements OnInit {
     displayAddDialog: boolean = false;
     newService: AdditionalServiceDto = new AdditionalServiceDto();
     storeId:number = 0;
-  
-  
+
+
     constructor( private storeService:StoreService) {
     }
-  
+
     ngOnInit() {
       this.listarServicos();
     }
-    
+
     public listarServicos(){
     //   this.storeService.getStoreWithItemsFirstLogin().subscribe(data => {
     //     if(data.items){
@@ -47,7 +48,7 @@ export class InputDemoComponent implements OnInit {
       this.newService = new AdditionalServiceDto(); // Reset do produto
       this.displayAddDialog = true; // Mostrar o dialog
     }
-   
+
     addNewService() {
     //   this.storeService.addItemsToStoreById(this.storeId, this.newService).subscribe(data => {
     //     if(data){
@@ -58,8 +59,8 @@ export class InputDemoComponent implements OnInit {
     //   this.displayAddDialog = false; // Fechar o dialog após adicionar
     }
     deleteService(service: AdditionalServiceDto) {
-    
+
     }
 
-    
+
 }

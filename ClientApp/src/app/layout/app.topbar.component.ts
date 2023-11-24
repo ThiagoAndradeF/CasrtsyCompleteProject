@@ -17,4 +17,13 @@ export class AppTopBarComponent {
     @ViewChild('topbarmenu') menu!: ElementRef;
 
     constructor(public layoutService: LayoutService) { }
+
+    logOut(){
+      localStorage.clear();
+      setTimeout(() => {
+        location.reload();
+      }, 100);
+      
+    }
+
 }

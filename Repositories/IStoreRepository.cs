@@ -7,6 +7,7 @@ public interface IStoreRepository
 
     Task<bool> AddStoreAsync(StoreForCreationDto store);
     Task<bool> AddCompleteStoreAsync(StoreForCompleteCreationDto store);
+    Task<bool> LoginStore(string email, string password);
     Task<StoreWithServicesDto?> GetStoreWithServicesByIdAsync(int storeId);
     Task<StoreWithAddressDto?> GetStoreWithAddressByIdAsync(int storeId);
     Task<StoreWithOrdersDto?> GetStoreWithOrdersByIdAsync(int storeId);
@@ -18,7 +19,6 @@ public interface IStoreRepository
     Task<bool> AddOrderToStoreById(int storeId, OrderDto order);
     Task<bool> AddServiceToStoreById(int storeId, AdditionalServiceDto service);
     Task<bool> RemoveAdditionalServiceById(int serviceId);
-
     Task<bool> UpdateAdditionalServiceById(int serviceId, AdditionalServiceDto additionalService);
     Task<bool> SaveChangesAsync();
 }

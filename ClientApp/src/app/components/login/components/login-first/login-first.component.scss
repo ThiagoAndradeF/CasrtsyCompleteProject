@@ -36,7 +36,7 @@ a {
     align-items: center;
     display: flex;
     justify-content: center;
-    
+
 }
 
 
@@ -115,4 +115,39 @@ a {
         align-items: center;
         vertical-align: middle;
     }
+}
+.input-area{
+  background-color: rgb(255, 243, 245);
+  width: 100%;
+  border-radius: 0;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  font-size: 25px;
+  color: black;
+}
+:host{
+  ::ng-deep{
+      .p-password{
+        width: 100%;
+          input{
+              width: 100%;
+          }
+      }
+  }
+}
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25%, 75% {
+    transform: translateX(-10px);
+  }
+  50% {
+    transform: translateX(10px);
+  }
+}
+
+.invalid-login-animation {
+  animation: shake 0.5s ease-in-out;
 }

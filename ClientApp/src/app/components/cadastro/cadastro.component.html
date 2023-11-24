@@ -18,7 +18,7 @@
             <app-quest-six *ngIf="indexProgresso === 6" class="elemento-fade-in" (ativarAgenda)="receberOutput($event ,6)"></app-quest-six>
             <app-quest-seven *ngIf="indexProgresso === 7" class="elemento-fade-in" (metodoEntrega)="receberOutput($event ,7)" ></app-quest-seven>
             <app-quest-eight *ngIf="indexProgresso === 8" [_entrega]= "entrega" [_retirada]= "retirada" class="elemento-fade-in" (valorEntrega)="receberOutput($event ,8)" (localRetirada)="receberOutput($event ,8)" ></app-quest-eight>
-            <app-quest-nine *ngIf="indexProgresso === 9" class="elemento-fade-in" (emailLoja)="receberOutput($event ,9)" ></app-quest-nine>
+            <app-quest-nine *ngIf="indexProgresso === 9" class="elemento-fade-in" (emailLoja)="receberOutput($event ,9)" (senhaLoja)="receberPassword($event)"></app-quest-nine>
         </div>
 
 

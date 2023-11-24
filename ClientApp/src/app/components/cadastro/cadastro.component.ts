@@ -19,6 +19,16 @@ export class CadastroComponent {
   public habEnvio: boolean =  false;
   public storeFormForCreation : StoreFormDto = new StoreFormDto();
 
+  private _Password !: string;
+  public get Password() : string {
+    return this._Password;
+  }
+  public set Password(v : string) {
+    this._Password = v;
+    this.storeFormForCreation.Password = v
+  }
+
+
   private _mailLoja !: string;
   public get mailLoja() : string {
     return this._mailLoja;
@@ -42,6 +52,7 @@ export class CadastroComponent {
     this.habEnvio= true;
     this.storeFormForCreation.Email = v;
     console.warn('O email da loja é  ' + v)
+
   }
   private _localRetirada !: string;
   public get localRetirada() : string {
@@ -162,7 +173,12 @@ export class CadastroComponent {
     this.cadastroService.getSomeData(this.storeFormForCreation).subscribe(data => {
       if(data){
         console.warn('Usuário cadastrado!')
-        this.router.navigate(['']);
+        localStorage.setItem('authToken','logado');
+        setTimeout(() => {
+          this.router.navigate(['']);
+        }, 100);
+
+
       }
     });
   }
@@ -194,6 +210,9 @@ export class CadastroComponent {
                 break;
         }
     }
+    public receberPassword(value: string) {
+      this.Password = value;
+    }
 
   public receberOutput(value: any , tipoOutput:number) {
       switch(tipoOutput){
@@ -201,7 +220,6 @@ export class CadastroComponent {
           this.nomeLoja = value;
           break;
         case 2:
-          console.warn("deu boa porra")
           this.tpProduto = value;
 
           break;

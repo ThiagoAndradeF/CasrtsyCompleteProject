@@ -1,6 +1,7 @@
 export class StoreFormDto
 {
   public Name !: string;
+  public Password!: string;
   public Email !: string;
   public Items !: ItemDto[];
   public Services !: AdditionalServiceDto[];

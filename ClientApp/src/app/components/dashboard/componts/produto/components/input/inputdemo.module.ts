@@ -5,6 +5,7 @@ import { InputDemoComponent } from './inputdemo.component';
 import { DialogModule } from 'primeng/dialog';
 import { TableModule } from 'primeng/table';
 import { RouterModule } from '@angular/router';
+import { ButtonModule } from 'primeng/button';
 
 @NgModule({
 	imports: [
@@ -13,6 +14,7 @@ import { RouterModule } from '@angular/router';
 		TableModule,
 		FormsModule,
 		RouterModule.forChild([{ path: '', component: InputDemoComponent }]),
+    ButtonModule
 	],
 	declarations: [InputDemoComponent]
 })

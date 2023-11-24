@@ -31,6 +31,17 @@ public class StoreRepository : IStoreRepository
         return await SaveChangesAsync();
     }
 
+    public async Task<bool> LoginStore(string email, string password)
+    {
+        var storeFromDb = await _context.Stores.FirstOrDefaultAsync(s => s.Email == email);
+
+        if (storeFromDb == null) return false;
+
+        if (storeFromDb.Password == password) return true;
+
+        return false;
+    }
+
     public async Task<StoreWithServicesDto?> GetStoreWithServicesByIdAsync(int storeId)
     {
         return _mapper.Map<StoreWithServicesDto>(

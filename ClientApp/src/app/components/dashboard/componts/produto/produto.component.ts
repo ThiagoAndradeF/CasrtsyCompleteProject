@@ -24,6 +24,7 @@ export class ProdutoComponent {
 
   constructor( private storeService:StoreService, private confirmationService:ConfirmationService, private messageService: MessageService) {
      this.listarProdutos();
+     localStorage.setItem('idLoja','');
   }
 
   ngOnInit() {
@@ -35,15 +36,19 @@ export class ProdutoComponent {
       if(data.items){
         this.items = data.items;
       }if(data.id)
-      {this.storeId= data.id;}
+      {
+        this.storeId= data.id;
+        localStorage.setItem('idLoja', data.id.toString());
+      }
     });
   }
+
   public showDialog(item: ItemDto) {
     this.selectedItem = item;
     this.displayDialog = true;
   }
+
   saveChanges() {
-    
     if(this.selectedItem){
     this.displayDialog = false;
     this.editedIten.id = this.selectedItem.id;
@@ -62,7 +67,7 @@ export class ProdutoComponent {
     }if(this.selectedItem.id){
       this.storeService.editItemById(this.storeId, this.selectedItem.id ,this.editedIten).subscribe();
     }
-    
+
 
     this.displayDialog = false; // Fecha o dialog após salvar as alterações
     this.editedIten = new ItemDto();
@@ -76,7 +81,7 @@ export class ProdutoComponent {
     this.newProduct  = new ItemDto() ; // Reset do produto
     this.displayAddDialog = true; // Mostrar o dialog
   }
- 
+
   addNewProduct() {
     this.storeService.addItemsToStoreById(this.storeId, this.newProduct).subscribe(data => {
       if(data){
@@ -92,6 +97,6 @@ export class ProdutoComponent {
       setTimeout(() => {
         location.reload();
       }, 1000);
-    }  
+    }
   }
 }
