@@ -1,4 +1,4 @@
-<button type="button" pButton label="Adicionar Produto" (click)="showAddNewDialog()" style="margin-bottom: 10px;"></button>
+<button type="button" pButton label="Adicionar Serviço" (click)="showAddNewDialog()" style="margin-bottom: 10px;"></button>
 
 <p-table
     [lazy]="true"
@@ -40,7 +40,7 @@
           <label for="newPrice">Taxa:</label>
           <input class="textInput"  type="text" pInputText [(ngModel)]="newService.Price"/>
       </div>
-      <button type="button" pButton label="Adicionar Serviço" (click)="addNewService()"></button>
+      <button type="button" pButton label="Adicionar Serviço" (click)="addNewService()" style="margin-top: 10px;"></button>
   </div>
 </p-dialog>
 

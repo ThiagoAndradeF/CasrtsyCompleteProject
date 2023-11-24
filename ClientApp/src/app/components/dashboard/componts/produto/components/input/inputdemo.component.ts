@@ -33,12 +33,11 @@ export class InputDemoComponent implements OnInit {
     }
 
     public listarServicos(){
-    //   this.storeService.getStoreWithItemsFirstLogin().subscribe(data => {
-    //     if(data.items){
-    //       this.items = data.items;
-    //     }if(data.id)
-    //     {this.storeId= data.id;}
-    //   });
+      this.storeService.getStoreWithServices().subscribe(data => {
+        if(data.services){
+          this.services = data.services;
+        }
+      });
     }
     public showDialogAdicionarServico(){
       this.dialogNovoServico = true;
@@ -50,15 +49,21 @@ export class InputDemoComponent implements OnInit {
     }
 
     addNewService() {
-    //   this.storeService.addItemsToStoreById(this.storeId, this.newService).subscribe(data => {
-    //     if(data){
-    //       console.warn('Produto adicionado!')
-    //     }
-    //   });;
-    //   this.services.push(this.newService); // Adicionar o novo produto à lista
-    //   this.displayAddDialog = false; // Fechar o dialog após adicionar
+      this.storeService.addServicesToStoreById(this.newService).subscribe(data => {
+        if(data){
+          console.log('Serviço adicionado!')
+        }
+      });;
+      this.services.push(this.newService); // Adicionar o novo produto à lista
+      this.displayAddDialog = false; // Fechar o dialog após adicionar
     }
     deleteService(service: AdditionalServiceDto) {
+      // if(service.id){
+      //   this.storeService.removeItemById(this.storeId, iten.id).subscribe();
+      //   setTimeout(() => {
+      //     location.reload();
+      //   }, 1000);
+      // }
 
     }
 

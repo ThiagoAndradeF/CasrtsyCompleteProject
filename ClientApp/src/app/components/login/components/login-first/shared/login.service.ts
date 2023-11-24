@@ -18,8 +18,10 @@ export class LoginService {
   }
   public verificarAuth(){
     let rotaDeNavegacao =this.router.url
-    if(localStorage.getItem('authToken')==='logado' && rotaDeNavegacao ){
-      this.router.navigate(['']);
+    if(localStorage.getItem('authToken')==='logado'   ){
+      if(rotaDeNavegacao === ('login' || 'cadastro')){
+        this.router.navigate(['']);
+      }
     }else{
       this.router.navigate(['/login']);
     }

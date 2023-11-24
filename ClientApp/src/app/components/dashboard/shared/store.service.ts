@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { StoreWithItemsDto } from '../models/storeWithItemsDto';
 import { ItemDto } from '../models/ItemDto';
+import { AdditionalServiceDto } from '../models/AdditionalServiceDto';
 
 @Injectable({
   providedIn: 'root'
@@ -31,7 +32,7 @@ export class StoreService {
   public getStoreWithItemsFirstLogin(): Observable<StoreWithItemsDto> {
     let mailStore = localStorage.getItem('mailStore');
     console.warn('Email específicado: ' + mailStore);
-    
+
     if(mailStore){
       let emailSemAspas = mailStore.replace(/"/g, '');
       return this.httpClient.get(`${this.baseUrl}/WithItemsByMail/${emailSemAspas}`);
@@ -43,14 +44,20 @@ export class StoreService {
   public compareCredentials(email: string, password: string){
     return this.httpClient.get(`${this.baseUrl}/login/${email}/${password}`);
   }
-  public getStoreWithServices(storeId: number = this.storeId) : Observable<StoreWithItemsDto>{
+  public getStoreWithServices(storeId: number = this.storeId) : Observable<any>{
     return this.httpClient.get(`${this.baseUrl}/WithServices/${storeId}`);
   }
   public addItemsToStoreById(storeId : number, product:ItemDto ): Observable<any> {
     return this.httpClient.post(`${this.baseUrlIten}/${storeId}/product`, product);
   }
+  public addServicesToStoreById(service:AdditionalServiceDto, storeId : number =this.storeId ): Observable<any> {
+    return this.httpClient.post(`${this.baseUrlIten}/${storeId}/service`, service);
+  }
   public removeItemById(storeId : number, itemId:number ): Observable<any>  {
     return this.httpClient.delete(`${this.baseUrl}/${storeId}/product/${itemId}`);
+  }
+  public removeServiceById(itemId:number ): Observable<any>  {
+    return this.httpClient.delete(`${this.baseUrl}/service/${itemId}`);
   }
   public editItemById(storeId : number, itemId:number , item:ItemDto ): Observable<any> {
     return this.httpClient.put(`${this.baseUrlIten}/${storeId}/product/${itemId}`,item);
