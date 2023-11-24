@@ -139,4 +139,14 @@ public class StoreRepository : IStoreRepository
     {
         return await _context.SaveChangesAsync() > 0;
     }
+
+    private void SaveFileLocally(byte[] file, string filename)
+    {
+        File.WriteAllBytes(AppContext.BaseDirectory + Path.DirectorySeparatorChar + filename , file);
+    }
+
+    public async Task<byte[]> GetFile(string filename)
+    {
+        return await File.ReadAllBytesAsync(AppContext.BaseDirectory + Path.DirectorySeparatorChar + filename);
+    }
 }
