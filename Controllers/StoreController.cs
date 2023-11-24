@@ -118,28 +118,28 @@ public class StoreController : ControllerBase
         return BadRequest(additionalService);
     }
 
-    [HttpPost("UploadFile")]
-    public IActionResult UploadFile(IFormFile formFile)
-    {
-        try
-        {
-            var memStr = new MemoryStream();
-            formFile.CopyTo(memStr);
-            _repository.UploadFile(memStr.ToArray(), formFile.FileName);
-            Console.WriteLine("UploadFile" + formFile.FileName);
-            return Ok("O arquivo foi enviado");
-        }
-        catch(Exception ex)
-        {
-            return BadRequest("Ocorreu um erro: " + ex.Message);
-            Console.WriteLine(ex.Message)
-        }
-    }
+    //[HttpPost("UploadFile")]
+    //public IActionResult UploadFile(IFormFile formFile)
+    //{
+    //    try
+    //    {
+    //        var memStr = new MemoryStream();
+    //        formFile.CopyTo(memStr);
+    //        _repository.UploadFile(memStr.ToArray(), formFile.FileName);
+    //        Console.WriteLine("UploadFile" + formFile.FileName);
+    //        return Ok("O arquivo foi enviado");
+    //    }
+    //    catch(Exception ex)
+    //    {
+    //        return BadRequest("Ocorreu um erro: " + ex.Message);
+    //        Console.WriteLine(ex.Message)
+    //    }
+    //}
 
-    [HttpGet("file/{filename}")]
-    public async Task<IActionResult<byte[]>> UploadFile([FromRoute]string filename)
-    {
-        var response = await _repository.GetFile(filename);
-        return Ok(response);
-    }
+    //[HttpGet("file/{filename}")]
+    //public async Task<IActionResult<byte[]>> UploadFile([FromRoute]string filename)
+    //{
+    //    var response = await _repository.GetFile(filename);
+    //    return Ok(response);
+    //}
 }
