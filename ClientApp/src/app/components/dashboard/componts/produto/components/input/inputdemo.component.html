@@ -38,8 +38,8 @@
             <input class="textInput"  type="text" pInputText [(ngModel)]="newService.service"/>
         </div>
         <div>
-            <label for="newPrice">Taxa:</label>
-            <input class="textInput"  type="text" pInputText [(ngModel)]="newService.price"/>
+            <label for="newPrice" >Taxa (R$):</label>
+            <input class="textInput"  type="number" pInputText [(ngModel)]="newService.price"  />
         </div>
         <button type="button" pButton label="Adicionar Serviço" (click)="addNewService()" style="margin-top: 10px;"></button>
     </div>

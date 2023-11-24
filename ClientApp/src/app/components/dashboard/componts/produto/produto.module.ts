@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { FileUploadModule } from 'primeng/fileupload';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { MultiSelectModule } from 'primeng/multiselect';
+import { KeyFilterModule } from 'primeng/keyfilter';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { MultiSelectModule } from 'primeng/multiselect';
     DialogModule,
     FormsModule,
     FileUploadModule,
-    MultiSelectModule
+    MultiSelectModule,
+    KeyFilterModule
   ],
   providers:[
     ConfirmationService,

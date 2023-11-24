@@ -11,6 +11,7 @@ import { PanelMenuModule } from 'primeng/panelmenu';
 import { DashboardsRoutingModule } from './dashboard-routing.module';
 import { DialogModule } from 'primeng/dialog';
 import { PedidosComponent } from './componts/pedidos/pedidos.component';
+import { KeyFilterModule } from 'primeng/keyfilter';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { PedidosComponent } from './componts/pedidos/pedidos.component';
         PanelMenuModule,
         ButtonModule,
         DashboardsRoutingModule,
-        DialogModule
+        DialogModule,
+        KeyFilterModule
     ],
     declarations: [DashboardComponent, PedidosComponent]
 })

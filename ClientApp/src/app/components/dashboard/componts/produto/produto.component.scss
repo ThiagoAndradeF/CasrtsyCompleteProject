@@ -14,7 +14,22 @@ input[type="text"]:focus {
   box-shadow: 0 1px 0 0 #F07D90; /* Sombra opcional para destacar o foco */
   outline: none; /* Remove o contorno padrão */
 }
+input[type="number"] {
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #757575; /* Cor da linha inferior */
+  border-radius: 0;
+  padding: 7px 0;
+  box-shadow: none;
+  width: 60%;
+}
 
+/* Remove a borda inferior quando o input está focado */
+input[type="number"]:focus {
+  border-bottom: 2px solid #F07D90; /* Cor da linha quando focado */
+  box-shadow: 0 1px 0 0 #F07D90; /* Sombra opcional para destacar o foco */
+  outline: none; /* Remove o contorno padrão */
+}
 /* Estilo para o label para alinhá-lo corretamente com o input */
 label {
   display: block;

@@ -58,16 +58,16 @@
   <p-dialog header="Adicionar Novo Produto" [(visible)]="displayAddDialog" [responsive]="true" [style]="{width: '50vw'}" [maximizable]="true">
     <div class="form-text">
         <div>
-            <label for="newName">Nome:</label>
+            <label for="newName" >Nome:</label>
             <input class="textInput"  type="text" pInputText [(ngModel)]="newProduct.name"/>
         </div>
         <div>
             <label for="newPrice">Preço:</label>
-            <input class="textInput"  type="text" pInputText [(ngModel)]="newProduct.price"/>
+            <input class="textInput"  type="number" pInputText [(ngModel)]="newProduct.price"/>
         </div>
         <div>
             <label for="newStock">Estoque:</label>
-            <input class="textInput"  type="text" pInputText [(ngModel)]="newProduct.stock"/>
+            <input class="textInput" type="number" pInputText [(ngModel)]="newProduct.stock"/>
         </div>
     </div>
     <button type="button" pButton label="Salvar" (click)="addNewProduct()" style="float: right;"></button>
