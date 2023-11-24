@@ -56,8 +56,8 @@ export class StoreService {
   public removeItemById(storeId : number, itemId:number ): Observable<any>  {
     return this.httpClient.delete(`${this.baseUrl}/${storeId}/product/${itemId}`);
   }
-  public removeServiceById(itemId:number ): Observable<any>  {
-    return this.httpClient.delete(`${this.baseUrl}/service/${itemId}`);
+  public removeServiceById(serviceId:number ): Observable<any>  {
+    return this.httpClient.delete(`${this.baseUrlIten}/service/${serviceId}`);
   }
   public editItemById(storeId : number, itemId:number , item:ItemDto ): Observable<any> {
     return this.httpClient.put(`${this.baseUrlIten}/${storeId}/product/${itemId}`,item);

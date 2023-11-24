@@ -1,0 +1,56 @@
+<div class="card">
+
+
+  <div class="body-button">
+      <p-button label="Entrega"></p-button>
+  </div>
+
+  <div class="body-button">
+      <p-button label="Retiradas"></p-button>
+  </div>
+
+  <div class="body-button">
+      <p-button label="Agendamento"></p-button>
+  </div>
+  <div class="pedido-manualmente">
+    <div class="body-button">
+      <p-button label="Adicionar Pedido Manualmente"  icon="pi pi-check" ></p-button>
+    </div>
+  </div>
+
+
+  <p-table
+      [lazy]="true"
+      dataKey="id"
+      [tableStyle]="{ 'min-width': '20rem' }"
+      [paginator]="true"
+      [rows]="10"
+      [globalFilterFields]="['name', 'country.name', 'company', 'representative.name']">
+
+      <ng-template pTemplate="header">
+          <tr>
+              <th style="width: 4rem"></th>
+              <th pSortableColumn="name">Pedido</th>
+              <th pSortableColumn="country.name">Valor</th>
+              <th pSortableColumn="representative.name">Horário</th>
+              <th pSortableColumn="representative.name">Cliente</th>
+
+
+          </tr>
+      </ng-template>
+
+      <ng-template pTemplate="body" let-customer>
+          <tr>
+              <td>
+                  <p-tableCheckbox [value]="customer"></p-tableCheckbox>
+              </td>
+              <td>{{ customer.name }}</td>
+              <td>{{ customer.country.name }}</td>
+              <td>{{ customer.company }}</td>
+              <td>{{ customer.representative.name }}</td>
+          </tr>
+      </ng-template>
+
+  </p-table>
+
+</div>

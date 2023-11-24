@@ -95,7 +95,6 @@ public class StoreController : ControllerBase
     public async Task<ActionResult<StoreWithServicesDto>> GetStoreWithServicesByIdAsync(int storeId)
     {
         var storeFromDb = await _repository.GetStoreWithServicesByIdAsync(storeId);
-
         if (storeFromDb == null)
         {
             return NotFound(storeId);

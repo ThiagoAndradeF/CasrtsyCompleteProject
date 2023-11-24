@@ -13,6 +13,7 @@ export class InputDemoComponent implements OnInit {
     }
     public set services(v : AdditionalServiceDto[]) {
         this._services = v;
+        console.warn('esses são os servicoes: ' +  v)
         // window.location.reload();
     }
 
@@ -34,6 +35,7 @@ export class InputDemoComponent implements OnInit {
 
     public listarServicos(){
       this.storeService.getStoreWithServices().subscribe(data => {
+        console.warn(data)
         if(data.services){
           this.services = data.services;
         }
@@ -43,12 +45,12 @@ export class InputDemoComponent implements OnInit {
       this.dialogNovoServico = true;
     }
 
-    showAddNewDialog() {
+    public showAddNewDialog() {
       this.newService = new AdditionalServiceDto(); // Reset do produto
       this.displayAddDialog = true; // Mostrar o dialog
     }
 
-    addNewService() {
+    public addNewService() {
       this.storeService.addServicesToStoreById(this.newService).subscribe(data => {
         if(data){
           console.log('Serviço adicionado!')
@@ -57,15 +59,12 @@ export class InputDemoComponent implements OnInit {
       this.services.push(this.newService); // Adicionar o novo produto à lista
       this.displayAddDialog = false; // Fechar o dialog após adicionar
     }
-    deleteService(service: AdditionalServiceDto) {
-      // if(service.id){
-      //   this.storeService.removeItemById(this.storeId, iten.id).subscribe();
-      //   setTimeout(() => {
-      //     location.reload();
-      //   }, 1000);
-      // }
-
+    public deleteService(service: AdditionalServiceDto) {
+      if(service.id){
+        this.storeService.removeServiceById(service.id).subscribe();
+        setTimeout(() => {
+          this.listarServicos();
+        }, 1000);
+      }
     }
-
-
 }

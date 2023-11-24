@@ -10,6 +10,7 @@ import { StyleClassModule } from 'primeng/styleclass';
 import { PanelMenuModule } from 'primeng/panelmenu';
 import { DashboardsRoutingModule } from './dashboard-routing.module';
 import { DialogModule } from 'primeng/dialog';
+import { PedidosComponent } from './componts/pedidos/pedidos.component';
 
 
 @NgModule({
@@ -25,6 +26,6 @@ import { DialogModule } from 'primeng/dialog';
         DashboardsRoutingModule,
         DialogModule
     ],
-    declarations: [DashboardComponent]
+    declarations: [DashboardComponent, PedidosComponent]
 })
 export class DashboardModule { }

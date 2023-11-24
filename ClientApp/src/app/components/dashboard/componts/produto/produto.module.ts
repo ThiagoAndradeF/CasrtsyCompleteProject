@@ -8,6 +8,7 @@ import { DialogModule } from 'primeng/dialog';
 import { FormsModule } from '@angular/forms';
 import { FileUploadModule } from 'primeng/fileupload';
 import { ConfirmationService, MessageService } from 'primeng/api';
+import { MultiSelectModule } from 'primeng/multiselect';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { ConfirmationService, MessageService } from 'primeng/api';
     TableModule,
     DialogModule,
     FormsModule,
-    FileUploadModule
+    FileUploadModule,
+    MultiSelectModule
   ],
   providers:[
     ConfirmationService,
