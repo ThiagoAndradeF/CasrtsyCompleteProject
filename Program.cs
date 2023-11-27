@@ -36,7 +36,7 @@ builder.Services.AddScoped<IStoreRepository, StoreRepository>();
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 builder.Services.AddScoped<IAddressRepository, AddressRepository>();
 builder.Services.AddDbContext<CartsyContext>(options => {
-    options.UseNpgsql("Host=localhost;Port=5432;Database=Cartsy;Username=postgres;Password=3309;Include Error Detail=true");
+    options.UseNpgsql("Host=localhost;Port=5432;Database=Cartsy;Username=postgres;Password=pass123;Include Error Detail=true");
 });
 var app = builder.Build();
 // Configure the HTTP request pipeline. 

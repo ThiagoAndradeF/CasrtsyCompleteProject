@@ -10,12 +10,8 @@ public class CartsyContext : DbContext
     public DbSet<NaturalCustomer> NaturalCustomers { get; set; } = null!;
 
     public DbSet<Address> Addresses { get; set; } = null!;
-    public DbSet<Consumer> Consumers { get; set; } = null!;
-
-
     public DbSet<Store> Stores { get; set; } = null!;
     public DbSet<StoreService> StoreServices { get; set; } = null!;
-    public DbSet<OrderStatus> OrderStatuses { get; set; } = null!;
     public DbSet<Order> Orders { get; set; } = null!;
     public DbSet<OrderItem> OrderItems { get; set; } = null!;
     public DbSet<Item> Items { get; set; } = null!;
@@ -66,49 +62,6 @@ public class CartsyContext : DbContext
             .HasOne(c => c.Address)
             .WithOne(a => a.Customer)
             .HasForeignKey<Customer>(c => c.AddressId);
-
-        // customer
-        //     .HasOne(c => c.Store)
-        //     .WithOne(s => s.Customer)
-        //     .HasForeignKey<Store>(c => c.CustomerId);
-
-
-        var consumer = modelBuilder.Entity<Consumer>();
-
-        consumer
-            .Property(c => c.CPF)
-            .IsFixedLength()
-            .HasMaxLength(11)
-            .IsRequired();
-        
-        consumer
-            .Property(p => p.Name)
-            .HasMaxLength(100)
-            .IsRequired();
-
-        consumer
-            .Property(p => p.Email)
-            .HasMaxLength(100)
-            .IsRequired();
-
-        consumer
-            .Property(p => p.CellPhone)
-            .HasMaxLength(13)
-            .IsFixedLength()
-            .IsRequired();
-
-        consumer
-            .Property(p => p.HomePhone)
-            .HasMaxLength(13)
-            .IsFixedLength();
-        
-        consumer
-            .Property(c => c.Status);
-
-        consumer
-            .HasOne(p => p.Address)
-            .WithOne(a => a.Consumer)
-            .HasForeignKey<Consumer>(c => c.AddressId);
 
         var naturalCustomer = modelBuilder.Entity<NaturalCustomer>();
 
@@ -180,7 +133,7 @@ public class CartsyContext : DbContext
             .HasMany(s => s.Services)
             .WithMany(s => s.Stores)
             .UsingEntity<StoreService>(ss => ss.ToTable("StoresServices")
-                .Property(ss => ss.CreatedAt).HasDefaultValueSql("NOW()")
+                .Property(sa => sa.CreatedAt).HasDefaultValueSql("NOW()")
             );
 
         store
@@ -197,6 +150,11 @@ public class CartsyContext : DbContext
             .Property(s => s.Password)
             .HasMaxLength(50)
             .IsRequired();
+        
+        store
+            .Property(s => s.Password)
+            .HasMaxLength(25)
+            .IsRequired();
 
         store
             .HasMany(s => s.Items)
@@ -211,12 +169,17 @@ public class CartsyContext : DbContext
             .UsingEntity<OrderItem>(oi => oi.ToTable("OrdersItems")
                 .Property(oi => oi.CreatedAt).HasDefaultValueSql("NOW()")
             );
-        // order
-        //     .HasMany(o => o.OrderItems)
-        //     .WithOne(oi => oi.Order)
-        //     .HasForeignKey(oi => oi.OrderId);
         
-        
+        order
+            .HasMany(o => o.Services)
+            .WithMany(s => s.Orders)
+            .UsingEntity<OrderService>(os => os.ToTable("OrdersServices")
+                .Property(oss => oss.CreatedAt).HasDefaultValueSql("NOW()")
+            );
+
+        order
+            .Property(o => o.ConsumerName)
+            .IsRequired();
         
         order
             .HasOne(o => o.Store)
@@ -224,28 +187,8 @@ public class CartsyContext : DbContext
             .HasForeignKey(o => o.StoreId);
 
         order
-            .HasOne(o => o.Consumer)
-            .WithMany(c => c.Orders)
-            .HasForeignKey(o => o.ConsumerId);
-
-        order
-            .HasOne(o => o.Status)
-            .WithMany(os => os.Orders)
-            .HasForeignKey(o => o.ConsumerId);
-
-        order
             .Property(o => o.Price)
             .HasPrecision(2, 10)
-            .IsRequired();
-
-        order
-            .Property(o => o.DateDelivered)
-            .HasDefaultValue(null);
-
-        var orderStatus = modelBuilder.Entity<OrderStatus>();
-
-        orderStatus.Property(os => os.Status)
-            .HasMaxLength(50)
             .IsRequired();
 
         var item = modelBuilder.Entity<Item>();
@@ -256,9 +199,9 @@ public class CartsyContext : DbContext
             .HasForeignKey(i => i.TypeId);
 
         // item
-        //     .HasMany(i => i.OrderItems)
-        //     .WithOne(oi => oi.Item)
-        //     .HasForeignKey(oi => oi.ItemId);
+        //     .HasMany(i => i.Orders)
+        //     .WithMany(oi => oi.Items);
+            // .HasForeignKey(oi => oi.i);
 
         item
             .Property(i => i.Description)
@@ -366,21 +309,6 @@ modelBuilder.Entity<ItemType>().HasData(
     new ItemType { Id = 3, Type = "Outdoor Gear", Tax = 8 }
 );
 
-// OrderStatus
-modelBuilder.Entity<OrderStatus>().HasData(
-    // Add 10 more OrderStatus instances here
-    new OrderStatus { Id = 7, Status = "On Hold" },
-    new OrderStatus { Id = 8, Status = "Backordered" },
-    new OrderStatus { Id = 9, Status = "In Transit" },
-    new OrderStatus { Id = 10, Status = "Out for Delivery" },
-    new OrderStatus { Id = 1, Status = "Arrived at Destination" },
-    new OrderStatus { Id = 2, Status = "Delayed" },
-    new OrderStatus { Id = 3, Status = "Ready for Pickup" },
-    new OrderStatus { Id = 4, Status = "Awaiting Payment" },
-    new OrderStatus { Id = 5, Status = "Partially Shipped" },
-    new OrderStatus { Id = 6, Status = "Refunded" }
-);
-
 modelBuilder.Entity<LegalCustomer>().HasData(
     new LegalCustomer
     {
@@ -463,40 +391,7 @@ modelBuilder.Entity<NaturalCustomer>().HasData(
         CPF = "98765432109"
     });
 
-modelBuilder.Entity<Consumer>().HasData(
-    new Consumer
-    {
-        Id = 1,
-        Name = "Linus Torvalds",
-        CellPhone = "123-456-7890",
-        HomePhone = "987-654-3210",
-        Email = "linus@example.com",
-        Status = true,
-        AddressId = 1,
-        CPF = "73473943096"
-    },
-    new Consumer
-    {
-        Id = 2,
-        Name = "rafa pava",
-        CellPhone = "123-456-7890",
-        HomePhone = "987-654-3210",
-        Email = "rafa@pava.com",
-        Status = true,
-        AddressId = 2,
-        CPF = "73473943096"
-    },
-    new Consumer
-    {
-        Id = 3,
-        Name = "ti ago",
-        CellPhone = "123-456-7890",
-        HomePhone = "987-654-3210",
-        Email = "ti@ago.com",
-        Status = true,
-        AddressId = 3,
-        CPF = "73473943096"
-    });
+
 
 modelBuilder.Entity<Store>().HasData(
     new Store { Id = 1, Name = "Store 1", AddressId = 4},
@@ -555,20 +450,16 @@ modelBuilder.Entity<StoreService>().HasData(
     new StoreService { StoreId = 4, ServicesId = 1, CreatedAt = DateTime.UtcNow },
     new StoreService { StoreId = 4, ServicesId = 2, CreatedAt = DateTime.UtcNow });
 
-
-
-// Consumer 1
-// Consumer 1
 modelBuilder.Entity<Order>().HasData(
-    new Order { Id = 1, Price = 49.99, StoreId = 1, StatusId = 1, ConsumerId = 1, DateCreated = DateTime.UtcNow },
-    new Order { Id = 2, Price = 29.99, StoreId = 1, StatusId = 2, ConsumerId = 1, DateCreated = DateTime.UtcNow },
-    new Order { Id = 3, Price = 19.99, StoreId = 2, StatusId = 3, ConsumerId = 1, DateCreated = DateTime.UtcNow },
-    new Order { Id = 4, Price = 39.99, StoreId = 2, StatusId = 1, ConsumerId = 2, DateCreated = DateTime.UtcNow },
-    new Order { Id = 5, Price = 19.99, StoreId = 3, StatusId = 2, ConsumerId = 2, DateCreated = DateTime.UtcNow },
-    new Order { Id = 6, Price = 59.99, StoreId = 4, StatusId = 3, ConsumerId = 2, DateCreated = DateTime.UtcNow },
-    new Order { Id = 7, Price = 29.99, StoreId = 3, StatusId = 1, ConsumerId = 3, DateCreated = DateTime.UtcNow },
-    new Order { Id = 8, Price = 49.99, StoreId = 4, StatusId = 2, ConsumerId = 3, DateCreated = DateTime.UtcNow },
-    new Order { Id = 9, Price = 69.99, StoreId = 1, StatusId = 3, ConsumerId = 3, DateCreated = DateTime.UtcNow });
+    new Order { Id = 1, Price = 49.99, StoreId = 1, DateCreated = DateTime.UtcNow },
+    new Order { Id = 2, Price = 29.99, StoreId = 1, DateCreated = DateTime.UtcNow },
+    new Order { Id = 3, Price = 19.99, StoreId = 2, DateCreated = DateTime.UtcNow },
+    new Order { Id = 4, Price = 39.99, StoreId = 2, DateCreated = DateTime.UtcNow },
+    new Order { Id = 5, Price = 19.99, StoreId = 3, DateCreated = DateTime.UtcNow },
+    new Order { Id = 6, Price = 59.99, StoreId = 4, DateCreated = DateTime.UtcNow },
+    new Order { Id = 7, Price = 29.99, StoreId = 3, DateCreated = DateTime.UtcNow },
+    new Order { Id = 8, Price = 49.99, StoreId = 4, DateCreated = DateTime.UtcNow },
+    new Order { Id = 9, Price = 69.99, StoreId = 1, DateCreated = DateTime.UtcNow });
 
 modelBuilder.Entity<OrderItem>().HasData(
     // new OrderItem { ItemId = 1, OrderId = 1, CreatedAt = DateTime.UtcNow },

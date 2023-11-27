@@ -3,6 +3,7 @@ using System;
 using Atividade.Api.DbContexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Cartsy.Api.Migrations
 {
     [DbContext(typeof(CartsyContext))]
-    partial class PersonContextModelSnapshot : ModelSnapshot
+    [Migration("20231127123330_consumerRemoval")]
+    partial class consumerRemoval
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -846,14 +849,22 @@ namespace Cartsy.Api.Migrations
                     b.Property<DateTime>("DateCreated")
                         .HasColumnType("timestamp with time zone");
 
+                    b.Property<DateTime>("DateDelivered")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<double>("Price")
                         .HasPrecision(2, 10)
                         .HasColumnType("double precision");
+
+                    b.Property<int>("StatusId")
+                        .HasColumnType("integer");
 
                     b.Property<int>("StoreId")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("StatusId");
 
                     b.HasIndex("StoreId");
 
@@ -864,72 +875,90 @@ namespace Cartsy.Api.Migrations
                         {
                             Id = 1,
                             ConsumerName = "",
-                            DateCreated = new DateTime(2023, 11, 27, 12, 45, 15, 674, DateTimeKind.Utc).AddTicks(9372),
+                            DateCreated = new DateTime(2023, 11, 27, 12, 33, 30, 194, DateTimeKind.Utc).AddTicks(8709),
+                            DateDelivered = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 49.990000000000002,
+                            StatusId = 1,
                             StoreId = 1
                         },
                         new
                         {
                             Id = 2,
                             ConsumerName = "",
-                            DateCreated = new DateTime(2023, 11, 27, 12, 45, 15, 674, DateTimeKind.Utc).AddTicks(9374),
+                            DateCreated = new DateTime(2023, 11, 27, 12, 33, 30, 194, DateTimeKind.Utc).AddTicks(8711),
+                            DateDelivered = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 29.989999999999998,
+                            StatusId = 2,
                             StoreId = 1
                         },
                         new
                         {
                             Id = 3,
                             ConsumerName = "",
-                            DateCreated = new DateTime(2023, 11, 27, 12, 45, 15, 674, DateTimeKind.Utc).AddTicks(9375),
+                            DateCreated = new DateTime(2023, 11, 27, 12, 33, 30, 194, DateTimeKind.Utc).AddTicks(8712),
+                            DateDelivered = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 19.989999999999998,
+                            StatusId = 3,
                             StoreId = 2
                         },
                         new
                         {
                             Id = 4,
                             ConsumerName = "",
-                            DateCreated = new DateTime(2023, 11, 27, 12, 45, 15, 674, DateTimeKind.Utc).AddTicks(9377),
+                            DateCreated = new DateTime(2023, 11, 27, 12, 33, 30, 194, DateTimeKind.Utc).AddTicks(8713),
+                            DateDelivered = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 39.990000000000002,
+                            StatusId = 1,
                             StoreId = 2
                         },
                         new
                         {
                             Id = 5,
                             ConsumerName = "",
-                            DateCreated = new DateTime(2023, 11, 27, 12, 45, 15, 674, DateTimeKind.Utc).AddTicks(9378),
+                            DateCreated = new DateTime(2023, 11, 27, 12, 33, 30, 194, DateTimeKind.Utc).AddTicks(8714),
+                            DateDelivered = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 19.989999999999998,
+                            StatusId = 2,
                             StoreId = 3
                         },
                         new
                         {
                             Id = 6,
                             ConsumerName = "",
-                            DateCreated = new DateTime(2023, 11, 27, 12, 45, 15, 674, DateTimeKind.Utc).AddTicks(9379),
+                            DateCreated = new DateTime(2023, 11, 27, 12, 33, 30, 194, DateTimeKind.Utc).AddTicks(8715),
+                            DateDelivered = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 59.990000000000002,
+                            StatusId = 3,
                             StoreId = 4
                         },
                         new
                         {
                             Id = 7,
                             ConsumerName = "",
-                            DateCreated = new DateTime(2023, 11, 27, 12, 45, 15, 674, DateTimeKind.Utc).AddTicks(9380),
+                            DateCreated = new DateTime(2023, 11, 27, 12, 33, 30, 194, DateTimeKind.Utc).AddTicks(8716),
+                            DateDelivered = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 29.989999999999998,
+                            StatusId = 1,
                             StoreId = 3
                         },
                         new
                         {
                             Id = 8,
                             ConsumerName = "",
-                            DateCreated = new DateTime(2023, 11, 27, 12, 45, 15, 674, DateTimeKind.Utc).AddTicks(9381),
+                            DateCreated = new DateTime(2023, 11, 27, 12, 33, 30, 194, DateTimeKind.Utc).AddTicks(8717),
+                            DateDelivered = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 49.990000000000002,
+                            StatusId = 2,
                             StoreId = 4
                         },
                         new
                         {
                             Id = 9,
                             ConsumerName = "",
-                            DateCreated = new DateTime(2023, 11, 27, 12, 45, 15, 674, DateTimeKind.Utc).AddTicks(9382),
+                            DateCreated = new DateTime(2023, 11, 27, 12, 33, 30, 194, DateTimeKind.Utc).AddTicks(8718),
+                            DateDelivered = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 69.989999999999995,
+                            StatusId = 3,
                             StoreId = 1
                         });
                 });
@@ -958,145 +987,145 @@ namespace Cartsy.Api.Migrations
                         {
                             ItemId = 4,
                             OrderId = 2,
-                            CreatedAt = new DateTime(2023, 11, 27, 12, 45, 15, 674, DateTimeKind.Utc).AddTicks(9393)
+                            CreatedAt = new DateTime(2023, 11, 27, 12, 33, 30, 194, DateTimeKind.Utc).AddTicks(8730)
                         },
                         new
                         {
                             ItemId = 5,
                             OrderId = 2,
-                            CreatedAt = new DateTime(2023, 11, 27, 12, 45, 15, 674, DateTimeKind.Utc).AddTicks(9394)
+                            CreatedAt = new DateTime(2023, 11, 27, 12, 33, 30, 194, DateTimeKind.Utc).AddTicks(8731)
                         },
                         new
                         {
                             ItemId = 6,
                             OrderId = 2,
-                            CreatedAt = new DateTime(2023, 11, 27, 12, 45, 15, 674, DateTimeKind.Utc).AddTicks(9395)
+                            CreatedAt = new DateTime(2023, 11, 27, 12, 33, 30, 194, DateTimeKind.Utc).AddTicks(8731)
                         },
                         new
                         {
                             ItemId = 7,
                             OrderId = 3,
-                            CreatedAt = new DateTime(2023, 11, 27, 12, 45, 15, 674, DateTimeKind.Utc).AddTicks(9396)
+                            CreatedAt = new DateTime(2023, 11, 27, 12, 33, 30, 194, DateTimeKind.Utc).AddTicks(8732)
                         },
                         new
                         {
                             ItemId = 8,
                             OrderId = 3,
-                            CreatedAt = new DateTime(2023, 11, 27, 12, 45, 15, 674, DateTimeKind.Utc).AddTicks(9396)
+                            CreatedAt = new DateTime(2023, 11, 27, 12, 33, 30, 194, DateTimeKind.Utc).AddTicks(8733)
                         },
                         new
                         {
                             ItemId = 9,
                             OrderId = 3,
-                            CreatedAt = new DateTime(2023, 11, 27, 12, 45, 15, 674, DateTimeKind.Utc).AddTicks(9397)
+                            CreatedAt = new DateTime(2023, 11, 27, 12, 33, 30, 194, DateTimeKind.Utc).AddTicks(8734)
                         },
                         new
                         {
                             ItemId = 10,
                             OrderId = 4,
-                            CreatedAt = new DateTime(2023, 11, 27, 12, 45, 15, 674, DateTimeKind.Utc).AddTicks(9398)
+                            CreatedAt = new DateTime(2023, 11, 27, 12, 33, 30, 194, DateTimeKind.Utc).AddTicks(8735)
                         },
                         new
                         {
                             ItemId = 11,
                             OrderId = 4,
-                            CreatedAt = new DateTime(2023, 11, 27, 12, 45, 15, 674, DateTimeKind.Utc).AddTicks(9399)
+                            CreatedAt = new DateTime(2023, 11, 27, 12, 33, 30, 194, DateTimeKind.Utc).AddTicks(8735)
                         },
                         new
                         {
                             ItemId = 12,
                             OrderId = 4,
-                            CreatedAt = new DateTime(2023, 11, 27, 12, 45, 15, 674, DateTimeKind.Utc).AddTicks(9399)
+                            CreatedAt = new DateTime(2023, 11, 27, 12, 33, 30, 194, DateTimeKind.Utc).AddTicks(8736)
                         },
                         new
                         {
                             ItemId = 13,
                             OrderId = 5,
-                            CreatedAt = new DateTime(2023, 11, 27, 12, 45, 15, 674, DateTimeKind.Utc).AddTicks(9400)
+                            CreatedAt = new DateTime(2023, 11, 27, 12, 33, 30, 194, DateTimeKind.Utc).AddTicks(8737)
                         },
                         new
                         {
                             ItemId = 14,
                             OrderId = 5,
-                            CreatedAt = new DateTime(2023, 11, 27, 12, 45, 15, 674, DateTimeKind.Utc).AddTicks(9401)
+                            CreatedAt = new DateTime(2023, 11, 27, 12, 33, 30, 194, DateTimeKind.Utc).AddTicks(8738)
                         },
                         new
                         {
                             ItemId = 15,
                             OrderId = 5,
-                            CreatedAt = new DateTime(2023, 11, 27, 12, 45, 15, 674, DateTimeKind.Utc).AddTicks(9402)
+                            CreatedAt = new DateTime(2023, 11, 27, 12, 33, 30, 194, DateTimeKind.Utc).AddTicks(8738)
                         },
                         new
                         {
                             ItemId = 16,
                             OrderId = 6,
-                            CreatedAt = new DateTime(2023, 11, 27, 12, 45, 15, 674, DateTimeKind.Utc).AddTicks(9403)
+                            CreatedAt = new DateTime(2023, 11, 27, 12, 33, 30, 194, DateTimeKind.Utc).AddTicks(8739)
                         },
                         new
                         {
                             ItemId = 17,
                             OrderId = 6,
-                            CreatedAt = new DateTime(2023, 11, 27, 12, 45, 15, 674, DateTimeKind.Utc).AddTicks(9403)
+                            CreatedAt = new DateTime(2023, 11, 27, 12, 33, 30, 194, DateTimeKind.Utc).AddTicks(8740)
                         },
                         new
                         {
                             ItemId = 18,
                             OrderId = 6,
-                            CreatedAt = new DateTime(2023, 11, 27, 12, 45, 15, 674, DateTimeKind.Utc).AddTicks(9404)
+                            CreatedAt = new DateTime(2023, 11, 27, 12, 33, 30, 194, DateTimeKind.Utc).AddTicks(8741)
                         },
                         new
                         {
                             ItemId = 19,
                             OrderId = 7,
-                            CreatedAt = new DateTime(2023, 11, 27, 12, 45, 15, 674, DateTimeKind.Utc).AddTicks(9405)
+                            CreatedAt = new DateTime(2023, 11, 27, 12, 33, 30, 194, DateTimeKind.Utc).AddTicks(8742)
                         },
                         new
                         {
                             ItemId = 20,
                             OrderId = 7,
-                            CreatedAt = new DateTime(2023, 11, 27, 12, 45, 15, 674, DateTimeKind.Utc).AddTicks(9406)
+                            CreatedAt = new DateTime(2023, 11, 27, 12, 33, 30, 194, DateTimeKind.Utc).AddTicks(8742)
                         },
                         new
                         {
                             ItemId = 21,
                             OrderId = 7,
-                            CreatedAt = new DateTime(2023, 11, 27, 12, 45, 15, 674, DateTimeKind.Utc).AddTicks(9406)
+                            CreatedAt = new DateTime(2023, 11, 27, 12, 33, 30, 194, DateTimeKind.Utc).AddTicks(8743)
                         },
                         new
                         {
                             ItemId = 22,
                             OrderId = 8,
-                            CreatedAt = new DateTime(2023, 11, 27, 12, 45, 15, 674, DateTimeKind.Utc).AddTicks(9407)
+                            CreatedAt = new DateTime(2023, 11, 27, 12, 33, 30, 194, DateTimeKind.Utc).AddTicks(8744)
                         },
                         new
                         {
                             ItemId = 23,
                             OrderId = 8,
-                            CreatedAt = new DateTime(2023, 11, 27, 12, 45, 15, 674, DateTimeKind.Utc).AddTicks(9474)
+                            CreatedAt = new DateTime(2023, 11, 27, 12, 33, 30, 194, DateTimeKind.Utc).AddTicks(8745)
                         },
                         new
                         {
                             ItemId = 24,
                             OrderId = 8,
-                            CreatedAt = new DateTime(2023, 11, 27, 12, 45, 15, 674, DateTimeKind.Utc).AddTicks(9475)
+                            CreatedAt = new DateTime(2023, 11, 27, 12, 33, 30, 194, DateTimeKind.Utc).AddTicks(8745)
                         },
                         new
                         {
                             ItemId = 25,
                             OrderId = 9,
-                            CreatedAt = new DateTime(2023, 11, 27, 12, 45, 15, 674, DateTimeKind.Utc).AddTicks(9476)
+                            CreatedAt = new DateTime(2023, 11, 27, 12, 33, 30, 194, DateTimeKind.Utc).AddTicks(8746)
                         },
                         new
                         {
                             ItemId = 26,
                             OrderId = 9,
-                            CreatedAt = new DateTime(2023, 11, 27, 12, 45, 15, 674, DateTimeKind.Utc).AddTicks(9477)
+                            CreatedAt = new DateTime(2023, 11, 27, 12, 33, 30, 194, DateTimeKind.Utc).AddTicks(8747)
                         },
                         new
                         {
                             ItemId = 27,
                             OrderId = 9,
-                            CreatedAt = new DateTime(2023, 11, 27, 12, 45, 15, 674, DateTimeKind.Utc).AddTicks(9478)
+                            CreatedAt = new DateTime(2023, 11, 27, 12, 33, 30, 194, DateTimeKind.Utc).AddTicks(8748)
                         });
                 });
 
@@ -1121,6 +1150,76 @@ namespace Cartsy.Api.Migrations
                     b.HasIndex("ServicesId");
 
                     b.ToTable("OrdersServices", (string)null);
+                });
+
+            modelBuilder.Entity("Atividade.Api.Entities.OrderStatus", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("OrderStatuses");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 7,
+                            Status = "On Hold"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Status = "Backordered"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Status = "In Transit"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Status = "Out for Delivery"
+                        },
+                        new
+                        {
+                            Id = 1,
+                            Status = "Arrived at Destination"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Status = "Delayed"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Status = "Ready for Pickup"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Status = "Awaiting Payment"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Status = "Partially Shipped"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Status = "Refunded"
+                        });
                 });
 
             modelBuilder.Entity("Atividade.Api.Entities.Store", b =>
@@ -1215,49 +1314,49 @@ namespace Cartsy.Api.Migrations
                         {
                             ServicesId = 1,
                             StoreId = 1,
-                            CreatedAt = new DateTime(2023, 11, 27, 12, 45, 15, 674, DateTimeKind.Utc).AddTicks(9354)
+                            CreatedAt = new DateTime(2023, 11, 27, 12, 33, 30, 194, DateTimeKind.Utc).AddTicks(8686)
                         },
                         new
                         {
                             ServicesId = 2,
                             StoreId = 1,
-                            CreatedAt = new DateTime(2023, 11, 27, 12, 45, 15, 674, DateTimeKind.Utc).AddTicks(9356)
+                            CreatedAt = new DateTime(2023, 11, 27, 12, 33, 30, 194, DateTimeKind.Utc).AddTicks(8689)
                         },
                         new
                         {
                             ServicesId = 1,
                             StoreId = 2,
-                            CreatedAt = new DateTime(2023, 11, 27, 12, 45, 15, 674, DateTimeKind.Utc).AddTicks(9357)
+                            CreatedAt = new DateTime(2023, 11, 27, 12, 33, 30, 194, DateTimeKind.Utc).AddTicks(8690)
                         },
                         new
                         {
                             ServicesId = 2,
                             StoreId = 2,
-                            CreatedAt = new DateTime(2023, 11, 27, 12, 45, 15, 674, DateTimeKind.Utc).AddTicks(9358)
+                            CreatedAt = new DateTime(2023, 11, 27, 12, 33, 30, 194, DateTimeKind.Utc).AddTicks(8691)
                         },
                         new
                         {
                             ServicesId = 1,
                             StoreId = 3,
-                            CreatedAt = new DateTime(2023, 11, 27, 12, 45, 15, 674, DateTimeKind.Utc).AddTicks(9358)
+                            CreatedAt = new DateTime(2023, 11, 27, 12, 33, 30, 194, DateTimeKind.Utc).AddTicks(8692)
                         },
                         new
                         {
                             ServicesId = 2,
                             StoreId = 3,
-                            CreatedAt = new DateTime(2023, 11, 27, 12, 45, 15, 674, DateTimeKind.Utc).AddTicks(9359)
+                            CreatedAt = new DateTime(2023, 11, 27, 12, 33, 30, 194, DateTimeKind.Utc).AddTicks(8693)
                         },
                         new
                         {
                             ServicesId = 1,
                             StoreId = 4,
-                            CreatedAt = new DateTime(2023, 11, 27, 12, 45, 15, 674, DateTimeKind.Utc).AddTicks(9360)
+                            CreatedAt = new DateTime(2023, 11, 27, 12, 33, 30, 194, DateTimeKind.Utc).AddTicks(8694)
                         },
                         new
                         {
                             ServicesId = 2,
                             StoreId = 4,
-                            CreatedAt = new DateTime(2023, 11, 27, 12, 45, 15, 674, DateTimeKind.Utc).AddTicks(9361)
+                            CreatedAt = new DateTime(2023, 11, 27, 12, 33, 30, 194, DateTimeKind.Utc).AddTicks(8695)
                         });
                 });
 
@@ -1413,11 +1512,19 @@ namespace Cartsy.Api.Migrations
 
             modelBuilder.Entity("Atividade.Api.Entities.Order", b =>
                 {
+                    b.HasOne("Atividade.Api.Entities.OrderStatus", "Status")
+                        .WithMany("Orders")
+                        .HasForeignKey("StatusId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Atividade.Api.Entities.Store", "Store")
                         .WithMany("Orders")
                         .HasForeignKey("StoreId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Status");
 
                     b.Navigation("Store");
                 });
@@ -1490,6 +1597,11 @@ namespace Cartsy.Api.Migrations
             modelBuilder.Entity("Atividade.Api.Entities.ItemType", b =>
                 {
                     b.Navigation("Items");
+                });
+
+            modelBuilder.Entity("Atividade.Api.Entities.OrderStatus", b =>
+                {
+                    b.Navigation("Orders");
                 });
 
             modelBuilder.Entity("Atividade.Api.Entities.Store", b =>

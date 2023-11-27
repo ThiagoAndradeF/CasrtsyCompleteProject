@@ -21,16 +21,25 @@ public class OrderRepository : IOrderRepository
     {
         var orderFromDb = await _context.Orders
             .Include(o => o.Items)
-            .Include(o => o.Status)
-            .Include(o => o.Consumer)
-            .ThenInclude(c => c.Address)
-            .Where(o => o.StatusId == storeId)
+            .Include(o => o.Services)
+            .Where(o => o.StoreId == storeId)
             .OrderBy( o => o.Id)
             .ToListAsync();
         
         return _mapper.Map<List<OrderFullDto>>(orderFromDb);
     }
-    
+
+    public async Task<bool> CreateOrderWithItemsAndServicesAsync(OrderDto order)
+    {
+        var items = await _context.Items.Where(i => order.ItemIds.Contains(i.Id)).ToListAsync();
+        var services = await _context.AdditionalServices.Where(s => order.ServiceIds.Contains(s.Id)).ToListAsync();
+        var orderToAdd = _mapper.Map<Order>(order);
+        orderToAdd.Items = items;
+        orderToAdd.Services = services;
+        await _context.Orders.AddAsync(orderToAdd);
+        return await SaveChangesAsync();
+    }
+
     public async Task<bool> AddItemsToOrderById(int orderId, List<ItemDto> items)
     {
         var orderFromDb = await _context.Orders.FirstOrDefaultAsync(o => o.Id == orderId);

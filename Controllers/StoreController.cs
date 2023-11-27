@@ -27,15 +27,14 @@ public class StoreController : ControllerBase
         return Ok(store);
     }
 
-    [HttpPost("/login/{email}/{password}")]
+    [HttpGet("/login/{email}/{password}")]
     public async Task<ActionResult<bool>> LoginStore(string email, string password)
     {
         var result = await _repository.LoginStore(email, password);
 
-        if (result) return Ok(result);
+        if (result) return Ok(email);
         return BadRequest(result);
     }
-
 
     [HttpPost("/{storeId}/product")]
     public async Task<ActionResult<bool>> AddProductToStoreById(int storeId, [FromBody] ItemCreateDto item)
@@ -126,29 +125,4 @@ public class StoreController : ControllerBase
         if (response) return Ok(additionalService);
         return BadRequest(additionalService);
     }
-
-    //[HttpPost("UploadFile")]
-    //public IActionResult UploadFile(IFormFile formFile)
-    //{
-    //    try
-    //    {
-    //        var memStr = new MemoryStream();
-    //        formFile.CopyTo(memStr);
-    //        _repository.UploadFile(memStr.ToArray(), formFile.FileName);
-    //        Console.WriteLine("UploadFile" + formFile.FileName);
-    //        return Ok("O arquivo foi enviado");
-    //    }
-    //    catch(Exception ex)
-    //    {
-    //        return BadRequest("Ocorreu um erro: " + ex.Message);
-    //        Console.WriteLine(ex.Message)
-    //    }
-    //}
-
-    //[HttpGet("file/{filename}")]
-    //public async Task<IActionResult<byte[]>> UploadFile([FromRoute]string filename)
-    //{
-    //    var response = await _repository.GetFile(filename);
-    //    return Ok(response);
-    //}
 }

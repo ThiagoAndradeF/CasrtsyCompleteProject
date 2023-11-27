@@ -10,7 +10,6 @@ public class Address
     public string State { get; set; } = String.Empty;
     public string UF { get; set; } = String.Empty;
     public Customer? Customer { get; set; }
-    public Consumer? Consumer { get; set; }
     public Store? Store { get; set; }
 
 

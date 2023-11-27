@@ -8,5 +8,7 @@ public class AdditionalServices
     public string Type { get; set; } = default!;
 
     public List<Store> Stores {get; set;} = default!;
+    public List<Order> Orders {get; set;} = default!;
+
 
 }
