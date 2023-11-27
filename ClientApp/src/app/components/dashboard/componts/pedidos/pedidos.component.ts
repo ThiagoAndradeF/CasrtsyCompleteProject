@@ -19,14 +19,46 @@ export class PedidosComponent {
       this._orders = v;
     }
 
+
+    validadePedido:boolean = true;
     pedidoFinalizado: boolean  = false;
     selectedOrder: OrderDto = new OrderDto();
     displayDialog: boolean = false;
     editedOrder:OrderDto = new OrderDto();
     dialogNewOrder: boolean = false;
     displayAddDialog: boolean = false;
-    newOrder: OrderDto = new OrderDto();
     storeId:number = 0;
+
+    private _nomeClienteNovoPedido !: string;
+    public get nomeClienteNovoPedido() : string {
+      return this._nomeClienteNovoPedido;
+    }
+    public set nomeClienteNovoPedido(v : string) {
+      this._nomeClienteNovoPedido = v;
+      this.newOrder.consumerName;
+      this.validarPedido();
+
+    }
+
+
+    private _itensSelecionados : number[] = [];
+    public get itensSelecionados() : number[] {
+      return this._itensSelecionados;
+    }
+    public set itensSelecionados(v : number[]) {
+      this._itensSelecionados = v;
+      this.validarPedido();
+
+    }
+
+
+    private _newOrder : OrderDto= new OrderDto();
+    public get newOrder() : OrderDto {
+      return this._newOrder;
+    }
+    public set newOrder(v : OrderDto) {
+      this._newOrder = v;
+    }
 
     itensAvalible: ItemDto[] = [];
     private _selectedItens : ItemDto[] = [] ;
@@ -34,8 +66,12 @@ export class PedidosComponent {
       return this._selectedItens;
     }
     public set selectedItens(v : ItemDto[]) {
-      this.calculateProductValue( v, this.additionalServicesSelected)
       this._selectedItens = v;
+      this.calculateProductValue( v, this.additionalServicesSelected)
+      this.selectedItens.forEach(element => {
+          this.newOrder.itemIds.push(element.id)
+      });
+
     }
 
     additionalServicesAvalible: AdditionalServiceDto[] = [];
@@ -46,7 +82,6 @@ export class PedidosComponent {
     public set additionalServicesSelected(v : AdditionalServiceDto[]) {
       this.calculateProductValue(this.selectedItens, v)
       this._additionalServicesSelected = v;
-
     }
 
     constructor( private storeService:StoreService) {
@@ -119,9 +154,19 @@ export class PedidosComponent {
       });
     }
 
-
+    public validarPedido(){
+      if(this.itensSelecionados.length>0 && this.nomeClienteNovoPedido){
+        this.validadePedido = false;
+      }else{
+        this.validadePedido = true;
+      }
+    }
 
     public onDropdownChange(event: any) {
       console.log('Valores selecionados:', this.selectedOrder);
     }
+
+
+
+
 }

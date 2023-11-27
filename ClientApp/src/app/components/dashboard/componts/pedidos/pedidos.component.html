@@ -56,20 +56,20 @@
       <div class="form-text">
           <div>
               <label for="newName">Nome Comprador:</label>
-              <input class="textInput"  type="text" pInputText [(ngModel)]="newOrder.consumerName"/>
+              <input class="textInput"  type="text" pInputText [(ngModel)]="nomeClienteNovoPedido"/>
 
           </div>
           <div style="margin-top: 10px;">
             <label for="newName">Itens Selecionados:</label>
           </div>
           <div>
-            <p-multiSelect [options]="itensAvalible" [(ngModel)]="selectedItens" placeholder="Select Cities" optionLabel="name" display="chip" [showClear]="true" panelStyleClass="custom-multiselect-panel"></p-multiSelect>
+            <p-multiSelect [options]="itensAvalible" [(ngModel)]="selectedItens" placeholder="Selecione o item" optionLabel="name" display="chip" [showClear]="true" panelStyleClass="custom-multiselect-panel"></p-multiSelect>
           </div>
           <div >
             <label for="newName">Serviços Adicionais:</label>
           </div>
           <div>
-            <p-multiSelect [options]="additionalServicesAvalible" [(ngModel)]="additionalServicesSelected" placeholder="Select Cities" optionLabel="service" display="chip" [showClear]="true" panelStyleClass="custom-multiselect-panel"></p-multiSelect>
+            <p-multiSelect [options]="additionalServicesAvalible" [(ngModel)]="additionalServicesSelected" placeholder="Selecione os serviços adicionais" optionLabel="service" display="chip" [showClear]="true" panelStyleClass="custom-multiselect-panel"></p-multiSelect>
           </div>
           <div style="float: right;">
             <span style="margin-right: 10px;">
@@ -78,9 +78,8 @@
             <span style="font-size: 40px  ;color: salmon; ">
               R$ {{newOrder.price}}
             </span>
-
           </div>
-          <button type="button" pButton label="Adicionar Pedicido" (click)="addNewOrder()" style="margin-top: 10px;"></button>
+          <button type="button" pButton label="Adicionar Pedido" (click)="addNewOrder()" style="margin-top: 10px;" [disabled]="validadePedido" ></button>
       </div>
     </p-dialog>
 </div>

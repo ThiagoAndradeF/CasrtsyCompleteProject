@@ -7,5 +7,5 @@ export class ItemDto
     public description?: string = "Padrao";
     public stock?:number;
     public type?:TypeDto = new TypeDto();
-    public id?:number = 1;
+    public id:number = 1;
 }
