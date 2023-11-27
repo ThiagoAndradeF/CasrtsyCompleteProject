@@ -5,7 +5,7 @@ import { RouterModule } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
 import { DialogModule } from 'primeng/dialog';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FileUploadModule } from 'primeng/fileupload';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { MultiSelectModule } from 'primeng/multiselect';
@@ -23,7 +23,8 @@ import { KeyFilterModule } from 'primeng/keyfilter';
     FormsModule,
     FileUploadModule,
     MultiSelectModule,
-    KeyFilterModule
+    KeyFilterModule,
+    ReactiveFormsModule
   ],
   providers:[
     ConfirmationService,

@@ -15,8 +15,8 @@ import { AuthGuard } from './auth.guard'; // Ajuste o caminho conforme necessár
                 ]
             },
             { path: 'landing', loadChildren: () => import('./components/landing/landing.module').then(m => m.LandingModule) },
-            { path: 'login', canActivate: [AuthGuard], loadChildren: () => import('./components/login/login.module').then(m => m.LoginModule) },
-            { path: 'cadastro', canActivate: [AuthGuard], loadChildren: () => import('./components/cadastro/cadastro.module').then(m => m.CadastroModule) },
+            { path: 'login', loadChildren: () => import('./components/login/login.module').then(m => m.LoginModule) },
+            { path: 'cadastro', loadChildren: () => import('./components/cadastro/cadastro.module').then(m => m.CadastroModule) },
             { path: 'notfound', component: NotfoundComponent },
             { path: '**', redirectTo: '/notfound' },
         ], { scrollPositionRestoration: 'enabled', anchorScrolling: 'enabled', onSameUrlNavigation: 'reload' })

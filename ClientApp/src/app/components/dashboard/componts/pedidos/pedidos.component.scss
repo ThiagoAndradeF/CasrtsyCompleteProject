@@ -4,6 +4,64 @@
   margin-bottom: 20px;
 }
 .pedido-manualmente{
-display: inline-block;
-float: right;
+  display: inline-block;
+  float: right;
 }
+input[type="text"] {
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #757575; /* Cor da linha inferior */
+  border-radius: 0;
+  padding: 7px 0;
+  box-shadow: none;
+  width: 100%;
+}
+
+/* Remove a borda inferior quando o input está focado */
+input[type="text"]:focus {
+  border-bottom: 2px solid #F07D90; /* Cor da linha quando focado */
+  box-shadow: 0 1px 0 0 #F07D90; /* Sombra opcional para destacar o foco */
+  outline: none; /* Remove o contorno padrão */
+}
+input[type="number"] {
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #757575; /* Cor da linha inferior */
+  border-radius: 0;
+  padding: 7px 0;
+  box-shadow: none;
+  width: 60%;
+}
+
+/* Remove a borda inferior quando o input está focado */
+input[type="number"]:focus {
+  border-bottom: 2px solid #F07D90; /* Cor da linha quando focado */
+  box-shadow: 0 1px 0 0 #F07D90; /* Sombra opcional para destacar o foco */
+  outline: none; /* Remove o contorno padrão */
+}
+.form-text{
+  width: 50%;
+  font-size: 20px;
+}
+.textInput{
+  font-size: 20px;
+
+}
+:host{
+  ::ng-deep{
+    .p-multiselect{
+      width: 100%;
+      margin-bottom: 20px;
+      .custom-multiselect-panel {
+        width: auto; /* Adapte a largura conforme necessário */
+        max-width: 100%; /* Isso assegura que o painel não exceda o contêiner */
+      }
+    }
+  }
+  ::ng-deep{
+    .p-dialog .p-dialog-content {
+      overflow: visible;
+  }
+  }
+}
+

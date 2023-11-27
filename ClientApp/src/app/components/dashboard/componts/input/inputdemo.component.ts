@@ -1,5 +1,5 @@
 import { Component, OnInit, SimpleChanges } from '@angular/core';
-import { AdditionalServiceDto } from '../../../../models/AdditionalServiceDto';
+import { AdditionalServiceDto } from '../../models/AdditionalServiceDto';
 import { StoreService } from 'src/app/components/dashboard/shared/store.service';
 @Component({
     templateUrl: './inputdemo.component.html',
@@ -15,7 +15,7 @@ export class InputDemoComponent implements OnInit {
         this._services = v;
         console.warn('esses são os servicoes: ' +  v)
         // window.location.reload();
-    }
+    } 
 
     selectedService: AdditionalServiceDto = new AdditionalServiceDto();
     displayDialog: boolean = false;

@@ -14,7 +14,7 @@
   </div>
   <div class="pedido-manualmente">
     <div class="body-button">
-      <p-button label="Adicionar Pedido Manualmente"  icon="pi pi-check" ></p-button>
+      <p-button label="Adicionar Pedido Manualmente"  icon="pi pi-check"  (click)="showAddNewDialog()" ></p-button>
     </div>
   </div>
 
@@ -29,28 +29,58 @@
 
       <ng-template pTemplate="header">
           <tr>
-              <th style="width: 4rem"></th>
-              <th pSortableColumn="name">Pedido</th>
-              <th pSortableColumn="country.name">Valor</th>
-              <th pSortableColumn="representative.name">Horário</th>
-              <th pSortableColumn="representative.name">Cliente</th>
+              <th style="width: 6rem">Status</th>
+              <th>Produto</th>
+              <th>Horário</th>
+              <th >Valor Total</th>
+              <th >Cliente</th>
 
 
           </tr>
       </ng-template>
 
-      <ng-template pTemplate="body" let-customer>
+      <ng-template pTemplate="body" let-order>
           <tr>
               <td>
-                  <p-tableCheckbox [value]="customer"></p-tableCheckbox>
+                  <p-tableCheckbox [value]="pedidoFinalizado"></p-tableCheckbox>
               </td>
-              <td>{{ customer.name }}</td>
-              <td>{{ customer.country.name }}</td>
-              <td>{{ customer.company }}</td>
-              <td>{{ customer.representative.name }}</td>
+              <td>{{ order.items.name }}</td>
+              <td>{{ order.date}} </td>
+              <td>{{ order.price }}</td>
+              <td>{{ order.consumerName}}</td>
           </tr>
       </ng-template>
 
   </p-table>
+    <p-dialog header="Adicionar Novo Produto" [(visible)]="displayAddDialog" [responsive]="true" [style]="{width: '50vw'}" [maximizable]="true">
+      <div class="form-text">
+          <div>
+              <label for="newName">Nome Comprador:</label>
+              <input class="textInput"  type="text" pInputText [(ngModel)]="newOrder.consumerName"/>
 
+          </div>
+          <div style="margin-top: 10px;">
+            <label for="newName">Itens Selecionados:</label>
+          </div>
+          <div>
+            <p-multiSelect [options]="itensAvalible" [(ngModel)]="selectedItens" placeholder="Select Cities" optionLabel="name" display="chip" [showClear]="true" panelStyleClass="custom-multiselect-panel"></p-multiSelect>
+          </div>
+          <div >
+            <label for="newName">Serviços Adicionais:</label>
+          </div>
+          <div>
+            <p-multiSelect [options]="additionalServicesAvalible" [(ngModel)]="additionalServicesSelected" placeholder="Select Cities" optionLabel="service" display="chip" [showClear]="true" panelStyleClass="custom-multiselect-panel"></p-multiSelect>
+          </div>
+          <div style="float: right;">
+            <span style="margin-right: 10px;">
+              Total:
+            </span>
+            <span style="font-size: 40px  ;color: salmon; ">
+              R$ {{newOrder.price}}
+            </span>
+
+          </div>
+          <button type="button" pButton label="Adicionar Pedicido" (click)="addNewOrder()" style="margin-top: 10px;"></button>
+      </div>
+    </p-dialog>
 </div>
