@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { StoreWithItemsDto } from '../models/storeWithItemsDto';
 import { ItemDto } from '../models/ItemDto';
 import { AdditionalServiceDto } from '../models/AdditionalServiceDto';
+import { OrderDto } from '../models/OrderDto';
 
 @Injectable({
   providedIn: 'root'
@@ -18,10 +19,8 @@ export class StoreService {
     if( localStorage.getItem('idLoja')){
       this.getIdLoja();
     }
-
-
   }
-  
+
   public getIdLoja(){
     let idLoja =  localStorage.getItem('idLoja');
     if(idLoja){
@@ -48,6 +47,10 @@ export class StoreService {
   public getStoreWithServices(storeId: number = this.storeId) : Observable<any>{
     return this.httpClient.get(`${this.baseUrl}/WithServices/${storeId}`);
   }
+  public getAllOrders(storeId: number = this.storeId) : Observable<any>{
+    return this.httpClient.get(`${this.baseUrlIten}/api/orders/${storeId}`);
+  }
+
 
   //POST
   public addItemsToStoreById(storeId : number, product:ItemDto ): Observable<any> {
@@ -55,6 +58,11 @@ export class StoreService {
   }
   public addServicesToStoreById(service:AdditionalServiceDto, storeId : number =this.storeId ): Observable<any> {
     return this.httpClient.post(`${this.baseUrlIten}/${storeId}/service`, service);
+  }
+  public addOrderToStory(order:OrderDto ): Observable<any> {
+    order.storeId = this.storeId ;
+    debugger
+    return this.httpClient.post(`${this.baseUrlIten}/api/orders`, order);
   }
 
   //PUT

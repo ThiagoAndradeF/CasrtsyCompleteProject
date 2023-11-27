@@ -32,7 +32,7 @@ public class StoreController : ControllerBase
     {
         var result = await _repository.LoginStore(email, password);
 
-        if (result) return Ok(email);
+        if (result) return Ok(result);
         return BadRequest(result);
     }
 

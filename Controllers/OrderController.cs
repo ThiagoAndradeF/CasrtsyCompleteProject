@@ -26,6 +26,7 @@ public class OrderController : ControllerBase
     [HttpGet("{storeId}")]
     public async Task<ActionResult<IEnumerable<OrderDto>>> GetAllOrders(int storeId)
     {
-        return Ok(await _orderRepository.GetAllOrdersByStoreId(storeId));
+        var value = await _orderRepository.GetAllOrdersByStoreId(storeId);
+        return Ok(value);
     }
 }

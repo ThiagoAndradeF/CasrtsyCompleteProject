@@ -9,11 +9,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace Cartsy.Api.Migrations
+namespace Atividade.Api.Migrations
 {
     [DbContext(typeof(CartsyContext))]
-    [Migration("20231124115209_initial")]
-    partial class initial
+    [Migration("20231127053348_abc")]
+    partial class abc
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -365,91 +365,6 @@ namespace Cartsy.Api.Migrations
                             State = "Colorado",
                             Street = "Broadway St",
                             UF = "CO"
-                        });
-                });
-
-            modelBuilder.Entity("Atividade.Api.Entities.Consumer", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("AddressId")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("CPF")
-                        .IsRequired()
-                        .HasMaxLength(11)
-                        .HasColumnType("character(11)")
-                        .IsFixedLength();
-
-                    b.Property<string>("CellPhone")
-                        .IsRequired()
-                        .HasMaxLength(13)
-                        .HasColumnType("character(13)")
-                        .IsFixedLength();
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("character varying(100)");
-
-                    b.Property<string>("HomePhone")
-                        .IsRequired()
-                        .HasMaxLength(13)
-                        .HasColumnType("character(13)")
-                        .IsFixedLength();
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("character varying(100)");
-
-                    b.Property<bool>("Status")
-                        .HasColumnType("boolean");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AddressId")
-                        .IsUnique();
-
-                    b.ToTable("Consumers");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            AddressId = 1,
-                            CPF = "73473943096",
-                            CellPhone = "123-456-7890",
-                            Email = "linus@example.com",
-                            HomePhone = "987-654-3210",
-                            Name = "Linus Torvalds",
-                            Status = true
-                        },
-                        new
-                        {
-                            Id = 2,
-                            AddressId = 2,
-                            CPF = "73473943096",
-                            CellPhone = "123-456-7890",
-                            Email = "rafa@pava.com",
-                            HomePhone = "987-654-3210",
-                            Name = "rafa pava",
-                            Status = true
-                        },
-                        new
-                        {
-                            Id = 3,
-                            AddressId = 3,
-                            CPF = "73473943096",
-                            CellPhone = "123-456-7890",
-                            Email = "ti@ago.com",
-                            HomePhone = "987-654-3210",
-                            Name = "ti ago",
-                            Status = true
                         });
                 });
 
@@ -927,28 +842,21 @@ namespace Cartsy.Api.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("ConsumerId")
-                        .HasColumnType("integer");
+                    b.Property<string>("ConsumerName")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<DateTime>("DateCreated")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<DateTime>("DateDelivered")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<double>("Price")
                         .HasPrecision(2, 10)
                         .HasColumnType("double precision");
 
-                    b.Property<int>("StatusId")
-                        .HasColumnType("integer");
-
                     b.Property<int>("StoreId")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ConsumerId");
 
                     b.HasIndex("StoreId");
 
@@ -958,91 +866,73 @@ namespace Cartsy.Api.Migrations
                         new
                         {
                             Id = 1,
-                            ConsumerId = 1,
-                            DateCreated = new DateTime(2023, 11, 24, 11, 52, 8, 992, DateTimeKind.Utc).AddTicks(2523),
-                            DateDelivered = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ConsumerName = "",
+                            DateCreated = new DateTime(2023, 11, 27, 5, 33, 48, 632, DateTimeKind.Utc).AddTicks(3048),
                             Price = 49.990000000000002,
-                            StatusId = 1,
                             StoreId = 1
                         },
                         new
                         {
                             Id = 2,
-                            ConsumerId = 1,
-                            DateCreated = new DateTime(2023, 11, 24, 11, 52, 8, 992, DateTimeKind.Utc).AddTicks(2525),
-                            DateDelivered = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ConsumerName = "",
+                            DateCreated = new DateTime(2023, 11, 27, 5, 33, 48, 632, DateTimeKind.Utc).AddTicks(3050),
                             Price = 29.989999999999998,
-                            StatusId = 2,
                             StoreId = 1
                         },
                         new
                         {
                             Id = 3,
-                            ConsumerId = 1,
-                            DateCreated = new DateTime(2023, 11, 24, 11, 52, 8, 992, DateTimeKind.Utc).AddTicks(2526),
-                            DateDelivered = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ConsumerName = "",
+                            DateCreated = new DateTime(2023, 11, 27, 5, 33, 48, 632, DateTimeKind.Utc).AddTicks(3051),
                             Price = 19.989999999999998,
-                            StatusId = 3,
                             StoreId = 2
                         },
                         new
                         {
                             Id = 4,
-                            ConsumerId = 2,
-                            DateCreated = new DateTime(2023, 11, 24, 11, 52, 8, 992, DateTimeKind.Utc).AddTicks(2527),
-                            DateDelivered = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ConsumerName = "",
+                            DateCreated = new DateTime(2023, 11, 27, 5, 33, 48, 632, DateTimeKind.Utc).AddTicks(3052),
                             Price = 39.990000000000002,
-                            StatusId = 1,
                             StoreId = 2
                         },
                         new
                         {
                             Id = 5,
-                            ConsumerId = 2,
-                            DateCreated = new DateTime(2023, 11, 24, 11, 52, 8, 992, DateTimeKind.Utc).AddTicks(2528),
-                            DateDelivered = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ConsumerName = "",
+                            DateCreated = new DateTime(2023, 11, 27, 5, 33, 48, 632, DateTimeKind.Utc).AddTicks(3052),
                             Price = 19.989999999999998,
-                            StatusId = 2,
                             StoreId = 3
                         },
                         new
                         {
                             Id = 6,
-                            ConsumerId = 2,
-                            DateCreated = new DateTime(2023, 11, 24, 11, 52, 8, 992, DateTimeKind.Utc).AddTicks(2529),
-                            DateDelivered = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ConsumerName = "",
+                            DateCreated = new DateTime(2023, 11, 27, 5, 33, 48, 632, DateTimeKind.Utc).AddTicks(3053),
                             Price = 59.990000000000002,
-                            StatusId = 3,
                             StoreId = 4
                         },
                         new
                         {
                             Id = 7,
-                            ConsumerId = 3,
-                            DateCreated = new DateTime(2023, 11, 24, 11, 52, 8, 992, DateTimeKind.Utc).AddTicks(2530),
-                            DateDelivered = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ConsumerName = "",
+                            DateCreated = new DateTime(2023, 11, 27, 5, 33, 48, 632, DateTimeKind.Utc).AddTicks(3054),
                             Price = 29.989999999999998,
-                            StatusId = 1,
                             StoreId = 3
                         },
                         new
                         {
                             Id = 8,
-                            ConsumerId = 3,
-                            DateCreated = new DateTime(2023, 11, 24, 11, 52, 8, 992, DateTimeKind.Utc).AddTicks(2532),
-                            DateDelivered = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ConsumerName = "",
+                            DateCreated = new DateTime(2023, 11, 27, 5, 33, 48, 632, DateTimeKind.Utc).AddTicks(3055),
                             Price = 49.990000000000002,
-                            StatusId = 2,
                             StoreId = 4
                         },
                         new
                         {
                             Id = 9,
-                            ConsumerId = 3,
-                            DateCreated = new DateTime(2023, 11, 24, 11, 52, 8, 992, DateTimeKind.Utc).AddTicks(2533),
-                            DateDelivered = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ConsumerName = "",
+                            DateCreated = new DateTime(2023, 11, 27, 5, 33, 48, 632, DateTimeKind.Utc).AddTicks(3056),
                             Price = 69.989999999999995,
-                            StatusId = 3,
                             StoreId = 1
                         });
                 });
@@ -1071,216 +961,169 @@ namespace Cartsy.Api.Migrations
                         {
                             ItemId = 4,
                             OrderId = 2,
-                            CreatedAt = new DateTime(2023, 11, 24, 11, 52, 8, 992, DateTimeKind.Utc).AddTicks(2545)
+                            CreatedAt = new DateTime(2023, 11, 27, 5, 33, 48, 632, DateTimeKind.Utc).AddTicks(3100)
                         },
                         new
                         {
                             ItemId = 5,
                             OrderId = 2,
-                            CreatedAt = new DateTime(2023, 11, 24, 11, 52, 8, 992, DateTimeKind.Utc).AddTicks(2546)
+                            CreatedAt = new DateTime(2023, 11, 27, 5, 33, 48, 632, DateTimeKind.Utc).AddTicks(3101)
                         },
                         new
                         {
                             ItemId = 6,
                             OrderId = 2,
-                            CreatedAt = new DateTime(2023, 11, 24, 11, 52, 8, 992, DateTimeKind.Utc).AddTicks(2547)
+                            CreatedAt = new DateTime(2023, 11, 27, 5, 33, 48, 632, DateTimeKind.Utc).AddTicks(3102)
                         },
                         new
                         {
                             ItemId = 7,
                             OrderId = 3,
-                            CreatedAt = new DateTime(2023, 11, 24, 11, 52, 8, 992, DateTimeKind.Utc).AddTicks(2548)
+                            CreatedAt = new DateTime(2023, 11, 27, 5, 33, 48, 632, DateTimeKind.Utc).AddTicks(3103)
                         },
                         new
                         {
                             ItemId = 8,
                             OrderId = 3,
-                            CreatedAt = new DateTime(2023, 11, 24, 11, 52, 8, 992, DateTimeKind.Utc).AddTicks(2549)
+                            CreatedAt = new DateTime(2023, 11, 27, 5, 33, 48, 632, DateTimeKind.Utc).AddTicks(3104)
                         },
                         new
                         {
                             ItemId = 9,
                             OrderId = 3,
-                            CreatedAt = new DateTime(2023, 11, 24, 11, 52, 8, 992, DateTimeKind.Utc).AddTicks(2550)
+                            CreatedAt = new DateTime(2023, 11, 27, 5, 33, 48, 632, DateTimeKind.Utc).AddTicks(3104)
                         },
                         new
                         {
                             ItemId = 10,
                             OrderId = 4,
-                            CreatedAt = new DateTime(2023, 11, 24, 11, 52, 8, 992, DateTimeKind.Utc).AddTicks(2550)
+                            CreatedAt = new DateTime(2023, 11, 27, 5, 33, 48, 632, DateTimeKind.Utc).AddTicks(3105)
                         },
                         new
                         {
                             ItemId = 11,
                             OrderId = 4,
-                            CreatedAt = new DateTime(2023, 11, 24, 11, 52, 8, 992, DateTimeKind.Utc).AddTicks(2551)
+                            CreatedAt = new DateTime(2023, 11, 27, 5, 33, 48, 632, DateTimeKind.Utc).AddTicks(3106)
                         },
                         new
                         {
                             ItemId = 12,
                             OrderId = 4,
-                            CreatedAt = new DateTime(2023, 11, 24, 11, 52, 8, 992, DateTimeKind.Utc).AddTicks(2552)
+                            CreatedAt = new DateTime(2023, 11, 27, 5, 33, 48, 632, DateTimeKind.Utc).AddTicks(3107)
                         },
                         new
                         {
                             ItemId = 13,
                             OrderId = 5,
-                            CreatedAt = new DateTime(2023, 11, 24, 11, 52, 8, 992, DateTimeKind.Utc).AddTicks(2553)
+                            CreatedAt = new DateTime(2023, 11, 27, 5, 33, 48, 632, DateTimeKind.Utc).AddTicks(3107)
                         },
                         new
                         {
                             ItemId = 14,
                             OrderId = 5,
-                            CreatedAt = new DateTime(2023, 11, 24, 11, 52, 8, 992, DateTimeKind.Utc).AddTicks(2554)
+                            CreatedAt = new DateTime(2023, 11, 27, 5, 33, 48, 632, DateTimeKind.Utc).AddTicks(3108)
                         },
                         new
                         {
                             ItemId = 15,
                             OrderId = 5,
-                            CreatedAt = new DateTime(2023, 11, 24, 11, 52, 8, 992, DateTimeKind.Utc).AddTicks(2554)
+                            CreatedAt = new DateTime(2023, 11, 27, 5, 33, 48, 632, DateTimeKind.Utc).AddTicks(3109)
                         },
                         new
                         {
                             ItemId = 16,
                             OrderId = 6,
-                            CreatedAt = new DateTime(2023, 11, 24, 11, 52, 8, 992, DateTimeKind.Utc).AddTicks(2555)
+                            CreatedAt = new DateTime(2023, 11, 27, 5, 33, 48, 632, DateTimeKind.Utc).AddTicks(3110)
                         },
                         new
                         {
                             ItemId = 17,
                             OrderId = 6,
-                            CreatedAt = new DateTime(2023, 11, 24, 11, 52, 8, 992, DateTimeKind.Utc).AddTicks(2556)
+                            CreatedAt = new DateTime(2023, 11, 27, 5, 33, 48, 632, DateTimeKind.Utc).AddTicks(3110)
                         },
                         new
                         {
                             ItemId = 18,
                             OrderId = 6,
-                            CreatedAt = new DateTime(2023, 11, 24, 11, 52, 8, 992, DateTimeKind.Utc).AddTicks(2557)
+                            CreatedAt = new DateTime(2023, 11, 27, 5, 33, 48, 632, DateTimeKind.Utc).AddTicks(3111)
                         },
                         new
                         {
                             ItemId = 19,
                             OrderId = 7,
-                            CreatedAt = new DateTime(2023, 11, 24, 11, 52, 8, 992, DateTimeKind.Utc).AddTicks(2558)
+                            CreatedAt = new DateTime(2023, 11, 27, 5, 33, 48, 632, DateTimeKind.Utc).AddTicks(3112)
                         },
                         new
                         {
                             ItemId = 20,
                             OrderId = 7,
-                            CreatedAt = new DateTime(2023, 11, 24, 11, 52, 8, 992, DateTimeKind.Utc).AddTicks(2558)
+                            CreatedAt = new DateTime(2023, 11, 27, 5, 33, 48, 632, DateTimeKind.Utc).AddTicks(3113)
                         },
                         new
                         {
                             ItemId = 21,
                             OrderId = 7,
-                            CreatedAt = new DateTime(2023, 11, 24, 11, 52, 8, 992, DateTimeKind.Utc).AddTicks(2559)
+                            CreatedAt = new DateTime(2023, 11, 27, 5, 33, 48, 632, DateTimeKind.Utc).AddTicks(3113)
                         },
                         new
                         {
                             ItemId = 22,
                             OrderId = 8,
-                            CreatedAt = new DateTime(2023, 11, 24, 11, 52, 8, 992, DateTimeKind.Utc).AddTicks(2560)
+                            CreatedAt = new DateTime(2023, 11, 27, 5, 33, 48, 632, DateTimeKind.Utc).AddTicks(3114)
                         },
                         new
                         {
                             ItemId = 23,
                             OrderId = 8,
-                            CreatedAt = new DateTime(2023, 11, 24, 11, 52, 8, 992, DateTimeKind.Utc).AddTicks(2561)
+                            CreatedAt = new DateTime(2023, 11, 27, 5, 33, 48, 632, DateTimeKind.Utc).AddTicks(3115)
                         },
                         new
                         {
                             ItemId = 24,
                             OrderId = 8,
-                            CreatedAt = new DateTime(2023, 11, 24, 11, 52, 8, 992, DateTimeKind.Utc).AddTicks(2562)
+                            CreatedAt = new DateTime(2023, 11, 27, 5, 33, 48, 632, DateTimeKind.Utc).AddTicks(3115)
                         },
                         new
                         {
                             ItemId = 25,
                             OrderId = 9,
-                            CreatedAt = new DateTime(2023, 11, 24, 11, 52, 8, 992, DateTimeKind.Utc).AddTicks(2563)
+                            CreatedAt = new DateTime(2023, 11, 27, 5, 33, 48, 632, DateTimeKind.Utc).AddTicks(3116)
                         },
                         new
                         {
                             ItemId = 26,
                             OrderId = 9,
-                            CreatedAt = new DateTime(2023, 11, 24, 11, 52, 8, 992, DateTimeKind.Utc).AddTicks(2563)
+                            CreatedAt = new DateTime(2023, 11, 27, 5, 33, 48, 632, DateTimeKind.Utc).AddTicks(3117)
                         },
                         new
                         {
                             ItemId = 27,
                             OrderId = 9,
-                            CreatedAt = new DateTime(2023, 11, 24, 11, 52, 8, 992, DateTimeKind.Utc).AddTicks(2564)
+                            CreatedAt = new DateTime(2023, 11, 27, 5, 33, 48, 632, DateTimeKind.Utc).AddTicks(3118)
                         });
                 });
 
-            modelBuilder.Entity("Atividade.Api.Entities.OrderStatus", b =>
+            modelBuilder.Entity("Atividade.Api.Entities.OrderService", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
+                    b.Property<int>("OrderId")
                         .HasColumnType("integer");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    b.Property<int>("ServicesId")
+                        .HasColumnType("integer");
 
-                    b.Property<string>("Status")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("character varying(50)");
+                    b.Property<DateTime>("CreatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamp with time zone")
+                        .HasDefaultValueSql("NOW()");
 
-                    b.HasKey("Id");
+                    b.Property<int>("ServiceId")
+                        .HasColumnType("integer");
 
-                    b.ToTable("OrderStatuses");
+                    b.HasKey("OrderId", "ServicesId");
 
-                    b.HasData(
-                        new
-                        {
-                            Id = 7,
-                            Status = "On Hold"
-                        },
-                        new
-                        {
-                            Id = 8,
-                            Status = "Backordered"
-                        },
-                        new
-                        {
-                            Id = 9,
-                            Status = "In Transit"
-                        },
-                        new
-                        {
-                            Id = 10,
-                            Status = "Out for Delivery"
-                        },
-                        new
-                        {
-                            Id = 1,
-                            Status = "Arrived at Destination"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Status = "Delayed"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Status = "Ready for Pickup"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Status = "Awaiting Payment"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Status = "Partially Shipped"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Status = "Refunded"
-                        });
+                    b.HasIndex("ServicesId");
+
+                    b.ToTable("OrdersServices", (string)null);
                 });
 
             modelBuilder.Entity("Atividade.Api.Entities.Store", b =>
@@ -1304,6 +1147,11 @@ namespace Cartsy.Api.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("character varying(100)");
 
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("AddressId")
@@ -1317,28 +1165,32 @@ namespace Cartsy.Api.Migrations
                             Id = 1,
                             AddressId = 4,
                             Email = "",
-                            Name = "Store 1"
+                            Name = "Store 1",
+                            Password = ""
                         },
                         new
                         {
                             Id = 2,
                             AddressId = 5,
                             Email = "",
-                            Name = "Store 2"
+                            Name = "Store 2",
+                            Password = ""
                         },
                         new
                         {
                             Id = 3,
                             AddressId = 6,
                             Email = "",
-                            Name = "Store 3"
+                            Name = "Store 3",
+                            Password = ""
                         },
                         new
                         {
                             Id = 4,
                             AddressId = 7,
                             Email = "",
-                            Name = "Store 4"
+                            Name = "Store 4",
+                            Password = ""
                         });
                 });
 
@@ -1366,49 +1218,49 @@ namespace Cartsy.Api.Migrations
                         {
                             ServicesId = 1,
                             StoreId = 1,
-                            CreatedAt = new DateTime(2023, 11, 24, 11, 52, 8, 992, DateTimeKind.Utc).AddTicks(2468)
+                            CreatedAt = new DateTime(2023, 11, 27, 5, 33, 48, 632, DateTimeKind.Utc).AddTicks(3030)
                         },
                         new
                         {
                             ServicesId = 2,
                             StoreId = 1,
-                            CreatedAt = new DateTime(2023, 11, 24, 11, 52, 8, 992, DateTimeKind.Utc).AddTicks(2470)
+                            CreatedAt = new DateTime(2023, 11, 27, 5, 33, 48, 632, DateTimeKind.Utc).AddTicks(3032)
                         },
                         new
                         {
                             ServicesId = 1,
                             StoreId = 2,
-                            CreatedAt = new DateTime(2023, 11, 24, 11, 52, 8, 992, DateTimeKind.Utc).AddTicks(2471)
+                            CreatedAt = new DateTime(2023, 11, 27, 5, 33, 48, 632, DateTimeKind.Utc).AddTicks(3033)
                         },
                         new
                         {
                             ServicesId = 2,
                             StoreId = 2,
-                            CreatedAt = new DateTime(2023, 11, 24, 11, 52, 8, 992, DateTimeKind.Utc).AddTicks(2505)
+                            CreatedAt = new DateTime(2023, 11, 27, 5, 33, 48, 632, DateTimeKind.Utc).AddTicks(3033)
                         },
                         new
                         {
                             ServicesId = 1,
                             StoreId = 3,
-                            CreatedAt = new DateTime(2023, 11, 24, 11, 52, 8, 992, DateTimeKind.Utc).AddTicks(2506)
+                            CreatedAt = new DateTime(2023, 11, 27, 5, 33, 48, 632, DateTimeKind.Utc).AddTicks(3034)
                         },
                         new
                         {
                             ServicesId = 2,
                             StoreId = 3,
-                            CreatedAt = new DateTime(2023, 11, 24, 11, 52, 8, 992, DateTimeKind.Utc).AddTicks(2507)
+                            CreatedAt = new DateTime(2023, 11, 27, 5, 33, 48, 632, DateTimeKind.Utc).AddTicks(3035)
                         },
                         new
                         {
                             ServicesId = 1,
                             StoreId = 4,
-                            CreatedAt = new DateTime(2023, 11, 24, 11, 52, 8, 992, DateTimeKind.Utc).AddTicks(2508)
+                            CreatedAt = new DateTime(2023, 11, 27, 5, 33, 48, 632, DateTimeKind.Utc).AddTicks(3037)
                         },
                         new
                         {
                             ServicesId = 2,
                             StoreId = 4,
-                            CreatedAt = new DateTime(2023, 11, 24, 11, 52, 8, 992, DateTimeKind.Utc).AddTicks(2509)
+                            CreatedAt = new DateTime(2023, 11, 27, 5, 33, 48, 632, DateTimeKind.Utc).AddTicks(3037)
                         });
                 });
 
@@ -1534,17 +1386,6 @@ namespace Cartsy.Api.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Atividade.Api.Entities.Consumer", b =>
-                {
-                    b.HasOne("Atividade.Api.Entities.Address", "Address")
-                        .WithOne("Consumer")
-                        .HasForeignKey("Atividade.Api.Entities.Consumer", "AddressId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Address");
-                });
-
             modelBuilder.Entity("Atividade.Api.Entities.Customer", b =>
                 {
                     b.HasOne("Atividade.Api.Entities.Address", "Address")
@@ -1575,27 +1416,11 @@ namespace Cartsy.Api.Migrations
 
             modelBuilder.Entity("Atividade.Api.Entities.Order", b =>
                 {
-                    b.HasOne("Atividade.Api.Entities.Consumer", "Consumer")
-                        .WithMany("Orders")
-                        .HasForeignKey("ConsumerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Atividade.Api.Entities.OrderStatus", "Status")
-                        .WithMany("Orders")
-                        .HasForeignKey("ConsumerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("Atividade.Api.Entities.Store", "Store")
                         .WithMany("Orders")
                         .HasForeignKey("StoreId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Consumer");
-
-                    b.Navigation("Status");
 
                     b.Navigation("Store");
                 });
@@ -1617,6 +1442,21 @@ namespace Cartsy.Api.Migrations
                     b.Navigation("Item");
 
                     b.Navigation("Order");
+                });
+
+            modelBuilder.Entity("Atividade.Api.Entities.OrderService", b =>
+                {
+                    b.HasOne("Atividade.Api.Entities.Order", null)
+                        .WithMany()
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Atividade.Api.Entities.AdditionalServices", null)
+                        .WithMany()
+                        .HasForeignKey("ServicesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Atividade.Api.Entities.Store", b =>
@@ -1645,26 +1485,14 @@ namespace Cartsy.Api.Migrations
 
             modelBuilder.Entity("Atividade.Api.Entities.Address", b =>
                 {
-                    b.Navigation("Consumer");
-
                     b.Navigation("Customer");
 
                     b.Navigation("Store");
                 });
 
-            modelBuilder.Entity("Atividade.Api.Entities.Consumer", b =>
-                {
-                    b.Navigation("Orders");
-                });
-
             modelBuilder.Entity("Atividade.Api.Entities.ItemType", b =>
                 {
                     b.Navigation("Items");
-                });
-
-            modelBuilder.Entity("Atividade.Api.Entities.OrderStatus", b =>
-                {
-                    b.Navigation("Orders");
                 });
 
             modelBuilder.Entity("Atividade.Api.Entities.Store", b =>

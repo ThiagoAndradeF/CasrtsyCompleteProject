@@ -40,9 +40,6 @@ export class LoginFirstComponent {
    }
 
 
-
-
-
   public redirectCadastro(){
     this.redirectTo('cadastro')
   }

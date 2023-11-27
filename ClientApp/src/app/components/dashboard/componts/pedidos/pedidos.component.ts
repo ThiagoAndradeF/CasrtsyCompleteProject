@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { StoreService } from '../../shared/store.service';
 import { ItemDto } from '../../models/ItemDto';
 import { AdditionalServiceDto } from '../../models/AdditionalServiceDto';
+import { OrderFullDto } from '../../models/OrderFullDto';
 
 @Component({
   selector: 'app-pedidos',
@@ -11,16 +12,19 @@ import { AdditionalServiceDto } from '../../models/AdditionalServiceDto';
 })
 export class PedidosComponent {
 
-    private _orders : OrderDto[] = [];
-    public get orders() : OrderDto[]  {
+    private _orders : OrderFullDto[] = [];
+    public get orders() : OrderFullDto[]  {
       return this._orders;
     }
-    public set orders(v : OrderDto[] ) {
+    public set orders(v : OrderFullDto[] ) {
       this._orders = v;
+      v.forEach(element => {
+        console.warn('Pedidos: ' + element)
+      });
     }
 
 
-    validadePedido:boolean = true;
+    validadePedido:boolean = false;
     pedidoFinalizado: boolean  = false;
     selectedOrder: OrderDto = new OrderDto();
     displayDialog: boolean = false;
@@ -35,9 +39,7 @@ export class PedidosComponent {
     }
     public set nomeClienteNovoPedido(v : string) {
       this._nomeClienteNovoPedido = v;
-      this.newOrder.consumerName;
-      this.validarPedido();
-
+      this.newOrder.consumerName = v;
     }
 
 
@@ -47,10 +49,8 @@ export class PedidosComponent {
     }
     public set itensSelecionados(v : number[]) {
       this._itensSelecionados = v;
-      this.validarPedido();
 
     }
-
 
     private _newOrder : OrderDto= new OrderDto();
     public get newOrder() : OrderDto {
@@ -61,37 +61,43 @@ export class PedidosComponent {
     }
 
     itensAvalible: ItemDto[] = [];
-    private _selectedItens : ItemDto[] = [] ;
-    public get selectedItens() : ItemDto[]  {
-      return this._selectedItens;
-    }
-    public set selectedItens(v : ItemDto[]) {
-      this._selectedItens = v;
-      this.calculateProductValue( v, this.additionalServicesSelected)
-      this.selectedItens.forEach(element => {
-          this.newOrder.itemIds.push(element.id)
-      });
-
-    }
 
     additionalServicesAvalible: AdditionalServiceDto[] = [];
-    private _additionalServicesSelected : AdditionalServiceDto[] = [];
-    public get additionalServicesSelected() : AdditionalServiceDto[] {
-      return this._additionalServicesSelected;
-    }
-    public set additionalServicesSelected(v : AdditionalServiceDto[]) {
-      this.calculateProductValue(this.selectedItens, v)
-      this._additionalServicesSelected = v;
-    }
 
     constructor( private storeService:StoreService) {
     }
 
     ngOnInit() {
-      this.listarServicos();
       this.listarProdutos();
+      setTimeout(() => {
+        this.listarServicos();
+        this.listarOrders();
+      }, 1000);
     }
 
+    public atribuiValorNewOrder(){
+
+    }
+    public addNewOrder() {
+      this.storeService.addOrderToStory(this.newOrder).subscribe(data => {
+        if(data){
+          console.log('Order adicionad!')
+        }
+      });
+      setTimeout(() => {
+        this.listarProdutos();
+      }, 1000);
+      this.displayAddDialog = false;
+    }
+
+    public listarOrders(){
+      this.storeService.getAllOrders().subscribe(data => {
+        if(data){
+          debugger
+          this.orders = data;
+        }
+      });
+    }
     public listarServicos(){
       this.storeService.getStoreWithServices().subscribe(data => {
         console.warn(data)
@@ -107,8 +113,6 @@ export class PedidosComponent {
     public showAddNewDialog() {
       this.newOrder = new OrderDto();
       this.displayAddDialog = true;
-      this.additionalServicesSelected = [];
-      this.selectedItens = [];
     }
 
     public calculateProductValue(itens: ItemDto[], services: AdditionalServiceDto[]){
@@ -125,22 +129,8 @@ export class PedidosComponent {
       });
     }
 
-    public addNewOrder() {
-      // this.storeService.addServicesToStoreById(this.newOrder).subscribe(data => {
-      //   if(data){
-      //     console.log('Serviço adicionado!')
-      //   }
-      // });;
-      this.orders.push(this.newOrder); // Adicionar o novo produto à lista
-      this.displayAddDialog = false; // Fechar o dialog após adicionar
-    }
+
     public deleteOrder(order: OrderDto) {
-      // if(OrderDto.id){
-      //   this.storeService.removeServiceById(OrderDto.id).subscribe();
-      //   setTimeout(() => {
-      //     this.listarServicos();
-      //   }, 1000);
-      // }
     }
     public listarProdutos(){
       this.storeService.getStoreWithItemsFirstLogin().subscribe(data => {

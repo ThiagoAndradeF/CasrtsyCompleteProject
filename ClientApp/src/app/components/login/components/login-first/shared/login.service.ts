@@ -14,7 +14,7 @@ export class LoginService {
   constructor(private httpClient: HttpClient, private router:Router ) {}
 
   public requestLogin(email : string, password: string ): Observable<any> {
-    return this.httpClient.post(`${this.baseUrl}/login/${email}/${password}`,{});
+    return this.httpClient.get(`${this.baseUrl}/login/${email}/${password}`);
   }
   public verificarAuth(){
     let rotaDeNavegacao =this.router.url
@@ -26,5 +26,6 @@ export class LoginService {
       this.router.navigate(['/login']);
     }
   }
+  
 
 }

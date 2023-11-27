@@ -25,8 +25,8 @@ public class OrderRepository : IOrderRepository
             .Where(o => o.StoreId == storeId)
             .OrderBy( o => o.Id)
             .ToListAsync();
-        
-        return _mapper.Map<List<OrderFullDto>>(orderFromDb);
+        var value = _mapper.Map<List<OrderFullDto>>(orderFromDb);
+        return  value;
     }
 
     public async Task<bool> CreateOrderWithItemsAndServicesAsync(OrderDto order)

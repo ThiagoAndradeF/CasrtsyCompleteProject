@@ -20,7 +20,7 @@ export class ProdutoComponent {
   displayAddDialog: boolean = false;
   newProduct: ItemDto = new ItemDto() ;
   storeId:number = 0;
-
+  
 
   constructor( private storeService:StoreService, private confirmationService:ConfirmationService, private messageService: MessageService) {
      this.listarProdutos();

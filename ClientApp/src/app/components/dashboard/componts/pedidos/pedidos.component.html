@@ -25,7 +25,9 @@
       [tableStyle]="{ 'min-width': '20rem' }"
       [paginator]="true"
       [rows]="10"
-      [globalFilterFields]="['name', 'country.name', 'company', 'representative.name']">
+      [globalFilterFields]="['name', 'country.name', 'company', 'representative.name']"
+      [value]="orders"
+      >
 
       <ng-template pTemplate="header">
           <tr>
@@ -34,8 +36,6 @@
               <th>Horário</th>
               <th >Valor Total</th>
               <th >Cliente</th>
-
-
           </tr>
       </ng-template>
 
@@ -44,7 +44,16 @@
               <td>
                   <p-tableCheckbox [value]="pedidoFinalizado"></p-tableCheckbox>
               </td>
-              <td>{{ order.items.name }}</td>
+              <td>
+                <p *ngIf="order.items.length<=1">
+                  {{ order.items[0].name }}
+                </p>
+                <p>
+                  <p *ngIf="order.items.length>1">
+                    {{ order.items[0].name +", ..."  }}
+                  </p>
+              </td>
+              <!-- <td *ngIf="order.items.langth>1">}</td> -->
               <td>{{ order.date}} </td>
               <td>{{ order.price }}</td>
               <td>{{ order.consumerName}}</td>
@@ -56,20 +65,20 @@
       <div class="form-text">
           <div>
               <label for="newName">Nome Comprador:</label>
-              <input class="textInput"  type="text" pInputText [(ngModel)]="nomeClienteNovoPedido"/>
+              <input class="textInput"  type="text" pInputText [(ngModel)]="newOrder.consumerName"/>
 
           </div>
           <div style="margin-top: 10px;">
             <label for="newName">Itens Selecionados:</label>
           </div>
           <div>
-            <p-multiSelect [options]="itensAvalible" [(ngModel)]="selectedItens" placeholder="Selecione o item" optionLabel="name" display="chip" [showClear]="true" panelStyleClass="custom-multiselect-panel"></p-multiSelect>
+            <p-multiSelect [options]="itensAvalible" optionValue="id"  [(ngModel)]="newOrder.itemIds" placeholder="Selecione o item"  optionLabel="name" display="chip" [showClear]="true" panelStyleClass="custom-multiselect-panel"></p-multiSelect>
           </div>
           <div >
             <label for="newName">Serviços Adicionais:</label>
           </div>
           <div>
-            <p-multiSelect [options]="additionalServicesAvalible" [(ngModel)]="additionalServicesSelected" placeholder="Selecione os serviços adicionais" optionLabel="service" display="chip" [showClear]="true" panelStyleClass="custom-multiselect-panel"></p-multiSelect>
+            <p-multiSelect [options]="additionalServicesAvalible" optionValue="id" [(ngModel)]="newOrder.serviceIds" placeholder="Selecione os serviços adicionais"  optionLabel="service" display="chip" [showClear]="true" panelStyleClass="custom-multiselect-panel"></p-multiSelect>
           </div>
           <div style="float: right;">
             <span style="margin-right: 10px;">
@@ -82,4 +91,5 @@
           <button type="button" pButton label="Adicionar Pedido" (click)="addNewOrder()" style="margin-top: 10px;" [disabled]="validadePedido" ></button>
       </div>
     </p-dialog>
+
 </div>

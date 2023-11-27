@@ -7,4 +7,5 @@ public class OrderFullDto
     public DateTime Date { get; set; }
     public List<ItemForOrderReturnDto> Items { get; set; } = default!;
     public List<AdditionalServiceDto> Services { get; set; } = default!;
+    public string ConsumerName { get; set; }
 }
