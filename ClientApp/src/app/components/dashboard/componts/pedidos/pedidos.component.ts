@@ -11,27 +11,38 @@ import { OrderFullDto } from '../../models/OrderFullDto';
   styleUrls: ['./pedidos.component.scss']
 })
 export class PedidosComponent {
-
+    //RESULTADO DE GETS
     private _orders : OrderFullDto[] = [];
     public get orders() : OrderFullDto[]  {
       return this._orders;
     }
     public set orders(v : OrderFullDto[] ) {
       this._orders = v;
+      debugger
       v.forEach(element => {
         console.warn('Pedidos: ' + element)
       });
     }
-
-
-    validadePedido:boolean = false;
-    pedidoFinalizado: boolean  = false;
-    selectedOrder: OrderDto = new OrderDto();
-    displayDialog: boolean = false;
-    editedOrder:OrderDto = new OrderDto();
-    dialogNewOrder: boolean = false;
-    displayAddDialog: boolean = false;
+    itensAvalible: ItemDto[] = [];
+    additionalServicesAvalible: AdditionalServiceDto[] = [];
     storeId:number = 0;
+
+    //DIALOG ADD PEDIDO
+    _displayAddDialog: boolean = false;
+
+
+    //DIALOG VER PEDIDO
+    _displayInfoDialog:boolean = false;
+    _orderInfo:OrderFullDto = new OrderFullDto();
+
+    //NOVO ORDER CRIADA
+    private _newOrder : OrderDto= new OrderDto();
+    public get newOrder() : OrderDto {
+      return this._newOrder;
+    }
+    public set newOrder(v : OrderDto) {
+      this._newOrder = v;
+    }
 
     private _nomeClienteNovoPedido !: string;
     public get nomeClienteNovoPedido() : string {
@@ -42,27 +53,28 @@ export class PedidosComponent {
       this.newOrder.consumerName = v;
     }
 
-
-    private _itensSelecionados : number[] = [];
-    public get itensSelecionados() : number[] {
+    private _itensSelecionados : ItemDto[] = [];
+    public get itensSelecionados() : ItemDto[] {
       return this._itensSelecionados;
     }
-    public set itensSelecionados(v : number[]) {
+    public set itensSelecionados(v : ItemDto[]) {
       this._itensSelecionados = v;
+      this.adicionarProdutosNewOrder();
+      this.setarValoresPedidos(this.itensSelecionados, this.servicosSelecionados)
 
     }
 
-    private _newOrder : OrderDto= new OrderDto();
-    public get newOrder() : OrderDto {
-      return this._newOrder;
+    private _servicosSelecionados : AdditionalServiceDto[] = [];
+    public get servicosSelecionados() : AdditionalServiceDto[] {
+      return this._servicosSelecionados;
     }
-    public set newOrder(v : OrderDto) {
-      this._newOrder = v;
+    public set servicosSelecionados(v : AdditionalServiceDto[]) {
+      this._servicosSelecionados = v;
+      this.adicionarServicosNewOrder();
+      this.setarValoresPedidos(this.itensSelecionados, this.servicosSelecionados)
     }
 
-    itensAvalible: ItemDto[] = [];
 
-    additionalServicesAvalible: AdditionalServiceDto[] = [];
 
     constructor( private storeService:StoreService) {
     }
@@ -72,47 +84,36 @@ export class PedidosComponent {
       setTimeout(() => {
         this.listarServicos();
         this.listarOrders();
-      }, 1000);
+      }, 300);
     }
 
-    public atribuiValorNewOrder(){
 
-    }
-    public addNewOrder() {
-      this.storeService.addOrderToStory(this.newOrder).subscribe(data => {
-        if(data){
-          console.log('Order adicionad!')
-        }
+
+    //MÉTODOS NEW ORDER
+    public adicionarProdutosNewOrder(){
+      let arrayIds:number[] = []
+      this.itensSelecionados.forEach(element => {
+        arrayIds.push(element.id)
       });
-      setTimeout(() => {
-        this.listarProdutos();
-      }, 1000);
-      this.displayAddDialog = false;
+      this.newOrder.itemIds = arrayIds;
+    }
+    public adicionarServicosNewOrder(){
+      let arrayIds:number[] = []
+      this.servicosSelecionados.forEach(element => {
+        arrayIds.push(element.id)
+      });
+      this.newOrder.serviceIds = arrayIds;
     }
 
-    public listarOrders(){
-      this.storeService.getAllOrders().subscribe(data => {
-        if(data){
-          debugger
-          this.orders = data;
-        }
+    public setarValoresPedidos(itens: ItemDto[], service: AdditionalServiceDto[]){
+      let valorOrder = 0;
+      itens.forEach(element => {
+        valorOrder+=element.price;
       });
-    }
-    public listarServicos(){
-      this.storeService.getStoreWithServices().subscribe(data => {
-        console.warn(data)
-        if(data.services){
-          this.additionalServicesAvalible = data.services;
-        }
+      service.forEach(element => {
+        valorOrder+=element.price;
       });
-    }
-    public showDialogAdicionarServico(){
-      this.dialogNewOrder = true;
-    }
-
-    public showAddNewDialog() {
-      this.newOrder = new OrderDto();
-      this.displayAddDialog = true;
+      this.newOrder.price = valorOrder;
     }
 
     public calculateProductValue(itens: ItemDto[], services: AdditionalServiceDto[]){
@@ -129,8 +130,47 @@ export class PedidosComponent {
       });
     }
 
+    public addNewOrder() {
+      this.storeService.addOrderToStory(this.newOrder).subscribe(data => {
+        if(data){
+          console.log('Order adicionada!')
+        }
+        this.listarOrders();
+      });
+      this._displayAddDialog = false;
+    }
 
-    public deleteOrder(order: OrderDto) {
+
+
+    //EVENTO DIALOG
+    public showAddNewDialog() {
+      this.newOrder = new OrderDto();
+      this._displayAddDialog = true;
+    }
+
+    public showInfo(item: OrderFullDto){
+      this._orderInfo = new OrderFullDto();
+      this._displayInfoDialog = true;
+      this._orderInfo = item;
+    }
+
+
+
+    //LISTAR ITENS , ORDERS E SERVIÇOS
+    public listarOrders(){
+      this.storeService.getAllOrders().subscribe(data => {
+        if(data){
+          this.orders = data;
+        }
+      });
+    }
+    public listarServicos(){
+      this.storeService.getStoreWithServices().subscribe(data => {
+        console.warn(data)
+        if(data.services){
+          this.additionalServicesAvalible = data.services;
+        }
+      });
     }
     public listarProdutos(){
       this.storeService.getStoreWithItemsFirstLogin().subscribe(data => {
@@ -143,20 +183,6 @@ export class PedidosComponent {
         }
       });
     }
-
-    public validarPedido(){
-      if(this.itensSelecionados.length>0 && this.nomeClienteNovoPedido){
-        this.validadePedido = false;
-      }else{
-        this.validadePedido = true;
-      }
-    }
-
-    public onDropdownChange(event: any) {
-      console.log('Valores selecionados:', this.selectedOrder);
-    }
-
-
 
 
 }

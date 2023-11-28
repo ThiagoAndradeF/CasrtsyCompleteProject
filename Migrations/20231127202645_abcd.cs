@@ -9,7 +9,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Atividade.Api.Migrations
 {
     /// <inheritdoc />
-    public partial class abc : Migration
+    public partial class abcd : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -371,15 +371,15 @@ namespace Atividade.Api.Migrations
                 columns: new[] { "Id", "ConsumerName", "DateCreated", "Price", "StoreId" },
                 values: new object[,]
                 {
-                    { 1, "", new DateTime(2023, 11, 27, 5, 33, 48, 632, DateTimeKind.Utc).AddTicks(3048), 49.990000000000002, 1 },
-                    { 2, "", new DateTime(2023, 11, 27, 5, 33, 48, 632, DateTimeKind.Utc).AddTicks(3050), 29.989999999999998, 1 },
-                    { 3, "", new DateTime(2023, 11, 27, 5, 33, 48, 632, DateTimeKind.Utc).AddTicks(3051), 19.989999999999998, 2 },
-                    { 4, "", new DateTime(2023, 11, 27, 5, 33, 48, 632, DateTimeKind.Utc).AddTicks(3052), 39.990000000000002, 2 },
-                    { 5, "", new DateTime(2023, 11, 27, 5, 33, 48, 632, DateTimeKind.Utc).AddTicks(3052), 19.989999999999998, 3 },
-                    { 6, "", new DateTime(2023, 11, 27, 5, 33, 48, 632, DateTimeKind.Utc).AddTicks(3053), 59.990000000000002, 4 },
-                    { 7, "", new DateTime(2023, 11, 27, 5, 33, 48, 632, DateTimeKind.Utc).AddTicks(3054), 29.989999999999998, 3 },
-                    { 8, "", new DateTime(2023, 11, 27, 5, 33, 48, 632, DateTimeKind.Utc).AddTicks(3055), 49.990000000000002, 4 },
-                    { 9, "", new DateTime(2023, 11, 27, 5, 33, 48, 632, DateTimeKind.Utc).AddTicks(3056), 69.989999999999995, 1 }
+                    { 1, "", new DateTime(2023, 11, 27, 20, 26, 44, 888, DateTimeKind.Utc).AddTicks(1607), 49.990000000000002, 1 },
+                    { 2, "", new DateTime(2023, 11, 27, 20, 26, 44, 888, DateTimeKind.Utc).AddTicks(1608), 29.989999999999998, 1 },
+                    { 3, "", new DateTime(2023, 11, 27, 20, 26, 44, 888, DateTimeKind.Utc).AddTicks(1609), 19.989999999999998, 2 },
+                    { 4, "", new DateTime(2023, 11, 27, 20, 26, 44, 888, DateTimeKind.Utc).AddTicks(1610), 39.990000000000002, 2 },
+                    { 5, "", new DateTime(2023, 11, 27, 20, 26, 44, 888, DateTimeKind.Utc).AddTicks(1611), 19.989999999999998, 3 },
+                    { 6, "", new DateTime(2023, 11, 27, 20, 26, 44, 888, DateTimeKind.Utc).AddTicks(1612), 59.990000000000002, 4 },
+                    { 7, "", new DateTime(2023, 11, 27, 20, 26, 44, 888, DateTimeKind.Utc).AddTicks(1613), 29.989999999999998, 3 },
+                    { 8, "", new DateTime(2023, 11, 27, 20, 26, 44, 888, DateTimeKind.Utc).AddTicks(1614), 49.990000000000002, 4 },
+                    { 9, "", new DateTime(2023, 11, 27, 20, 26, 44, 888, DateTimeKind.Utc).AddTicks(1615), 69.989999999999995, 1 }
                 });
 
             migrationBuilder.InsertData(
@@ -387,14 +387,14 @@ namespace Atividade.Api.Migrations
                 columns: new[] { "ServicesId", "StoreId", "CreatedAt" },
                 values: new object[,]
                 {
-                    { 1, 1, new DateTime(2023, 11, 27, 5, 33, 48, 632, DateTimeKind.Utc).AddTicks(3030) },
-                    { 1, 2, new DateTime(2023, 11, 27, 5, 33, 48, 632, DateTimeKind.Utc).AddTicks(3033) },
-                    { 1, 3, new DateTime(2023, 11, 27, 5, 33, 48, 632, DateTimeKind.Utc).AddTicks(3034) },
-                    { 1, 4, new DateTime(2023, 11, 27, 5, 33, 48, 632, DateTimeKind.Utc).AddTicks(3037) },
-                    { 2, 1, new DateTime(2023, 11, 27, 5, 33, 48, 632, DateTimeKind.Utc).AddTicks(3032) },
-                    { 2, 2, new DateTime(2023, 11, 27, 5, 33, 48, 632, DateTimeKind.Utc).AddTicks(3033) },
-                    { 2, 3, new DateTime(2023, 11, 27, 5, 33, 48, 632, DateTimeKind.Utc).AddTicks(3035) },
-                    { 2, 4, new DateTime(2023, 11, 27, 5, 33, 48, 632, DateTimeKind.Utc).AddTicks(3037) }
+                    { 1, 1, new DateTime(2023, 11, 27, 20, 26, 44, 888, DateTimeKind.Utc).AddTicks(1583) },
+                    { 1, 2, new DateTime(2023, 11, 27, 20, 26, 44, 888, DateTimeKind.Utc).AddTicks(1586) },
+                    { 1, 3, new DateTime(2023, 11, 27, 20, 26, 44, 888, DateTimeKind.Utc).AddTicks(1588) },
+                    { 1, 4, new DateTime(2023, 11, 27, 20, 26, 44, 888, DateTimeKind.Utc).AddTicks(1589) },
+                    { 2, 1, new DateTime(2023, 11, 27, 20, 26, 44, 888, DateTimeKind.Utc).AddTicks(1585) },
+                    { 2, 2, new DateTime(2023, 11, 27, 20, 26, 44, 888, DateTimeKind.Utc).AddTicks(1587) },
+                    { 2, 3, new DateTime(2023, 11, 27, 20, 26, 44, 888, DateTimeKind.Utc).AddTicks(1588) },
+                    { 2, 4, new DateTime(2023, 11, 27, 20, 26, 44, 888, DateTimeKind.Utc).AddTicks(1590) }
                 });
 
             migrationBuilder.InsertData(
@@ -402,30 +402,30 @@ namespace Atividade.Api.Migrations
                 columns: new[] { "ItemId", "OrderId", "CreatedAt" },
                 values: new object[,]
                 {
-                    { 4, 2, new DateTime(2023, 11, 27, 5, 33, 48, 632, DateTimeKind.Utc).AddTicks(3100) },
-                    { 5, 2, new DateTime(2023, 11, 27, 5, 33, 48, 632, DateTimeKind.Utc).AddTicks(3101) },
-                    { 6, 2, new DateTime(2023, 11, 27, 5, 33, 48, 632, DateTimeKind.Utc).AddTicks(3102) },
-                    { 7, 3, new DateTime(2023, 11, 27, 5, 33, 48, 632, DateTimeKind.Utc).AddTicks(3103) },
-                    { 8, 3, new DateTime(2023, 11, 27, 5, 33, 48, 632, DateTimeKind.Utc).AddTicks(3104) },
-                    { 9, 3, new DateTime(2023, 11, 27, 5, 33, 48, 632, DateTimeKind.Utc).AddTicks(3104) },
-                    { 10, 4, new DateTime(2023, 11, 27, 5, 33, 48, 632, DateTimeKind.Utc).AddTicks(3105) },
-                    { 11, 4, new DateTime(2023, 11, 27, 5, 33, 48, 632, DateTimeKind.Utc).AddTicks(3106) },
-                    { 12, 4, new DateTime(2023, 11, 27, 5, 33, 48, 632, DateTimeKind.Utc).AddTicks(3107) },
-                    { 13, 5, new DateTime(2023, 11, 27, 5, 33, 48, 632, DateTimeKind.Utc).AddTicks(3107) },
-                    { 14, 5, new DateTime(2023, 11, 27, 5, 33, 48, 632, DateTimeKind.Utc).AddTicks(3108) },
-                    { 15, 5, new DateTime(2023, 11, 27, 5, 33, 48, 632, DateTimeKind.Utc).AddTicks(3109) },
-                    { 16, 6, new DateTime(2023, 11, 27, 5, 33, 48, 632, DateTimeKind.Utc).AddTicks(3110) },
-                    { 17, 6, new DateTime(2023, 11, 27, 5, 33, 48, 632, DateTimeKind.Utc).AddTicks(3110) },
-                    { 18, 6, new DateTime(2023, 11, 27, 5, 33, 48, 632, DateTimeKind.Utc).AddTicks(3111) },
-                    { 19, 7, new DateTime(2023, 11, 27, 5, 33, 48, 632, DateTimeKind.Utc).AddTicks(3112) },
-                    { 20, 7, new DateTime(2023, 11, 27, 5, 33, 48, 632, DateTimeKind.Utc).AddTicks(3113) },
-                    { 21, 7, new DateTime(2023, 11, 27, 5, 33, 48, 632, DateTimeKind.Utc).AddTicks(3113) },
-                    { 22, 8, new DateTime(2023, 11, 27, 5, 33, 48, 632, DateTimeKind.Utc).AddTicks(3114) },
-                    { 23, 8, new DateTime(2023, 11, 27, 5, 33, 48, 632, DateTimeKind.Utc).AddTicks(3115) },
-                    { 24, 8, new DateTime(2023, 11, 27, 5, 33, 48, 632, DateTimeKind.Utc).AddTicks(3115) },
-                    { 25, 9, new DateTime(2023, 11, 27, 5, 33, 48, 632, DateTimeKind.Utc).AddTicks(3116) },
-                    { 26, 9, new DateTime(2023, 11, 27, 5, 33, 48, 632, DateTimeKind.Utc).AddTicks(3117) },
-                    { 27, 9, new DateTime(2023, 11, 27, 5, 33, 48, 632, DateTimeKind.Utc).AddTicks(3118) }
+                    { 4, 2, new DateTime(2023, 11, 27, 20, 26, 44, 888, DateTimeKind.Utc).AddTicks(1657) },
+                    { 5, 2, new DateTime(2023, 11, 27, 20, 26, 44, 888, DateTimeKind.Utc).AddTicks(1658) },
+                    { 6, 2, new DateTime(2023, 11, 27, 20, 26, 44, 888, DateTimeKind.Utc).AddTicks(1659) },
+                    { 7, 3, new DateTime(2023, 11, 27, 20, 26, 44, 888, DateTimeKind.Utc).AddTicks(1659) },
+                    { 8, 3, new DateTime(2023, 11, 27, 20, 26, 44, 888, DateTimeKind.Utc).AddTicks(1660) },
+                    { 9, 3, new DateTime(2023, 11, 27, 20, 26, 44, 888, DateTimeKind.Utc).AddTicks(1661) },
+                    { 10, 4, new DateTime(2023, 11, 27, 20, 26, 44, 888, DateTimeKind.Utc).AddTicks(1661) },
+                    { 11, 4, new DateTime(2023, 11, 27, 20, 26, 44, 888, DateTimeKind.Utc).AddTicks(1662) },
+                    { 12, 4, new DateTime(2023, 11, 27, 20, 26, 44, 888, DateTimeKind.Utc).AddTicks(1663) },
+                    { 13, 5, new DateTime(2023, 11, 27, 20, 26, 44, 888, DateTimeKind.Utc).AddTicks(1664) },
+                    { 14, 5, new DateTime(2023, 11, 27, 20, 26, 44, 888, DateTimeKind.Utc).AddTicks(1665) },
+                    { 15, 5, new DateTime(2023, 11, 27, 20, 26, 44, 888, DateTimeKind.Utc).AddTicks(1665) },
+                    { 16, 6, new DateTime(2023, 11, 27, 20, 26, 44, 888, DateTimeKind.Utc).AddTicks(1666) },
+                    { 17, 6, new DateTime(2023, 11, 27, 20, 26, 44, 888, DateTimeKind.Utc).AddTicks(1667) },
+                    { 18, 6, new DateTime(2023, 11, 27, 20, 26, 44, 888, DateTimeKind.Utc).AddTicks(1667) },
+                    { 19, 7, new DateTime(2023, 11, 27, 20, 26, 44, 888, DateTimeKind.Utc).AddTicks(1668) },
+                    { 20, 7, new DateTime(2023, 11, 27, 20, 26, 44, 888, DateTimeKind.Utc).AddTicks(1669) },
+                    { 21, 7, new DateTime(2023, 11, 27, 20, 26, 44, 888, DateTimeKind.Utc).AddTicks(1670) },
+                    { 22, 8, new DateTime(2023, 11, 27, 20, 26, 44, 888, DateTimeKind.Utc).AddTicks(1670) },
+                    { 23, 8, new DateTime(2023, 11, 27, 20, 26, 44, 888, DateTimeKind.Utc).AddTicks(1671) },
+                    { 24, 8, new DateTime(2023, 11, 27, 20, 26, 44, 888, DateTimeKind.Utc).AddTicks(1672) },
+                    { 25, 9, new DateTime(2023, 11, 27, 20, 26, 44, 888, DateTimeKind.Utc).AddTicks(1673) },
+                    { 26, 9, new DateTime(2023, 11, 27, 20, 26, 44, 888, DateTimeKind.Utc).AddTicks(1673) },
+                    { 27, 9, new DateTime(2023, 11, 27, 20, 26, 44, 888, DateTimeKind.Utc).AddTicks(1674) }
                 });
 
             migrationBuilder.CreateIndex(

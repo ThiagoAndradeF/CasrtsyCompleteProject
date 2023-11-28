@@ -1,6 +1,6 @@
 export class AdditionalServiceDto{
-    public id?:number;
+    public id :number = 1;
     public service ?: string;
-    public price !: number ;
+    public price : number = 0 ;
     public type : string = 'Padrao';
 }

@@ -4,7 +4,7 @@ import { ItemDto } from "./ItemDto";
 
 export class OrderFullDto {
   storeId?:number;
-  consumerName?: string;
+  consumerName: string ="" ;
   price: number = 0;
   dateCreated: Date = new Date();
   items:ItemDto[] = [];

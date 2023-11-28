@@ -7,5 +7,5 @@ public class OrderDto
     public double Price { get; set;}
     public DateTime DateCreated { get; set; }
     public List<int> ItemIds { get; set; } = default!;
-    public List<int> ServiceIds = default!;
+    public List<int> ServiceIds { get; set; } = default!;
 }
