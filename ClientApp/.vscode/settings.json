@@ -1,0 +1,8 @@
+{
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/d684e2a7-14b6-4500-bedb-774441c000ab/resourceGroups/Cartsy_group/providers/Microsoft.Web/sites/CartsyFrontend",
+    "appService.deploySubpath": "."
+}
