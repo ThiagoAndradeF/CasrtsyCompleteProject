@@ -24,7 +24,7 @@
 
         <div  >
             <div style="margin-top: 80px;" *ngIf="habilitaBotaoContinuar">
-                <p-button (onClick)="avancar()" class="proximo" [disabled]="">
+                <p-button (onClick)="avancar()" class="proximo">
                     Próximo
                 </p-button>
             </div>
@@ -40,7 +40,7 @@
               </div>
 
             </div> -->
-            <p-button (onClick)="assinarFormulario()" *ngIf="desabAvancar" > Criar Loja</p-button>
+            <p-button (onClick)="assinarFormulario()" *ngIf="desabAvancar"  [disabled]="desabilitarSalvamento"> Criar Loja</p-button>
 
 
 

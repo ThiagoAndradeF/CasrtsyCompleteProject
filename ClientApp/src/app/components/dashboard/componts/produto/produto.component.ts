@@ -20,7 +20,7 @@ export class ProdutoComponent {
   displayAddDialog: boolean = false;
   newProduct: ItemDto = new ItemDto() ;
   storeId:number = 0;
-  
+
 
   constructor( private storeService:StoreService, private confirmationService:ConfirmationService, private messageService: MessageService) {
      this.listarProdutos();
@@ -83,13 +83,23 @@ export class ProdutoComponent {
   }
 
   addNewProduct() {
-    this.storeService.addItemsToStoreById(this.storeId, this.newProduct).subscribe(data => {
-      if(data){
-        console.warn('Produto adicionado!')
-      }
-    });;
-    this.items.push(this.newProduct); // Adicionar o novo produto à lista
-    this.displayAddDialog = false; // Fechar o dialog após adicionar
+    if(this.newProduct.price>0 && this.newProduct.stock>0){
+      this.storeService.addItemsToStoreById(this.storeId, this.newProduct).subscribe(data => {
+        if(data){
+          console.warn('Produto adicionado!')
+        }
+      });;
+      this.items.push(this.newProduct); // Adicionar o novo produto à lista
+       // Fechar o dialog após adicionar
+    }
+    else{
+      if(this.newProduct.price<0)
+      console.warn('Valor do produto não pode ser negativo!!!!');
+      if(this.newProduct.stock<0)
+      console.warn('Valor do serviço não pode ser negativo!!!!');
+    }
+    this.displayAddDialog = false;
+
   }
   deleteProduct(iten: ItemDto) {
     if(iten.id){

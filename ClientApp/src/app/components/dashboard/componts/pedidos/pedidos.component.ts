@@ -12,13 +12,13 @@ import { OrderFullDto } from '../../models/OrderFullDto';
 })
 export class PedidosComponent {
     //RESULTADO DE GETS
+    public desabilitarSalvamento: boolean = true;
     private _orders : OrderFullDto[] = [];
     public get orders() : OrderFullDto[]  {
       return this._orders;
     }
     public set orders(v : OrderFullDto[] ) {
       this._orders = v;
-      debugger
       v.forEach(element => {
         console.warn('Pedidos: ' + element)
       });
@@ -51,6 +51,7 @@ export class PedidosComponent {
     public set nomeClienteNovoPedido(v : string) {
       this._nomeClienteNovoPedido = v;
       this.newOrder.consumerName = v;
+      this.verificarSePodeSalvar(v, this.itensSelecionados)
     }
 
     private _itensSelecionados : ItemDto[] = [];
@@ -61,7 +62,7 @@ export class PedidosComponent {
       this._itensSelecionados = v;
       this.adicionarProdutosNewOrder();
       this.setarValoresPedidos(this.itensSelecionados, this.servicosSelecionados)
-
+      this.verificarSePodeSalvar(this.nomeClienteNovoPedido, v)
     }
 
     private _servicosSelecionados : AdditionalServiceDto[] = [];
@@ -90,6 +91,15 @@ export class PedidosComponent {
 
 
     //MÉTODOS NEW ORDER
+    public verificarSePodeSalvar(consumerName:string,  itensSelecionados:ItemDto[]){
+      let tamanhoArray = itensSelecionados.length
+      if(consumerName){
+        if(tamanhoArray > 0){
+          this.desabilitarSalvamento = false
+        }
+      }
+    }
+
     public adicionarProdutosNewOrder(){
       let arrayIds:number[] = []
       this.itensSelecionados.forEach(element => {

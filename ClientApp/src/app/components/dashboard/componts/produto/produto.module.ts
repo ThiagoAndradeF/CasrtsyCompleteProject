@@ -10,6 +10,8 @@ import { FileUploadModule } from 'primeng/fileupload';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { KeyFilterModule } from 'primeng/keyfilter';
+import {  InputNumberModule } from 'primeng/inputnumber';
+import { MessagesModule } from 'primeng/messages';
 
 
 @NgModule({
@@ -24,7 +26,9 @@ import { KeyFilterModule } from 'primeng/keyfilter';
     FileUploadModule,
     MultiSelectModule,
     KeyFilterModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    InputNumberModule,
+    MessagesModule
   ],
   providers:[
     ConfirmationService,

@@ -64,7 +64,7 @@
       <div class="form-text">
           <div>
               <label for="newName">Nome Cliente:</label>
-              <input class="textInput"  type="text" pInputText [(ngModel)]="newOrder.consumerName"/>
+              <input class="textInput"  type="text" pInputText [(ngModel)]="nomeClienteNovoPedido"/>
 
           </div>
           <div style="margin-top: 10px;">
@@ -87,7 +87,7 @@
               R$ {{newOrder.price}}
             </span>
           </div>
-          <button type="button" pButton label="Adicionar Pedido" (click)="addNewOrder()" style="margin-top: 10px;" ></button>
+          <button type="button" pButton label="Adicionar Pedido" (click)="addNewOrder()" style="margin-top: 10px;"[disabled]="desabilitarSalvamento" ></button>
       </div>
     </p-dialog>
     <p-dialog header="Adicionar Novo Produto" [(visible)]="_displayInfoDialog" [responsive]="true" [style]="{width: '50vw'}" [maximizable]="true">

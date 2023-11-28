@@ -15,7 +15,7 @@ export class InputDemoComponent implements OnInit {
         this._services = v;
         console.warn('esses são os servicoes: ' +  v)
         // window.location.reload();
-    } 
+    }
 
     selectedService: AdditionalServiceDto = new AdditionalServiceDto();
     displayDialog: boolean = false;
@@ -51,12 +51,17 @@ export class InputDemoComponent implements OnInit {
     }
 
     public addNewService() {
+      if(this.newService.price>0 ){
       this.storeService.addServicesToStoreById(this.newService).subscribe(data => {
         if(data){
           console.log('Serviço adicionado!')
         }
       });;
       this.services.push(this.newService); // Adicionar o novo produto à lista
+      }
+      else{
+        console.warn('Valor não pode ser negativo!!!!');
+      }
       this.displayAddDialog = false; // Fechar o dialog após adicionar
     }
     public deleteService(service: AdditionalServiceDto) {

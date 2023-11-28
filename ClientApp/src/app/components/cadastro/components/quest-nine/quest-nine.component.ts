@@ -50,7 +50,6 @@ export class QuestNineComponent {
 
         } else {
             this.validadeEmail=false
-
         }
     }
     public emitValue(v:string) {

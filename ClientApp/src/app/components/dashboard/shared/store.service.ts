@@ -18,6 +18,14 @@ export class StoreService {
   constructor(private httpClient: HttpClient ) {
     if( localStorage.getItem('idLoja')){
       this.getIdLoja();
+    }else{
+      this.getStoreWithItemsFirstLogin().subscribe(data => {
+        if(data.id)
+        {
+          this.storeId= data.id;
+          localStorage.setItem('idLoja', data.id.toString());
+        }
+      });
     }
   }
 
@@ -61,7 +69,7 @@ export class StoreService {
   }
   public addOrderToStory(order:OrderDto ): Observable<any> {
     order.storeId = this.storeId ;
-    debugger
+
     return this.httpClient.post(`${this.baseUrlIten}/api/orders`, order);
   }
 

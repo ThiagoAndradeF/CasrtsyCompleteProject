@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./cadastro.component.scss']
 })
 export class CadastroComponent {
-
+  public desabilitarSalvamento:boolean = true;
   public desabAvancar:boolean = false;
   public desabRetroceder:boolean = true;
   public habilitaBotaoContinuar:boolean = true;
@@ -26,6 +26,7 @@ export class CadastroComponent {
   public set Password(v : string) {
     this._Password = v;
     this.storeFormForCreation.Password = v
+    this.verificarSePodeSalvar( this.mailLoja, v)
   }
 
 
@@ -38,6 +39,7 @@ export class CadastroComponent {
   private _agendamento !: boolean;
   public get agendamento() : boolean {
     return this._agendamento;
+
   }
   public set agendamento(v : boolean) {
     this._agendamento = v;
@@ -52,6 +54,7 @@ export class CadastroComponent {
     this.habEnvio= true;
     this.storeFormForCreation.Email = v;
     console.warn('O email da loja é  ' + v)
+    this.verificarSePodeSalvar(v, this.Password)
 
   }
   private _localRetirada !: string;
@@ -182,8 +185,29 @@ export class CadastroComponent {
       }
     });
   }
+  public validarEmail(email: string) {
+    // Usa uma expressão regular para validar o formato do e-mail
+        const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        if ( regex.test(email)) {
+            return true
 
+        } else {
+            return false
+        }
 
+    }
+
+  public verificarSePodeSalvar(email:string,  senha:string){
+    let emailValido:boolean = this.validarEmail(email)
+    if(emailValido){
+      if(senha.length>5){
+        this.desabilitarSalvamento = false
+      }
+      else{
+        console.warn('A senha deve ter no minimo cinco digitos')
+      }
+    }
+  }
   public popularForm(){
 
   }

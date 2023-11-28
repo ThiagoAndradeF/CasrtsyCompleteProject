@@ -30,6 +30,28 @@ input[type="number"]:focus {
   box-shadow: 0 1px 0 0 #F07D90; /* Sombra opcional para destacar o foco */
   outline: none; /* Remove o contorno padrão */
 }
+
+:host{
+  ::ng-deep{
+    .p-inputNumber{
+      width: 100%;
+      ::ng-deep{
+        input{
+          background-color: transparent;
+          border: none;
+          border-bottom: 1px solid #757575; /* Cor da linha inferior */
+          border-radius: 0;
+          padding: 7px 0;
+          box-shadow: none;
+          width: 60%;
+        }
+      }
+
+
+    }
+  }
+
+}
 /* Estilo para o label para alinhá-lo corretamente com o input */
 label {
   display: block;
