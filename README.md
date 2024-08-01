@@ -1,41 +1,45 @@
-# ERP Básico para Pequenos Negócios
+# Basic ERP for Small Businesses
 
-Este é um sistema ERP  básico projetado para atender às necessidades de pequenos negócios. O sistema é desenvolvido usando C# com Entity Framework para a lógica do servidor e PostgreSQL para a persistência dos dados. No frontend, utilizamos Angular para uma interface de usuário rica e responsiva.
+This is a basic ERP system designed to meet the needs of small businesses. The system is developed using C# with Entity Framework for server logic and PostgreSQL for data persistence. On the frontend, we use Angular to create a rich and responsive user interface.
 
-## Características (Até o momento foi implementada apenas a transação e registro de itens)
+## Features (So far, only transaction and item registration have been implemented)
 
-- **Controle de Estoque:** Gerencie seu inventário, controle níveis de estoque e receba alertas quando for hora de reabastecer.
-  
-## Tecnologias Utilizadas
+- **Inventory Control:** Manage your inventory, monitor stock levels, and receive alerts when it's time to restock.
 
-- **Backend:** C# com ASP.NET Core e Entity Framework.
-- **Frontend:** Angular com PrimeNG para componentes de UI.
-- **Banco de Dados:** PostgreSQL.
+## Technologies Used
+
+- **Backend:** C# with ASP.NET Core and Entity Framework.
+- **Frontend:** Angular with PrimeNG for UI components.
+- **Database:** PostgreSQL.
 - **API:** RESTful API design.
 
-## Requisitos
+## Requirements
 
-- .NET 5.0 ou superior.
-- Node.js 12.0 ou superior.
-- PostgreSQL 12 ou superior.
+- .NET 5.0 or higher.
+- Node.js 12.0 or higher.
+- PostgreSQL 12 or higher.
 
-## Configuração
+## Setup
 
-1. Clone o repositório para sua máquina local.
-2. Configure a string de conexão para o PostgreSQL no arquivo `appsettings.json` no projeto do backend.
-3. Execute as migrações do Entity Framework para configurar o banco de dados.
-4. Instale as dependências do projeto Angular executando `npm install` na pasta do frontend.
-5. Inicie o servidor backend e o servidor de desenvolvimento do Angular.
+1. Clone the repository to your local machine.
+2. Configure the PostgreSQL connection string in the `appsettings.json` file in the backend project.
+3. Run the Entity Framework migrations to set up the database.
+4. Install the Angular project dependencies by running `npm install` in the frontend folder.
+5. Start the backend server and the Angular development server.
 
-## Executando o Projeto
+## Running the Project
 
-Para executar o backend:
-- Instale o Entity Framwork .
-- Instale o Postgrsql.
+To run the backend, follow these steps in your terminal:
+
 ```bash
+# Install Entity Framework
+# Install PostgreSQL
+# Navigate to the Backend directory
 cd Backend
 dotnet restore
 dotnet build
 dotnet run
-cd Frontend
+
+# After starting the backend, navigate to the Frontend directory
+cd ../Frontend
 npm start
